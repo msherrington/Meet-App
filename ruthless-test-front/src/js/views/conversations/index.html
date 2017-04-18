@@ -1,0 +1,8 @@
+<ul class="row">
+  <li ng-repeat="conversation in conversationsIndex.all" class="col-md-6">
+    <div class="conversation">
+      <h2>{{ conversation.receiver.username }}</h2>
+      <button ui-sref="conversationsShow({id: conversation.id})">View</button>
+    </div>
+  </li>
+</ul>

@@ -35,7 +35,6 @@ function Router($urlRouterProvider, $locationProvider, $stateProvider){
       templateUrl: 'js/views/events/edit.html',
       controller: 'EventsEditCtrl as eventsEdit'
     })
-
     //users states
     .state('usersIndex', {
       url: '/users',
@@ -56,6 +55,17 @@ function Router($urlRouterProvider, $locationProvider, $stateProvider){
       url: '/users/:id/edit',
       templateUrl: 'js/views/users/edit.html',
       controller: 'UsersEditCtrl as usersEdit'
+    })
+    // conversation states
+    .state('conversationsIndex', {
+      url: '/conversations',
+      templateUrl: 'js/views/conversation/index.html',
+      controller: 'ConversationsIndexCtrl as conversationsIndex'
+    })
+    .state('conversationsShow', {
+      url: '/conversations/:id',
+      templateUrl: 'js/views/conversation/show.html',
+      controller: 'ConversationsShowCtrl as conversationsShow'
     })
     //auth states
     .state('login', {
