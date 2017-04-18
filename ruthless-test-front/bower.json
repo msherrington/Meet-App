@@ -19,6 +19,7 @@
     "angular-resource": "^1.6.4",
     "angular-ui-router": "^0.4.2",
     "bootstrap-css-only": "^3.3.7",
-    "satellizer": "^0.15.5"
+    "satellizer": "^0.15.5",
+    "checklist-model": "^0.11.0"
   }
 }

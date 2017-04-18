@@ -5,7 +5,7 @@
 <p>{{ eventsShow.event.location }}</p>
 <p>{{ eventsShow.event.date }}</p>
 <p><span class="ticksleft">{{ eventsShow.event.tickets_left }}</span> tickets left</p>
-<p>hosted by - <a href="#">{{ eventsShow.event.host.username }}</a></p>
+<p>hosted by - <a href="#">{{ eventsShow.event.user.username }}</a></p>
 
 <div>
   <button class="btn btn-primary" ui-sref="eventsEdit({ id:eventsShow.event.id })">Edit This Event</button>
