@@ -7,7 +7,30 @@
 <p><span class="ticksleft">{{ eventsShow.event.tickets_left }}</span> tickets left</p>
 <p>hosted by - <a href="#">{{ eventsShow.event.user.username }}</a></p>
 
+<h1>Attendees!</h1>
+<!-- {{ eventsShow.event.attendees }} -->
+<ul>
+  <li class="attendees" ng-repeat="attendee in eventsShow.event.attendees">{{ attendee.username }}  </li>
+</ul>
+
 <div>
   <button class="btn btn-primary" ui-sref="eventsEdit({ id:eventsShow.event.id })">Edit This Event</button>
   <button class="btn btn-danger" ng-click="eventsShow.delete()">Delete this Event</button>
+</div>
+
+
+<div class="comments">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Comments</h2>
+      <ul>
+        <li ng-repeat="comment in eventsShow.event.comments">{{ comment.body }} - <strong>{{ comment.user.username }}</strong><button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
+      </ul>
+    </div>
+      <h2>Add Comment</h2>
+      <form ng-submit="eventsShow.addComment()">
+        <textarea type="text" name="body" ng-model="eventsShow.comment.body"></textarea>
+        <button>Create</button>
+      </form>
+  </div>
 </div>
