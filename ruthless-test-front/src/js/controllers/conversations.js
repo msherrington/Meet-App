@@ -34,7 +34,7 @@ function ConversationsShowCtrl(Conversation, User, Message, $stateParams, $state
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.conversation = Conversation.query($stateParams);
-  console.log(vm.conversation);
+  // console.log(vm.conversation);
 
 
   function conversationsDelete() {
@@ -45,14 +45,15 @@ function ConversationsShowCtrl(Conversation, User, Message, $stateParams, $state
 
   vm.delete = conversationsDelete;
 
+  vm.message = {};
   function addMessage() {
-    vm.message.conversation_id = vm.conversation.id;
+    // vm.message.conversation_id = vm.conversation.id;
 
     Message
       .save({ message: vm.message })
       .$promise
       .then((message) => {
-        vm.conversation.messages.push(message);
+        vm.conversation.push(message);
         vm.message = {};
       });
   }

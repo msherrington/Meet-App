@@ -38,11 +38,6 @@
     <input type="text" ng-model="eventsNew.event.image">
   </div>
 
-  <label>Attendees</label>
-  <label ng-repeat="user in eventsNew.users">
-    <input type="checkbox" name="attendees" checklist-model="eventsNew.event.attendee_ids" checklist-value="user.id">{{ user.username }}
-  </label>
-
   <div>
     <button class="btn btn-success">Submit</button>
   </div>

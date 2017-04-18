@@ -2,14 +2,14 @@
   <div class="col-md-6">
     <h2>Messages</h2>
     <ul>
-      <li ng-repeat="message in conversationsShow.conversation">{{ message.body }} - <strong>{{ message.user.username }}</strong><button ng-click="conversationsShow.deleteComment(message)" ng-if="main.isAuthenticated() && main.currentUser.id === message.user.id">Delete</button></li>
+      <li ng-repeat="message in conversationsShow.conversation">{{ message.body }} - <strong>{{ message.user.username }}</strong></li>
     </ul>
   </div>
   <div class="col-md-6" ng-if="main.isAuthenticated()">
-    <h2>Add Comment</h2>
-    <form ng-submit="conversationsShow.addComment()">
-      <textarea type="text" name="body" ng-model="conversationsShow.message.body"></textarea>
-      <button>Create</button>
+    <h2>Reply</h2>
+    <form ng-submit="conversationsShow.addMessage()">
+      <textarea type="text" name="body" ng-model="conversationsShow.conversation.message.body"></textarea><br>
+      <button>Send</button>
     </form>
   </div>
 </div>

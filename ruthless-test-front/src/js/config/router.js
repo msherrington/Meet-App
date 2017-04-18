@@ -59,12 +59,12 @@ function Router($urlRouterProvider, $locationProvider, $stateProvider){
     // conversation states
     .state('conversationsIndex', {
       url: '/conversations',
-      templateUrl: 'js/views/conversation/index.html',
+      templateUrl: 'js/views/conversations/index.html',
       controller: 'ConversationsIndexCtrl as conversationsIndex'
     })
     .state('conversationsShow', {
       url: '/conversations/:id',
-      templateUrl: 'js/views/conversation/show.html',
+      templateUrl: 'js/views/conversations/show.html',
       controller: 'ConversationsShowCtrl as conversationsShow'
     })
     //auth states
