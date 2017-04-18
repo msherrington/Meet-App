@@ -9,26 +9,20 @@
     <!-- inject:css -->
     <!-- endinject -->
   </head>
-  <body ng-controller="EventsIndexCtrl as eventsIndex">
+  <body ng-controller="MainCtrl as main">
     <nav class="navbar navbar-default" role="navigation">
       <div class="navbar-header">
         <a class="navbar-brand" ui-sref="home">EVENTS APP</a>
       </div>
       <div>
         <ul class="nav navbar-nav">
-          <!-- <li ng-if="main.isAuthenticated()"><a ui-sref="eventsIndex">Events Index</a></li>
+          <li ng-if="main.isAuthenticated()"><a ui-sref="eventsIndex">Events Index</a></li>
           <li ng-if="main.isAuthenticated()"><a ui-sref="eventsNew">Add Event</a></li>
           <li ng-if="main.isAuthenticated()"><a ui-sref="usersIndex">Users Index</a></li>
           <li ng-if="!main.isAuthenticated()"><a ui-sref="login">Login</a></li>
           <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
-          <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li> -->
+          <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
 
-          <li><a ui-sref="eventsIndex">Events Index</a></li>
-          <li><a ui-sref="eventsNew">Add Event</a></li>
-          <li><a ui-sref="usersIndex">Users Index</a></li>
-          <li><a ui-sref="login">Login</a></li>
-          <li><a ui-sref="register">Register</a></li>
-          <li><a ng-click="main.logout()" href="#">Logout</a></li>
         </ul>
       </div>
     </nav>

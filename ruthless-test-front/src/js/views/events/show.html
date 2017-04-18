@@ -27,10 +27,13 @@
         <li ng-repeat="comment in eventsShow.event.comments">{{ comment.body }} - <strong>{{ comment.user.username }}</strong><button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
       </ul>
     </div>
+
+    <div ng-if="main.isAuthenticated()">
       <h2>Add Comment</h2>
       <form ng-submit="eventsShow.addComment()">
         <textarea type="text" name="body" ng-model="eventsShow.comment.body"></textarea>
         <button>Create</button>
       </form>
+    </div>
   </div>
 </div>
