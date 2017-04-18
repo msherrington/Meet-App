@@ -1,0 +1,41 @@
+<h1>Add a new event</h1>
+<!-- Host must exist... Need to be logged in for host -->
+
+<form ng-submit="eventsNew.create()">
+
+  <div>
+    <label>Name</label>
+    <input ng-model="eventsNew.event.name">
+  </div>
+
+  <!-- host model? -->
+  <div>
+    <label>Host</label>
+    <input ng-model="eventsNew.event.host.id">
+  </div>
+
+  <div>
+    <label>Location</label>
+    <input ng-model="eventsNew.event.location">
+  </div>
+
+  <!-- <div>
+    <label>Date</label>
+    <input ng-model="eventsNew.event.date">
+  </div> -->
+
+  <div>
+    <label>Description</label>
+    <input ng-model="eventsNew.event.description">
+  </div>
+
+  <div>
+    <label>Image</label>
+    <input ng-model="eventsNew.event.image">
+  </div>
+
+  <div>
+    <button class="btn btn-success">Submit</button>
+  </div>
+
+</form>

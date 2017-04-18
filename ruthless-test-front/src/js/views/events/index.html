@@ -1,0 +1,16 @@
+<h1>EVENT INDEX</h1>
+<ul>
+  <li ng-repeat="event in eventsIndex.all">
+    <!-- {{ event }} -->
+  <div class="EventIndexDiv">
+    <div class="EventInnerDiv">
+      <a ui-sref="eventsShow({ id: event.id })"><p><strong>{{ event.name }}</strong></p></a>
+      <a ui-sref="eventsShow({ id: event.id })"><img src="{{ event.image }}" alt="{{ event.name }}"></a>
+      <p>{{ event.location }}</p>
+      <p>{{ event.date }}</p>
+      <p><span class="ticksleft">{{ event.tickets_left }}</span> tickets left</p>
+      <p>hosted by - <a href="#">{{ event.host.username }}</a></p>
+    </div>
+  </div>
+  </li>
+</ul>

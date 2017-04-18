@@ -1,0 +1,61 @@
+body{
+  text-align: center;
+}
+
+//EVENT INDEX
+.EventIndexDiv{
+  width: 300px;
+  height: 350px;
+  border: 1px solid black;
+  margin: 5px;
+  img{
+    height: 200px;
+    width: 200px;
+  }
+}
+
+.EventInnerDiv{
+  margin: 4px;
+}
+
+li{
+  list-style-type: none;
+  display: inline-block;
+}
+
+.ticksleft{
+  color: red;
+  font-weight: bold;
+}
+
+//EVENT SHOW
+.EventShowImg{
+  height: 500px;
+  width: 500px;
+}
+
+.btn{
+  margin: 5px 10px;
+}
+
+//USER INDEX
+.UserIndexDiv{
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  margin: 5px;
+  img{
+    height: 200px;
+    width: 200px;
+  }
+}
+
+.UserInnerDiv{
+  margin: 4px;
+}
+
+//USER SHOW
+.UserShowImg{
+  height: 500px;
+  width: 500px;
+}

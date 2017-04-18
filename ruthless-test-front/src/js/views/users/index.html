@@ -1,0 +1,13 @@
+<h1>USER INDEX</h1>
+<ul>
+  <li ng-repeat="user in usersIndex.all">
+    <!-- {{ user }} -->
+  <div class="UserIndexDiv">
+    <div class="UserInnerDiv">
+      <a ui-sref="usersShow({ id: user.id })"><p><strong>{{ user.username }}</strong></p></a>
+      <a ui-sref="usersShow({ id: user.id })"><img src="{{ user.image }}" alt="{{ user.username}}"></a>
+      <p>{{ user.bio }}</p>
+    </div>
+  </div>
+  </li>
+</ul>
