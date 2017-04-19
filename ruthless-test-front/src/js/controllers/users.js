@@ -30,12 +30,11 @@ function UsersNewCtrl(User, $state){
   vm.submit = submit;
 }
 
-UsersShowCtrl.$inject = ['User', '$stateParams', '$state']
+UsersShowCtrl.$inject = ['User', '$stateParams', '$state'];
 function UsersShowCtrl(User, $stateParams, $state){
   const vm = this;
 
   vm.user = User.get($stateParams);
-  console.log(vm.user)
 
   function usersDelete() {
     vm.user
@@ -49,14 +48,12 @@ function UsersShowCtrl(User, $stateParams, $state){
 UsersEditCtrl.$inject = ['User', '$stateParams', '$state'];
 function UsersEditCtrl(User, $stateParams, $state) {
   const vm = this;
-    vm.user = User.get($stateParams);
+  vm.user = User.get($stateParams);
 
   function usersUpdate() {
-    // if (vm.userForm.$valid) {
-      vm.user
+    vm.user
       .$update()
       .then(() => $state.go('usersShow', $stateParams));
-    }
-  // }
+  }
   vm.update = usersUpdate;
 }

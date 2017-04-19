@@ -23,10 +23,10 @@
     <input type="integer" ng-model="eventsNew.event.price">
   </div>
 
-  <div>
+  <!-- <div>
     <label>Location</label>
     <input type="text" ng-model="eventsNew.event.location">
-  </div>
+  </div> -->
 
   <div>
     <label>Description</label>
@@ -43,6 +43,12 @@
     <label for="base64">Image</label>
     <input type="file" base64 name="base64" id="base64" ng-model="eventsNew.event.base64">
   </div>
+
+  <div>
+    <label for="location">Location</label>
+    <input id="location" type="text" name="location" autocomplete ng-model="eventsNew.event.location" lat="eventsNew.event.latitude" lng="eventsNew.event.longitude" required>
+
+</div>
 
   <div>
     <button class="btn btn-success">Submit</button>
