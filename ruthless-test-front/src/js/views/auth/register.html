@@ -9,6 +9,12 @@
     <input type="text" ng-model="auth.user.email">
   </div>
 
+  {{ auth.user.base64 }}
+  <div>
+    <label for="base64">Image</label>
+    <input type="file" base64 name="base64" id="base64" ng-model="auth.user.base64">
+  </div>
+
   <div>
     <label>Password</label>
     <input type="password" ng-model="auth.user.password">

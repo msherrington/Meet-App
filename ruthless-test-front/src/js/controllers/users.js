@@ -44,12 +44,20 @@ function UsersShowCtrl(User, $stateParams, $state){
 UsersEditCtrl.$inject = ['User', '$stateParams', '$state'];
 function UsersEditCtrl(User, $stateParams, $state) {
   const vm = this;
-  vm.user = User.get($stateParams);
+
+  User.get($stateParams).$promise.then((user) => {
+    vm.user = user;
+  });
 
   function usersUpdate() {
-    vm.user
-      .$update()
+    // wrap the data in a `user` object and pass the bird's id
+    // to the model so it can generate the correct URL
+    User
+      .update({ id: vm.user.id, user: vm.user})
+      .$promise
       .then(() => $state.go('usersShow', $stateParams));
   }
+
   vm.update = usersUpdate;
+
 }

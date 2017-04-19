@@ -1,6 +1,7 @@
 <h1>User Profile</h1>
 <h1><strong>{{ usersShow.user.username}}</strong></h1>
-<img class="UserShowImg" src="{{ usersShow.user.image }}" alt="{{ usersShow.user.username }}'s Photo">
+{{ usersShow.user.image }}
+<img class="UserShowImg" ng-src="{{ usersShow.user.image_src }}" alt="{{ usersShow.user.username }}'s Photo">
 <p><strong>Bio:</strong> {{ usersShow.user.bio }} </p>
 
   <strong>Events hosted:</strong>
@@ -11,8 +12,7 @@
       <p><a ui-sref="eventsShow({ id: events_created.id })"><strong>{{ events_created.name }}</strong></a></p>
       <p>{{ events_created.location }}</p>
       <p>{{ events_created.date }}</p>
-      <a ui-sref="eventsShow({ id: events_created.id })"><img src="{{ events_created.image }}" alt="{{ events_created.name }}"></a>
+      <a ui-sref="eventsShow({ id: events_created.id })"><img src="{{ events_created.image_src }}" alt="{{ events_created.name }}"></a>
     </div>
-
     </li>
   </ul>
