@@ -26,9 +26,10 @@
     <input type="text" ng-model="eventsNew.event.description">
   </div>
 
+  {{ eventsNew.event.base64 }}
   <div>
-    <label for="image">Image</label>
-    <input type="text" ng-model="eventsNew.event.image">
+    <label for="base64">Image</label>
+    <input type="file" base64 name="base64" id="base64" ng-model="eventsNew.event.base64">
   </div>
 
   <div>

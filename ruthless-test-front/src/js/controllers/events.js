@@ -19,6 +19,7 @@ function EventsNewCtrl(Event, User, $state) {
   vm.users = User.query();
 
   function eventsCreate() {
+    //Wrap data in an event object//
     Event
       .save({ event: vm.event })
       .$promise
@@ -26,7 +27,6 @@ function EventsNewCtrl(Event, User, $state) {
   }
   vm.create = eventsCreate;
 }
-
 
 EventsShowCtrl.$inject = ['Event', 'User', 'Comment', '$stateParams', '$state', '$auth'];
 function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth) {

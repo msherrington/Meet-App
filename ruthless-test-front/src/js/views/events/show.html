@@ -1,7 +1,7 @@
 <h1>{{ eventsShow.event.name }}</h1>
-<img class="EventShowImg" src="{{ eventsShow.event.image }}" alt="{{ eventsShow.event.name }}">
+<img class="EventShowImg" ng-src="{{ eventsShow.event.image_src }}" alt="{{ eventsShow.event.name }}">
 <p>{{ eventsShow.event.location }}</p>
-<p>{{ eventsShow.event.date }}</p>
+<p>{{ eventsShow.event.date | date: 'EEEE, d MMMM yyyy' }}</p>
 <p><span class="ticksleft">{{ eventsShow.event.tickets_left }}</span> tickets left</p>
 <p>Host: <a ui-sref="usersShow({ id: eventsShow.event.user.id })">{{ eventsShow.event.user.username }}</a></p>
 <img src="eventsShow.event.user.image" alt="{{ eventsShow.event.user.username }}'s Photo">
