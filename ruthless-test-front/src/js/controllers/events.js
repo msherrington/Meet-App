@@ -3,7 +3,8 @@ angular
   .controller('EventsIndexCtrl', EventsIndexCtrl)
   .controller('EventsNewCtrl', EventsNewCtrl)
   .controller('EventsShowCtrl', EventsShowCtrl)
-  .controller('EventsEditCtrl', EventsEditCtrl);
+  .controller('EventsEditCtrl', EventsEditCtrl)
+  .controller('EventsDeleteCtrl', EventsDeleteCtrl);
 
 EventsIndexCtrl.$inject = ['Event'];
 function EventsIndexCtrl(Event){
@@ -37,20 +38,25 @@ function EventsNewCtrl(Event, User, $state) {
   vm.create = eventsCreate;
 }
 
-EventsShowCtrl.$inject = ['Event', 'User', 'Comment', '$stateParams', '$state', '$auth'];
-function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth) {
+EventsShowCtrl.$inject = ['Event', 'User', 'Comment', '$stateParams', '$state', '$auth', '$uibModal'];
+function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth, $uibModal) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.event = Event.get($stateParams);
 
-  function eventsDelete() {
-    vm.event
-      .$remove()
-      .then(() => $state.go('eventsIndex'));
+  function openModal() {
+    $uibModal.open({
+      templateUrl: 'js/views/partials/EventDeleteModal.html',
+      controller: 'EventsDeleteCtrl as eventsDelete',
+      resolve: {
+        currentEvent: () => {
+          return vm.event;
+        }
+      }
+    });
   }
-
-  vm.delete = eventsDelete;
+  vm.open = openModal;
 
   function addComment() {
     vm.comment.event_id = vm.event.id;
@@ -117,19 +123,24 @@ function EventsEditCtrl(Event, $stateParams, $state) {
   }
   vm.update = eventsUpdate;
 }
-// BirdsEditCtrl.$inject = ['Bird', '$stateParams', '$state'];
-// function BirdsEditCtrl(Bird, $stateParams, $state) {
-  // const vm = this;
 
-  // vm.bird = Bird.get($stateParams);
+EventsDeleteCtrl.$inject = ['$uibModalInstance', 'currentEvent', '$state'];
+function EventsDeleteCtrl($uibModalInstance, currentEvent, $state) {
+  const vm = this;
+  vm.event = currentEvent;
 
-  // function birdsUpdate() {
-    // wrap the data in a `bird` object and pass the bird's id
-    // to the model so it can generate the correct URL
-    // Bird.update({ id: vm.bird.id, bird: vm.bird })
-      // .$promise
-      // .then(() => $state.go('birdsShow', $stateParams));
-  // }
+  function closeModal() {
+    $uibModalInstance.close();
+  }
+  vm.close = closeModal;
 
-  // vm.update = birdsUpdate;
-// }
+  function eventsDelete() {
+    vm.event
+      .$remove()
+      .then(() => {
+        $state.go('eventsIndex');
+        $uibModalInstance.close();
+      });
+  }
+  vm.delete = eventsDelete;
+}
