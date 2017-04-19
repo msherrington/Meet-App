@@ -1,5 +1,5 @@
 angular
-  .module('ruthless-test-front')
+  .module('meetApp')
   .directive('base64', base64);
 
 function base64() {
