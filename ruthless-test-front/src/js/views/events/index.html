@@ -7,7 +7,7 @@
         <a ui-sref="eventsShow({ id: event.id })"><p><strong>{{ event.name }}</strong></p></a>
         <a ui-sref="eventsShow({ id: event.id })"><img src="{{ event.image }}" alt="{{ event.name }}"></a>
         <p>{{ event.location }}</p>
-        <p>{{ event.date }}</p>
+        <p>{{ event.date | date: 'd MMM yyyy' }}</p>
         <p><span class="ticksleft">{{ event.tickets_left }}</span> tickets left</p>
         <p>Host: <a ui-sref="usersShow({ id: event.user.id })">{{ event.user.username }}</a></p>
       </div>
