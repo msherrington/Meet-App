@@ -10,9 +10,6 @@ function UsersIndexCtrl(User){
   const vm = this;
 
   vm.all = User.query();
-
-  console.log(vm.all);
-
 }
 
 UsersNewCtrl.$inject = ['User', '$state'];
@@ -26,7 +23,6 @@ function UsersNewCtrl(User, $state){
       .$promise
       .then(() => $state.go('usersIndex'));
   }
-
   vm.submit = submit;
 }
 

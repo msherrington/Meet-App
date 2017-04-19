@@ -1,11 +1,10 @@
-<h1>EVENT SHOW</h1>
-
 <h1>{{ eventsShow.event.name }}</h1>
 <img class="EventShowImg" src="{{ eventsShow.event.image }}" alt="{{ eventsShow.event.name }}">
 <p>{{ eventsShow.event.location }}</p>
 <p>{{ eventsShow.event.date }}</p>
 <p><span class="ticksleft">{{ eventsShow.event.tickets_left }}</span> tickets left</p>
-<p>hosted by - <a href="#">{{ eventsShow.event.user.username }}</a></p>
+<p>Host: <a ui-sref="usersShow({ id: eventsShow.event.user.id })">{{ eventsShow.event.user.username }}</a></p>
+<img src="eventsShow.event.user.image" alt="{{ eventsShow.event.user.username }}'s Photo">
 
 <h1>Attendees!</h1>
 <!-- {{ eventsShow.event.attendees }} -->
@@ -24,7 +23,7 @@
     <div class="col-md-6">
       <h2>Comments</h2>
       <ul>
-        <li ng-repeat="comment in eventsShow.event.comments">{{ comment.body }} - <strong>{{ comment.user.username }}</strong><button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
+        <li ng-repeat="comment in eventsShow.event.comments"><strong><a ui-sref="usersShow({ id: eventsShow.event.user.id })">{{ comment.user.username }}</a> says: </strong>{{ comment.body }} <button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete Comment</button></li>
       </ul>
     </div>
 
@@ -32,7 +31,7 @@
       <h2>Add Comment</h2>
       <form ng-submit="eventsShow.addComment()">
         <textarea type="text" name="body" ng-model="eventsShow.comment.body"></textarea>
-        <button>Create</button>
+        <button>Post Comment</button>
       </form>
     </div>
   </div>

@@ -10,9 +10,6 @@ function EventsIndexCtrl(Event){
   const vm = this;
 
   vm.all = Event.query();
-
-  console.log(vm.all);
-
 }
 
 EventsNewCtrl.$inject = ['Event', 'User', '$state'];
@@ -27,26 +24,10 @@ function EventsNewCtrl(Event, User, $state) {
       .$promise
       .then(() => $state.go('eventsIndex'));
   }
-
   vm.create = eventsCreate;
 }
 
 
-// EventsShowCtrl.$inject = ['Event', '$stateParams', '$state']
-// function EventsShowCtrl(Event, $stateParams, $state){
-//   const vm = this;
-//
-//   vm.event = Event.get($stateParams);
-//   console.log(vm.event)
-//
-//   function eventsDelete() {
-//     vm.event
-//       .$remove()
-//       .then(() => $state.go('eventsIndex'));
-//   }
-//
-//   vm.delete = eventsDelete;
-// }
 EventsShowCtrl.$inject = ['Event', 'User', 'Comment', '$stateParams', '$state', '$auth'];
 function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth) {
   const vm = this;
@@ -110,27 +91,20 @@ function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth) {
 }
 
 
-
 EventsEditCtrl.$inject = ['Event', '$stateParams', '$state'];
 function EventsEditCtrl(Event, $stateParams, $state) {
   const vm = this;
-  // vm.event = Event.get($stateParams);
 
   Event.get($stateParams).$promise.then((event) => {
     vm.event = event;
     vm.event.date = new Date(event.date);
-  }); 
+  });
 
   function eventsUpdate() {
-    // if (vm.eventForm.$valid) {
     Event
     .update({id: vm.event.id, event: vm.event })
     .$promise
-    // vm.event
-
-    // .$update()
     .then(() => $state.go('eventsShow', $stateParams));
   }
-  // }
   vm.update = eventsUpdate;
 }

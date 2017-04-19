@@ -1,8 +1,8 @@
-<h1>EVENT EDIT</h1>
+<h1>Edit Your Event</h1>
 <form ng-submit="eventsEdit.update()">
 {{ eventsEdit.event }}
   <div>
-    <label>Name</label>
+    <label for="name">Event Name</label>
     <input type="text" ng-model="eventsEdit.event.name">
   </div>
 
@@ -12,22 +12,22 @@
   </div> -->
 
   <div>
-    <label>Max Tickets</label>
+    <label for="maxTickets">Max Attendees</label>
     <input type="integer" ng-model="eventsEdit.event.max_tickets">
   </div>
 
   <div>
-    <label>Price</label>
+    <label for="price">Price (£)</label>
     <input type="integer" ng-model="eventsEdit.event.price">
   </div>
 
   <div>
-    <label>Description</label>
-    <input type="text" ng-model="eventsEdit.event.description">
+    <label for="description">Description</label>
+    <textarea ng-model="eventsEdit.event.description"></textarea>
   </div>
 
   <div>
-    <label>Image</label>
+    <label for="image">Image</label>
     <input type="text" ng-model="eventsEdit.event.image">
   </div>
 
@@ -38,7 +38,8 @@
 </div>
 
   <div>
-    <button class="btn btn-success">Submit</button>
+    <button class="btn btn-success">Update</button>
+    <button class="btn btn-danger" ui-sref="eventsShow({ id: eventsEdit.event.id })">Cancel</button>
   </div>
 
 </form>
