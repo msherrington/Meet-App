@@ -1,1 +1,44 @@
 <h1>EVENT EDIT</h1>
+<form ng-submit="eventsEdit.update()">
+{{ eventsEdit.event }}
+  <div>
+    <label>Name</label>
+    <input type="text" ng-model="eventsEdit.event.name">
+  </div>
+
+  <!-- <div>
+    <label>Date</label>
+    <input type="date" ng-model="eventsEdit.event.date">
+  </div> -->
+
+  <div>
+    <label>Max Tickets</label>
+    <input type="integer" ng-model="eventsEdit.event.max_tickets">
+  </div>
+
+  <div>
+    <label>Price</label>
+    <input type="integer" ng-model="eventsEdit.event.price">
+  </div>
+
+  <div>
+    <label>Description</label>
+    <input type="text" ng-model="eventsEdit.event.description">
+  </div>
+
+  <div>
+    <label>Image</label>
+    <input type="text" ng-model="eventsEdit.event.image">
+  </div>
+
+  <div>
+    <label for="location">Location</label>
+    <input id="location" type="text" name="location" autocomplete ng-model="eventsEdit.event.location" lat="eventsEdit.event.latitude" lng="eventsEdit.event.longitude" required>
+
+</div>
+
+  <div>
+    <button class="btn btn-success">Submit</button>
+  </div>
+
+</form>

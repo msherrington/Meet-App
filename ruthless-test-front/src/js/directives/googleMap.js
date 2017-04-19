@@ -13,29 +13,29 @@ function googleMap($window, mapStyles){
     template: '<div class="google-map"></div>',
     scope: {
       users: '=',
+      events: '=', // just added this
       query: '='
     },
     link($scope, element){
       // Declare variables for positioning markers
-      let userLat = 0;
-      let userLng = 0;
-      const latLng = { lat: userLat, lng: userLng };
+      let eventLat = 0;
+      let eventLng = 0;
+      const latLng = { lat: eventLat, lng: eventLng };
       let markers = [];
       let pos = null;
 
       // Creates map + sets details
       const map = new $window.google.maps.Map(element[0], {
-        zoom: 11,
+        zoom: 15,
         scrollwheel: false,
         center: $scope.center,
-        // styles: mapStyles
+        styles: mapStyles
       });
 
       // Event listener to close infowindows by clicking anywhere on map
       map.addListener('click', () => {
         if(infowindow) infowindow.close();
       });
-
       // Sets location marker on map
       const marker = new $window.google.maps.Marker({
         position: $scope.center,
@@ -45,32 +45,9 @@ function googleMap($window, mapStyles){
 
       //Runs function to find latlng of all users
       // getUserLatLng();
+      // getEventLatLng();
 
-      // const slider = document.getElementById('slider');
-      // const sliderDiv = document.getElementById('sliderAmount');
-      // let infowindow = null;
-      //
-      // // Sets circle radius and style
-      // const circle = new google.maps.Circle({
-      //   fillColor: '#3399FF',
-      //   fillOpacity: 0.2,
-      //   strokeColor: '#0099FF',
-      //   strokeOpacity: 0.4,
-      //   map: map,
-      //   center: $scope.center,
-      //   radius: 10000
-      // });
-
-      // Map circle radius function
-      // slider.onchange = function(){
-      //   sliderDiv.innerHTML = this.value/1000;
-      //   circle.radius = this.value;
-      //
-      //   // Store val of slider
-      //   circle.setRadius(parseFloat(circle.radius));
-      //   //Loops through marker locations and only shows those within the radius
-      //   filterMarkersByRadius();
-      // };
+      let infowindow = null;
 
       // Filters map markers by radius
       // function filterMarkersByRadius() {
@@ -92,8 +69,7 @@ function googleMap($window, mapStyles){
           };
           marker.setPosition(pos);
           map.setCenter(pos);
-          circle.setCenter(pos);
-          // getUserLatLng(pos);
+          // getEventLatLng(pos);
         }, function () {
           handleLocationError(true,  googleMap.getCenter());
         });
@@ -107,50 +83,49 @@ function googleMap($window, mapStyles){
       }
 
       // Function to plot user locations on the map
-      // function getUserLatLng(pos) {
-      //   const users = $scope.users;
+      // function getEventLatLng(pos) {
+      //   // const users = $scope.users;
+      //   const events = $scope.events;
+      //
+      //   console.log($scope.events);
       //
       //   for(var i = 0; i < markers.length; i++){
       //     markers[i].setMap(null);
       //   }
       //
       //   markers = [];
-      //
-      //   // Loops through users and passes user location to addmarker function
-      //   for (i=0; i<users.length; i++) {
-      //     const user = users[i];
-      //     userLat = parseFloat(users[i].lat);
-      //     userLng = parseFloat(users[i].lng);
-      //     addMarker(latLng, pos, user);
-      //   }
+
+        // Loops through users and passes user location to addmarker function
+        // for (i=0; i<events.length; i++) {
+        //   const event = events[i];
+        //   eventLat = events[i].latitude;
+        //   eventLng = events[i].longitude;
+        //   addMarker(latLng, pos, event);
+        // }
       // }
 
       // Adds marker to each users latlng
-      // function addMarker(latLng, pos, user) {
-      //   latLng = { lat: parseFloat(user.lat), lng: parseFloat(user.lng) };
+      // function addMarker(latLng, pos, event) {
+      //   latLng = { lat: event.latitude, lng: event.longitude };
       //   const marker = new google.maps.Marker({
       //     position: latLng,
-      //     map: null,
-      //     icon: '../images/userMarker.png',
-      //     distance: findDistance(new google.maps.LatLng(pos), new google.maps.LatLng(latLng))
+      //     map: null
+      //     // icon: '../images/userMarker.png',
+      //     // distance: findDistance(new google.maps.LatLng(pos), new google.maps.LatLng(latLng))
       //   });
-
-        // Event listener for user markers
-        // marker.addListener('click', () => {
-        //   console.log('marker clicked');
-        //   markerClick(marker, user, latLng);
-        // });
-
-        // Push markers into an array to use later
+      //
+      //   // Event listener for user markers
+      //   marker.addListener('click', () => {
+      //     console.log('marker clicked');
+      //     markerClick(marker, event, latLng);
+      //   });
+      //
+      //   // Push markers into an array to use later
       //   markers.push(marker);
-      //   filterMarkersByRadius();
+      // //   filterMarkersByRadius();
       // }
 
-      // Find distance between points 1 and 2
-      // function findDistance(p1, p2){
-      //   // Calculates distance between two points in metres
-      //   return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2)).toFixed(2);
-      // }
+
 
       // function markerClick(marker, user){
       //   // Close any open infowindows
@@ -179,11 +154,6 @@ function googleMap($window, mapStyles){
       //   infowindow.open(map, marker);
       // }
 
-      // Updates markers within radius on map according to filter results
-      // $scope.$watch('users', () => {
-      //   getUserLatLng(pos);
-      // });
-
     }
   };
   return directive;
@@ -193,58 +163,239 @@ function googleMap($window, mapStyles){
 // Map Style (from here to end of file)
 angular
   .module('ruthless-test-front')
-  .constant('mapStyles', [{
-    featureType: 'administrative',
-    elementType: 'labels.text.fill',
-    stylers: [{ color: '#444444' }]
-  }, {
-    featureType: 'landscape',
-    elementType: 'all',
-    stylers: [{ color: '##000000' }]
-  }, {
-    featureType: 'poi',
-    elementType: 'all',
-    stylers: [{ visibility: 'off' }]
-  }, {
-    featureType: 'road',
-    elementType: 'all',
-    stylers: [{
-      saturation: -100
-    }, {
-      lightness: 45
-    }]
-  }, {
-    featureType: 'road.highway',
-    elementType: 'all',
-    stylers: [{
-      saturation: '0'
-    }, {
-      visibility: 'on'
-    }]
-  }, {
-    featureType: 'road.highway',
-    elementType: 'geometry.fill',
-    stylers: [{
-      color: '#00bc66'
-    }, {
-      saturation: '-59'
-    }, {
-      lightness: '46'
-    }]
-  }, {
-    featureType: 'road.arterial',
-    elementType: 'labels.icon',
-    stylers: [{ visibility: 'off' }]
-  }, {
-    featureType: 'transit',
-    elementType: 'all',
-    stylers: [{ visibility: 'off' }]
-  }, {
-    featureType: 'water',
-    elementType: 'all',
-    stylers: [{
-      color: '#46bcec'
-    }, {
-      visibility: 'on'
-    }]
-  }]);
+  .constant('mapStyles', [
+    {
+        'featureType': 'administrative.locality',
+        'elementType': 'all',
+        'stylers': [
+            {
+                'hue': '#ff0200'
+            },
+            {
+                'saturation': 7
+            },
+            {
+                'lightness': 19
+            },
+            {
+                'visibility': 'on'
+            }
+        ]
+    },
+    {
+        'featureType': 'administrative.locality',
+        'elementType': 'labels.text',
+        'stylers': [
+            {
+                'visibility': 'on'
+            },
+            {
+                'saturation': '-3'
+            }
+        ]
+    },
+    {
+        'featureType': 'administrative.locality',
+        'elementType': 'labels.text.fill',
+        'stylers': [
+            {
+                'color': '#748ca3'
+            }
+        ]
+    },
+    {
+        'featureType': 'landscape',
+        'elementType': 'all',
+        'stylers': [
+            {
+                'hue': '#ff000a'
+            },
+            {
+                'saturation': -100
+            },
+            {
+                'lightness': 100
+            },
+            {
+                'visibility': 'simplified'
+            }
+        ]
+    },
+    {
+        'featureType': 'poi',
+        'elementType': 'all',
+        'stylers': [
+            {
+                'hue': '#ff0200'
+            },
+            {
+                'saturation': '23'
+            },
+            {
+                'lightness': '20'
+            },
+            {
+                'visibility': 'off'
+            }
+        ]
+    },
+    {
+        'featureType': 'poi.school',
+        'elementType': 'geometry.fill',
+        'stylers': [
+            {
+                'color': '#ffdbda'
+            },
+            {
+                'saturation': '0'
+            },
+            {
+                'visibility': 'on'
+            }
+        ]
+    },
+    {
+        'featureType': 'road',
+        'elementType': 'geometry',
+        'stylers': [
+            {
+                'hue': '#ff0200'
+            },
+            {
+                'saturation': '100'
+            },
+            {
+                'lightness': 31
+            },
+            {
+                'visibility': 'simplified'
+            }
+        ]
+    },
+    {
+        'featureType': 'road',
+        'elementType': 'geometry.stroke',
+        'stylers': [
+            {
+                'color': '#f39247'
+            },
+            {
+                'saturation': '0'
+            }
+        ]
+    },
+    {
+        'featureType': 'road',
+        'elementType': 'labels',
+        'stylers': [
+            {
+                'hue': '#008eff'
+            },
+            {
+                'saturation': -93
+            },
+            {
+                'lightness': 31
+            },
+            {
+                'visibility': 'on'
+            }
+        ]
+    },
+    {
+        'featureType': 'road.arterial',
+        'elementType': 'geometry.stroke',
+        'stylers': [
+            {
+                'visibility': 'on'
+            },
+            {
+                'color': '#ffe5e5'
+            },
+            {
+                'saturation': '0'
+            }
+        ]
+    },
+    {
+        'featureType': 'road.arterial',
+        'elementType': 'labels',
+        'stylers': [
+            {
+                'hue': '#bbc0c4'
+            },
+            {
+                'saturation': -93
+            },
+            {
+                'lightness': -2
+            },
+            {
+                'visibility': 'simplified'
+            }
+        ]
+    },
+    {
+        'featureType': 'road.arterial',
+        'elementType': 'labels.text',
+        'stylers': [
+            {
+                'visibility': 'off'
+            }
+        ]
+    },
+    {
+        'featureType': 'road.local',
+        'elementType': 'geometry',
+        'stylers': [
+            {
+                'hue': '#ff0200'
+            },
+            {
+                'saturation': -90
+            },
+            {
+                'lightness': -8
+            },
+            {
+                'visibility': 'simplified'
+            }
+        ]
+    },
+    {
+        'featureType': 'transit',
+        'elementType': 'all',
+        'stylers': [
+            {
+                'hue': '#e9ebed'
+            },
+            {
+                'saturation': 10
+            },
+            {
+                'lightness': 69
+            },
+            {
+                'visibility': 'on'
+            }
+        ]
+    },
+    {
+        'featureType': 'water',
+        'elementType': 'all',
+        'stylers': [
+            {
+                'hue': '#e9ebed'
+            },
+            {
+                'saturation': -78
+            },
+            {
+                'lightness': 67
+            },
+            {
+                'visibility': 'simplified'
+            }
+        ]
+    }
+]);

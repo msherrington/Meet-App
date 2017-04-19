@@ -10,7 +10,7 @@
         <p>{{ event.location }}</p>
         <p>{{ event.date }}</p>
         <p><span class="ticksleft">{{ event.tickets_left }}</span> tickets left</p>
-        <p>hosted by - <a href="#">{{ event.user.username }}</a></p>
+        <p>hosted by - <a ui-sref="usersShow({ id: event.user.id })">{{ event.user.username }}</a></p>
       </div>
     </div>
     </li>

@@ -62,11 +62,6 @@ function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth) {
 
   vm.delete = eventsDelete;
 
-  function eventsUpdate() {
-    Event
-      .update({id: vm.event.id, event: vm.event });
-  }
-
   function addComment() {
     vm.comment.event_id = vm.event.id;
 
@@ -119,14 +114,23 @@ function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth) {
 EventsEditCtrl.$inject = ['Event', '$stateParams', '$state'];
 function EventsEditCtrl(Event, $stateParams, $state) {
   const vm = this;
-    vm.event = Event.get($stateParams);
+  // vm.event = Event.get($stateParams);
+
+  Event.get($stateParams).$promise.then((event) => {
+    vm.event = event;
+    vm.event.date = new Date(event.date);
+  }); 
 
   function eventsUpdate() {
     // if (vm.eventForm.$valid) {
-      vm.event
-      .$update()
-      .then(() => $state.go('eventsShow', $stateParams));
-    }
+    Event
+    .update({id: vm.event.id, event: vm.event })
+    .$promise
+    // vm.event
+
+    // .$update()
+    .then(() => $state.go('eventsShow', $stateParams));
+  }
   // }
   vm.update = eventsUpdate;
 }
