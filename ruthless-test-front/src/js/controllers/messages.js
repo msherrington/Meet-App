@@ -1,4 +1,4 @@
-angular.module('ruthless-test-front')
+angular.module('meetApp')
 .controller('MessagesIndexCtrl', MessagesIndexCtrl);
 
 MessagesIndexCtrl.$inject = ['Message', '$stateParams'];

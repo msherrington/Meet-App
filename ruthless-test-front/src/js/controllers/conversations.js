@@ -1,5 +1,5 @@
 angular
-  .module('ruthless-test-front')
+  .module('meetApp')
   .controller('ConversationsIndexCtrl', ConversationsIndexCtrl);
 
 ConversationsIndexCtrl.$inject = ['Conversation'];

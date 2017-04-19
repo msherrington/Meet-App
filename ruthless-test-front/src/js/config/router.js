@@ -1,5 +1,5 @@
 angular
-  .module('ruthless-test-front')
+  .module('meetApp')
   .config(Router);
 
 Router.$inject = ['$urlRouterProvider', '$locationProvider', '$stateProvider'];

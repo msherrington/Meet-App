@@ -1,7 +1,7 @@
 /* global google:ignore */
 
 angular
-.module('ruthless-test-front')
+.module('meetApp')
 .directive('googleMap', googleMap);
 
 googleMap.$inject = ['$window', 'mapStyles'];
@@ -162,7 +162,7 @@ function googleMap($window, mapStyles){
 
 // Map Style (from here to end of file)
 angular
-  .module('ruthless-test-front')
+  .module('meetApp')
   .constant('mapStyles', [
     {
         'featureType': 'administrative.locality',

@@ -1,5 +1,5 @@
 angular
-  .module('ruthless-test-front')
+  .module('meetApp')
   .controller('AuthCtrl', AuthCtrl);
 
 AuthCtrl.$inject = ['$auth', '$state'];

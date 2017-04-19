@@ -1,4 +1,4 @@
-angular.module('ruthless-test-front')
+angular.module('meetApp')
   .directive('autocomplete', autocomplete);
 
 autocomplete.$inject = ['$window'];

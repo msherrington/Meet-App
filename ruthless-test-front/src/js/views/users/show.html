@@ -1,4 +1,18 @@
-<h1>USER SHOW</h1>
+<h1>User Profile</h1>
 <h1><strong>{{ usersShow.user.username}}</strong></h1>
-<img class="UserShowImg" src="{{ usersShow.user.image }}" alt="usersShow.user.username">
+<img class="UserShowImg" src="{{ usersShow.user.image }}" alt="{{ usersShow.user.username }}'s Photo">
 <p><strong>Bio:</strong> {{ usersShow.user.bio }} </p>
+
+  <strong>Events hosted:</strong>
+  <ul>
+    <li ng-repeat="events_created in usersShow.user.events_created">
+  <div class="EventIndexDiv">
+
+      <p><a ui-sref="eventsShow({ id: events_created.id })"><strong>{{ events_created.name }}</strong></a></p>
+      <p>{{ events_created.location }}</p>
+      <p>{{ events_created.date }}</p>
+      <a ui-sref="eventsShow({ id: events_created.id })"><img src="{{ events_created.image }}" alt="{{ events_created.name }}"></a>
+    </div>
+
+    </li>
+  </ul>
