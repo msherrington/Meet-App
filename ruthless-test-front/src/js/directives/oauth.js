@@ -1,1 +1,1 @@
-angular.module('meetApp')
+angular.module('meetApp');

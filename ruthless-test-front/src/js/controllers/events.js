@@ -3,7 +3,8 @@ angular
   .controller('EventsIndexCtrl', EventsIndexCtrl)
   .controller('EventsNewCtrl', EventsNewCtrl)
   .controller('EventsShowCtrl', EventsShowCtrl)
-  .controller('EventsEditCtrl', EventsEditCtrl);
+  .controller('EventsEditCtrl', EventsEditCtrl)
+  .controller('EventsDeleteCtrl', EventsDeleteCtrl);
 
 EventsIndexCtrl.$inject = ['Event'];
 function EventsIndexCtrl(Event){
@@ -28,20 +29,25 @@ function EventsNewCtrl(Event, User, $state) {
   vm.create = eventsCreate;
 }
 
-EventsShowCtrl.$inject = ['Event', 'User', 'Comment', '$stateParams', '$state', '$auth'];
-function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth) {
+EventsShowCtrl.$inject = ['Event', 'User', 'Comment', '$stateParams', '$state', '$auth', '$uibModal'];
+function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth, $uibModal) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.event = Event.get($stateParams);
 
-  function eventsDelete() {
-    vm.event
-      .$remove()
-      .then(() => $state.go('eventsIndex'));
+  function openModal() {
+    $uibModal.open({
+      templateUrl: 'js/views/partials/EventDeleteModal.html',
+      controller: 'EventsDeleteCtrl as eventsDelete',
+      resolve: {
+        currentEvent: () => {
+          return vm.event;
+        }
+      }
+    });
   }
-
-  vm.delete = eventsDelete;
+  vm.open = openModal;
 
   function addComment() {
     vm.comment.event_id = vm.event.id;
@@ -107,4 +113,25 @@ function EventsEditCtrl(Event, $stateParams, $state) {
     .then(() => $state.go('eventsShow', $stateParams));
   }
   vm.update = eventsUpdate;
+}
+
+EventsDeleteCtrl.$inject = ['$uibModalInstance', 'currentEvent', '$state'];
+function EventsDeleteCtrl($uibModalInstance, currentEvent, $state) {
+  const vm = this;
+  vm.event = currentEvent;
+
+  function closeModal() {
+    $uibModalInstance.close();
+  }
+  vm.close = closeModal;
+
+  function eventsDelete() {
+    vm.event
+      .$remove()
+      .then(() => {
+        $state.go('eventsIndex');
+        $uibModalInstance.close();
+      });
+  }
+  vm.delete = eventsDelete;
 }
