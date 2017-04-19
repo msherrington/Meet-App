@@ -62,18 +62,15 @@ function Router($urlRouterProvider, $locationProvider, $stateProvider){
       templateUrl: 'js/views/conversation/index.html',
       controller: 'ConversationsIndexCtrl as conversationsIndex'
     })
-<<<<<<< HEAD
     .state('conversationsShow', {
       url: '/conversations/:id',
       templateUrl: 'js/views/conversation/show.html',
       controller: 'ConversationsShowCtrl as conversationsShow'
-=======
-    // chat state
+    chat state
     .state('messagesIndex', {
       url: '/conversations/:id/messages',
       templateUrl: 'js/views/messages/index.html',
       controller: 'MessagesIndexCtrl as messagesIndex'
->>>>>>> development
     })
     //auth states
     .state('login', {

@@ -116,17 +116,14 @@ function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth) {
 EventsEditCtrl.$inject = ['Event', '$stateParams', '$state'];
 function EventsEditCtrl(Event, $stateParams, $state) {
   const vm = this;
-<<<<<<< HEAD
 
-  vm.event = Event.get($stateParams);
-=======
+  // vm.event = Event.get($stateParams);
   // vm.event = Event.get($stateParams);
 
   Event.get($stateParams).$promise.then((event) => {
     vm.event = event;
     vm.event.date = new Date(event.date);
-  }); 
->>>>>>> development
+  });
 
   function eventsUpdate() {
     // if (vm.eventForm.$valid) {
