@@ -1,5 +1,5 @@
 angular
-  .module('ruthless-test-front')
+  .module('meetApp')
   .factory('Comment', Comment);
 
 Comment.$inject = ['$resource', 'API_URL'];

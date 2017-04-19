@@ -1,5 +1,5 @@
 angular
-  .module('ruthless-test-front')
+  .module('meetApp')
   .controller('UsersIndexCtrl', UsersIndexCtrl)
   .controller('UsersNewCtrl', UsersNewCtrl)
   .controller('UsersShowCtrl', UsersShowCtrl)

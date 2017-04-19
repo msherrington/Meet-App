@@ -1,5 +1,5 @@
 angular
-  .module('ruthless-test-front')
+  .module('meetApp')
   .config(Auth);
 
 Auth.$inject = ['$authProvider', 'API_URL'];

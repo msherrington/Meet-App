@@ -1,5 +1,5 @@
 angular
-  .module('ruthless-test-front')
+  .module('meetApp')
   .factory('Event', Event);
 
 Event.$inject = ['$resource', 'API_URL'];
