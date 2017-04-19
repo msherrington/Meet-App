@@ -35,7 +35,6 @@ function UsersShowCtrl(User, $stateParams, $state){
   const vm = this;
 
   vm.user = User.get($stateParams);
-  console.log(vm.user);
 
   function usersDelete() {
     vm.user
@@ -52,11 +51,9 @@ function UsersEditCtrl(User, $stateParams, $state) {
   vm.user = User.get($stateParams);
 
   function usersUpdate() {
-    // if (vm.userForm.$valid) {
     vm.user
       .$update()
       .then(() => $state.go('usersShow', $stateParams));
   }
-  // }
   vm.update = usersUpdate;
 }
