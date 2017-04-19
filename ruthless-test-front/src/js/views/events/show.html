@@ -1,5 +1,5 @@
 <h1>{{ eventsShow.event.name }}</h1>
-<img class="EventShowImg" src="{{ eventsShow.event.image }}" alt="{{ eventsShow.event.name }}">
+<img class="EventShowImg" ng-src="{{ eventsShow.event.image_src }}" alt="{{ eventsShow.event.name }}">
 <p>{{ eventsShow.event.location }}</p>
 <p>{{ eventsShow.event.date | date: 'EEEE, d MMMM yyyy' }}</p>
 <p><span class="ticksleft">{{ eventsShow.event.tickets_left }}</span> tickets left</p>
