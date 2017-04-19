@@ -22,6 +22,7 @@ function EventsNewCtrl(Event, User, $state) {
   vm.users = User.query();
 
   function eventsCreate() {
+    //Wrap data in an event object//
     Event
       .save({ event: vm.event })
       .$promise
@@ -31,22 +32,23 @@ function EventsNewCtrl(Event, User, $state) {
   vm.create = eventsCreate;
 }
 
-
-// EventsShowCtrl.$inject = ['Event', '$stateParams', '$state']
-// function EventsShowCtrl(Event, $stateParams, $state){
+// BirdsNewCtrl.$inject = ['Bird', '$state'];
+// function BirdsNewCtrl(Bird, $state) {
 //   const vm = this;
+//   vm.bird = {};
 //
-//   vm.event = Event.get($stateParams);
-//   console.log(vm.event)
-//
-//   function eventsDelete() {
-//     vm.event
-//       .$remove()
-//       .then(() => $state.go('eventsIndex'));
+//   function birdsCreate() {
+//     // wrap the data in a `bird` object
+//     Bird
+//       .save({ bird: vm.bird })
+//       .$promise
+//       .then(() => $state.go('birdsIndex'));
 //   }
 //
-//   vm.delete = eventsDelete;
+//   vm.create = birdsCreate;
 // }
+
+
 EventsShowCtrl.$inject = ['Event', 'User', 'Comment', '$stateParams', '$state', '$auth'];
 function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth) {
   const vm = this;
@@ -119,7 +121,8 @@ function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth) {
 EventsEditCtrl.$inject = ['Event', '$stateParams', '$state'];
 function EventsEditCtrl(Event, $stateParams, $state) {
   const vm = this;
-    vm.event = Event.get($stateParams);
+
+  vm.event = Event.get($stateParams);
 
   function eventsUpdate() {
     // if (vm.eventForm.$valid) {
@@ -130,3 +133,20 @@ function EventsEditCtrl(Event, $stateParams, $state) {
   // }
   vm.update = eventsUpdate;
 }
+
+// BirdsEditCtrl.$inject = ['Bird', '$stateParams', '$state'];
+// function BirdsEditCtrl(Bird, $stateParams, $state) {
+//   const vm = this;
+//
+//   vm.bird = Bird.get($stateParams);
+//
+//   function birdsUpdate() {
+//     // wrap the data in a `bird` object and pass the bird's id
+//     // to the model so it can generate the correct URL
+//     Bird.update({ id: vm.bird.id, bird: vm.bird })
+//       .$promise
+//       .then(() => $state.go('birdsShow', $stateParams));
+//   }
+//
+//   vm.update = birdsUpdate;
+// }
