@@ -1,20 +1,20 @@
 /* global google:ignore */
 
 angular
-.module('meetApp')
-.directive('googleMap', googleMap);
+  .module('meetApp')
+  .directive('googleMap', googleMap);
 
-googleMap.$inject = ['$window', 'mapStyles'];
-function googleMap($window, mapStyles){
+googleMap.$inject = ['$window', 'mapStyles', 'Event'];
+function googleMap($window, mapStyles, Event){
 
   const directive = {
     restrict: 'E',
     replace: true,
     template: '<div class="google-map"></div>',
     scope: {
-      users: '=',
+      // users: '=',
       events: '=', // just added this
-      query: '='
+      // query: '='
     },
     link($scope, element){
       // Declare variables for positioning markers
@@ -38,14 +38,14 @@ function googleMap($window, mapStyles){
       });
       // Sets location marker on map
       const marker = new $window.google.maps.Marker({
-        position: $scope.center,
+        // position: $scope.center
         // icon: '../images/blueMarker.png',
         map
       });
 
       //Runs function to find latlng of all users
       // getUserLatLng();
-      // getEventLatLng();
+      getEventLatLng();
 
       let infowindow = null;
 
@@ -83,36 +83,39 @@ function googleMap($window, mapStyles){
       }
 
       // Function to plot user locations on the map
-      // function getEventLatLng(pos) {
-      //   // const users = $scope.users;
-      //   const events = $scope.events;
-      //
-      //   console.log($scope.events);
-      //
-      //   for(var i = 0; i < markers.length; i++){
-      //     markers[i].setMap(null);
-      //   }
-      //
-      //   markers = [];
+      function getEventLatLng(pos) {
+        console.log('running')
+        const events = $scope.events.$promise.$$state;
+        console.log(events);
+        // console.log(events.event[0])
+
+        for(var i = 0; i < markers.length; i++){
+          markers[i].setMap(null);
+        }
+
+        markers = [];
 
         // Loops through users and passes user location to addmarker function
-        // for (i=0; i<events.length; i++) {
-        //   const event = events[i];
-        //   eventLat = events[i].latitude;
-        //   eventLng = events[i].longitude;
-        //   addMarker(latLng, pos, event);
-        // }
-      // }
+        for (i=0; i<events.length; i++) {
+          console.log('placing marker!');
+          const event = events[i];
+          eventLat = events[i].latitude;
+          eventLng = events[i].longitude;
+          addMarker(latLng, pos, event);
+        }
+      }
 
       // Adds marker to each users latlng
-      // function addMarker(latLng, pos, event) {
-      //   latLng = { lat: event.latitude, lng: event.longitude };
-      //   const marker = new google.maps.Marker({
-      //     position: latLng,
-      //     map: null
-      //     // icon: '../images/userMarker.png',
-      //     // distance: findDistance(new google.maps.LatLng(pos), new google.maps.LatLng(latLng))
-      //   });
+      function addMarker(latLng, pos, event) {
+        latLng = { lat: event.latitude, lng: event.longitude };
+        console.log(event)
+        new google.maps.Marker({
+          position: latLng,
+          map: map,
+          marker
+          // icon: '../images/userMarker.png',
+          // distance: findDistance(new google.maps.LatLng(pos), new google.maps.LatLng(latLng))
+        });
       //
       //   // Event listener for user markers
       //   marker.addListener('click', () => {
@@ -123,7 +126,7 @@ function googleMap($window, mapStyles){
       //   // Push markers into an array to use later
       //   markers.push(marker);
       // //   filterMarkersByRadius();
-      // }
+      }
 
 
 
