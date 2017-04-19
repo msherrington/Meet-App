@@ -117,3 +117,19 @@ function EventsEditCtrl(Event, $stateParams, $state) {
   }
   vm.update = eventsUpdate;
 }
+// BirdsEditCtrl.$inject = ['Bird', '$stateParams', '$state'];
+// function BirdsEditCtrl(Bird, $stateParams, $state) {
+  // const vm = this;
+
+  // vm.bird = Bird.get($stateParams);
+
+  // function birdsUpdate() {
+    // wrap the data in a `bird` object and pass the bird's id
+    // to the model so it can generate the correct URL
+    // Bird.update({ id: vm.bird.id, bird: vm.bird })
+      // .$promise
+      // .then(() => $state.go('birdsShow', $stateParams));
+  // }
+
+  // vm.update = birdsUpdate;
+// }
