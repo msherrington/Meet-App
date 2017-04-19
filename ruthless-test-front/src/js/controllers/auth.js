@@ -19,4 +19,10 @@ function AuthCtrl($auth, $state) {
   }
 
   vm.login = login;
+  function authenticate(provider) {
+    $auth.authenticate(provider)
+      .then(user => console.log(user));
+  }
+
+  vm.authenticate = authenticate;
 }
