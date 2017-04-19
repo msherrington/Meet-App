@@ -11,8 +11,7 @@ function Router($urlRouterProvider, $locationProvider, $stateProvider){
     //home state
     .state('home', {
       url: '/',
-      templateUrl: 'js/views/statics/home.html',
-      controller: 'EventsIndexCtrl as eventsIndex'
+      templateUrl: 'js/views/statics/home.html'
     })
     //events states
     .state('eventsIndex', {
@@ -66,7 +65,7 @@ function Router($urlRouterProvider, $locationProvider, $stateProvider){
       url: '/conversations/:id',
       templateUrl: 'js/views/conversation/show.html',
       controller: 'ConversationsShowCtrl as conversationsShow'
-    })  
+    })
     // chat state
     .state('messagesIndex', {
       url: '/conversations/:id/messages',
