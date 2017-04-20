@@ -11,7 +11,8 @@ function Router($urlRouterProvider, $locationProvider, $stateProvider){
     //home state
     .state('home', {
       url: '/',
-      templateUrl: 'js/views/statics/home.html'
+      templateUrl: 'js/views/statics/home.html',
+      controller: 'MainCtrl as main'
     })
     //events states
     .state('eventsIndex', {
