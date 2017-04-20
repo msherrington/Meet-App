@@ -13,10 +13,17 @@
   <button class="btn btn-danger" ng-if="main.isAuthenticated() && main.currentUser.id === eventsShow.event.user.id" ng-click="eventsShow.open()">Delete Your Event</button>
 </div>
 
-<button class="btn btn-primary" ng-if="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id">Attend This Event</button>
-<h1>Attendees!</h1>
-<div>
+
+<!-- THESE BUTTONS ARE A WORK IN PROGRESS -->
+<div ng-controller="TicketsConfirmCtrl as ticketsConfirm">
+  <button class="btn btn-primary" ng-if="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id &&  (!eventsShow.event.users.indexOf(main.currentUser.id))" ng-click="ticketsConfirm.create()">Attend This Event</button>
+  <button class="btn btn-danger" ng-if="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id &&  (eventsShow.event.users.indexOf(main.currentUser.id))" ng-click="ticketsConfirm.delete(ticket)">Unattend This Event</button>
+  <!-- {{ eventsShow.event.users }} -->
 </div>
+<!-- ////////////////////////////////////////// -->
+
+
+<h1>Attendees!</h1>
 <div>
   <p class="attendees" ng-repeat="user in eventsShow.event.users"><a ui-sref="usersShow({ id: user.id })">{{ user.username }}</a></p>
 </div>

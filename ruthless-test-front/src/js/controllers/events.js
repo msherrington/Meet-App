@@ -38,12 +38,18 @@ function EventsNewCtrl(Event, User, $state) {
   vm.create = eventsCreate;
 }
 
-EventsShowCtrl.$inject = ['Event', 'User', 'Comment', '$stateParams', '$state', '$auth', '$uibModal'];
-function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth, $uibModal) {
+EventsShowCtrl.$inject = ['Event', 'User', 'Comment','Ticket', '$stateParams', '$state', '$auth', '$uibModal'];
+function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $auth, $uibModal) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.event = Event.get($stateParams);
+  // vm.event.users= [];
+
+
+  // vm.tickets = Ticket.query();
+  // console.log(vm.tickets);
+
 
   function openModal() {
     $uibModal.open({
@@ -84,14 +90,20 @@ function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth, $uibM
 
   vm.deleteComment = deleteComment;
 
+  // function eventsUpdate() {
+  //   Event
+  //     .update({id: vm.event.id, event: vm.event });
+  // }
+
   // function toggleAttending() {
-  //   const index = vm.event.attendee_ids.indexOf(vm.currentUser.id);
+  //   const index = vm.event.users.indexOf(vm.currentUser.id);
+  //   console.log(index);
   //   if (index > -1) {
-  //     vm.event.attendee_ids.splice(index, 1);
-  //     vm.event.attendees.splice(index, 1);
+  //     vm.event.users.splice(index, 1);
+  //     // vm.event..splice(index, 1);
   //   } else {
-  //     vm.event.attendee_ids.push(vm.currentUser.id);
-  //     vm.event.attendees.push(vm.currentUser);
+  //     vm.event.users.push(vm.currentUser.id);
+  //     // vm.event.attendees.push(vm.currentUser);
   //   }
   //   eventsUpdate();
   // }
@@ -99,10 +111,11 @@ function EventsShowCtrl(Event, User, Comment, $stateParams, $state, $auth, $uibM
   // vm.toggleAttending = toggleAttending;
   //
   // function isAttending() {
-  //   return $auth.getPayload() && vm.event.$resolved && vm.event.attendee_ids.includes(vm.currentUser.id);
+  //   return $auth.getPayload() && vm.event.$resolved && vm.event.users.includes(vm.currentUser.id);
   // }
   //
   // vm.isAttending = isAttending;
+
 }
 
 
