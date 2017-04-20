@@ -10,7 +10,24 @@ EventsIndexCtrl.$inject = ['Event', 'filterFilter', 'orderByFilter', '$http', '$
 function EventsIndexCtrl(Event, filterFilter, orderByFilter, $http, $scope){
   const vm = this;
 
-  vm.all = Event.query();
+  Event.query()
+    .$promise
+    .then((events)=>{
+      vm.all = events;
+      filterEvents()
+    })
+
+  //Tabs
+  vm.tab = 1
+      vm.setTab = function(newTab){
+        console.log('clicked');
+        vm.tab = newTab;
+      };
+
+      vm.isSet = function(tabNum){
+        return vm.tab === tabNum;
+      };
+
 
   // filterEvents()
   // Function for searching and filtering through events

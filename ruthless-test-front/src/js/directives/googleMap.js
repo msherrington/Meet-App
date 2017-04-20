@@ -31,6 +31,7 @@ function googleMap($window, mapStyles, Event){
         center: $scope.center,
         styles: mapStyles
       });
+      // google.maps.event.trigger(map, 'resize')
 
       // Event listener to close infowindows by clicking anywhere on map
       map.addListener('click', () => {
@@ -84,9 +85,9 @@ function googleMap($window, mapStyles, Event){
 
       // Function to plot event locations on the map
       function getEventLatLng(pos) {
-        console.log('running');
+        // console.log('running');
         const events = $scope.events;
-        console.log(events);
+        // console.log(events);
         // console.log(events.event[0])
 
         for(var i = 0; i < markers.length; i++){
