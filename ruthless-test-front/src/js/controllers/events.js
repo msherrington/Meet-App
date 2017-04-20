@@ -128,6 +128,7 @@ EventsDeleteCtrl.$inject = ['$uibModalInstance', 'currentEvent', '$state'];
 function EventsDeleteCtrl($uibModalInstance, currentEvent, $state) {
   const vm = this;
   vm.event = currentEvent;
+  console.log(vm.event.comments);
 
   function closeModal() {
     $uibModalInstance.close();
