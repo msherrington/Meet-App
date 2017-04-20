@@ -85,7 +85,7 @@ function googleMap($window, mapStyles, Event){
       // Function to plot user locations on the map
       function getEventLatLng(pos) {
         console.log('running')
-        const events = $scope.events.$promise.$$state;
+        const events = $scope.events;
         console.log(events);
         // console.log(events.event[0])
 
