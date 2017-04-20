@@ -6,20 +6,41 @@ angular
   .controller('EventsEditCtrl', EventsEditCtrl)
   .controller('EventsDeleteCtrl', EventsDeleteCtrl);
 
-EventsIndexCtrl.$inject = ['Event'];
-function EventsIndexCtrl(Event){
+EventsIndexCtrl.$inject = ['Event', 'filterFilter', 'orderByFilter', '$http', '$scope'];
+function EventsIndexCtrl(Event, filterFilter, orderByFilter, $http, $scope){
   const vm = this;
 
-// Get event data from our API to use in Google Markers
-// function getEvents(){
-//   vm.all = Event.query()
-//   .$promise;
-//   // console.log(vm.all);
-//   // console.log(vm.all.size)
-// }
-// getEvents();
+  Event.query()
+    .$promise
+    .then((events)=>{
+      vm.all = events;
+      filterEvents()
+    })
 
-  vm.all = Event.query();
+  //Tabs
+  vm.tab = 1
+      vm.setTab = function(newTab){
+        console.log('clicked');
+        vm.tab = newTab;
+      };
+
+      vm.isSet = function(tabNum){
+        return vm.tab === tabNum;
+      };
+
+
+  // filterEvents()
+  // Function for searching and filtering through events
+  function filterEvents() {
+    const params = { name: vm.q }
+
+    vm.filtered = filterFilter(vm.all, params);
+    vm.filtered = orderByFilter(vm.filtered, vm.sort);
+  }
+  $scope.$watchGroup([
+    () => vm.q,
+    () => vm.sort
+  ], filterEvents);
 }
 
 EventsNewCtrl.$inject = ['Event', 'User', '$state'];
@@ -141,6 +162,7 @@ EventsDeleteCtrl.$inject = ['$uibModalInstance', 'currentEvent', '$state'];
 function EventsDeleteCtrl($uibModalInstance, currentEvent, $state) {
   const vm = this;
   vm.event = currentEvent;
+  console.log(vm.event.comments);
 
   function closeModal() {
     $uibModalInstance.close();
