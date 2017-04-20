@@ -107,11 +107,11 @@ function googleMap($window, mapStyles){
       // Adds marker to each events latlng
       function addMarker(latLng, pos, event) {
         latLng = { lat: parseFloat(event.latitude), lng: parseFloat(event.longitude) };
-        console.log(event);
-        new google.maps.Marker({
+        console.log('marker added!');
+        const marker = new google.maps.Marker({
           position: latLng,
           map: map,
-          marker
+          marker: marker
           // icon: '../images/eventMarker.png',
           // distance: findDistance(new google.maps.LatLng(pos), new google.maps.LatLng(latLng))
         });
@@ -131,7 +131,11 @@ function googleMap($window, mapStyles){
         // Close any open infowindows
         if(infowindow) infowindow.close();
 
+<<<<<<< HEAD
         console.log('info window closing');
+=======
+        // console.log('info window closing')
+>>>>>>> development
         // Locate data from individual event posts
         const eventName = event.name;
         const eventImage = event.image_src;
@@ -140,16 +144,16 @@ function googleMap($window, mapStyles){
         infowindow = new google.maps.InfoWindow({
           content: `
           <div class="infowindow">
-          <a href="/events/${event.id}"><img src="${eventName}"></a>
-            <a href="/events/${event.id}"><h3>${eventImage}</h3></a>
+          <a href="/events/${event.id}"><img class="infowind" src="${eventImage}"></a>
+            <a href="/events/${event.id}"><h3>${eventName}</h3></a>
           </div>`,
           maxWidth: 200
         });
 
         // Event listener for event markers
-        marker.addListener('click', () => {
-          markerClick(marker, event);
-        });
+        // marker.addListener('click', () => {
+        //   markerClick(marker, event);
+        // });
 
         // Open the new InfoWindow
         infowindow.open(map, marker);
