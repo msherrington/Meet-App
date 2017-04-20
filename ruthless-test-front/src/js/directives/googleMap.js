@@ -13,7 +13,7 @@ function googleMap($window, mapStyles, Event){
     template: '<div class="google-map"></div>',
     scope: {
       // users: '=',
-      events: '=', // just added this
+      events: '=' // just added this
       // query: '='
     },
     link($scope, element){
@@ -107,7 +107,7 @@ function googleMap($window, mapStyles, Event){
       // Adds marker to each events latlng
       function addMarker(latLng, pos, event) {
         latLng = { lat: parseFloat(event.latitude), lng: parseFloat(event.longitude) };
-        console.log('marker added!');
+        // console.log('marker added!');
         const marker = new google.maps.Marker({
           position: latLng,
           map: map,
@@ -118,7 +118,7 @@ function googleMap($window, mapStyles, Event){
 
         // Event listener for event markers
         marker.addListener('click', () => {
-          console.log('click event added');
+          // console.log('click event added');
           markerClick(marker, event, latLng);
         });
 
@@ -154,6 +154,11 @@ function googleMap($window, mapStyles, Event){
         // Open the new InfoWindow
         infowindow.open(map, marker);
       }
+
+      // Updates markers within radius on map according to filter results
+      $scope.$watch('events', () => {
+        getEventLatLng(pos);
+      });
 
     }
   };

@@ -1,7 +1,11 @@
 <h1>Events Index</h1>
 <div>
+  <div class="searchBoxIndex">
+    <input type="text" class="search" ng-model="eventsIndex.q" placeholder="Search...">
+  </div>
   <ul>
-    <li ng-repeat="event in eventsIndex.all">
+    <!-- ng-repeat="coffee in coffeeIndex.all | filter: { name: coffeeIndex.q }" -->
+    <li ng-repeat="event in eventsIndex.filtered track by $index">
     <div class="EventIndexDiv">
       <div class="EventInnerDiv">
         <a ui-sref="eventsShow({ id: event.id })"><p><strong>{{ event.name }}</strong></p></a>
@@ -15,7 +19,8 @@
     </li>
   </ul>
 </div>
+
 <h1>Events Map</h1>
 <div>
-  <google-map events="eventsIndex.all" ng-if="eventsIndex.all.$resolved"></google-map>
+  <google-map events="eventsIndex.filtered" ng-if="eventsIndex.all.$resolved"></google-map>
 </div>
