@@ -4,8 +4,8 @@ angular
   .module('meetApp')
   .directive('googleMap', googleMap);
 
-googleMap.$inject = ['$window', 'mapStyles', 'Event'];
-function googleMap($window, mapStyles, Event){
+googleMap.$inject = ['$window', 'mapStyles'];
+function googleMap($window, mapStyles){
 
   const directive = {
     restrict: 'E',
@@ -132,7 +132,11 @@ function googleMap($window, mapStyles, Event){
         // Close any open infowindows
         if(infowindow) infowindow.close();
 
+<<<<<<< HEAD
+        console.log('info window closing');
+=======
         // console.log('info window closing')
+>>>>>>> development
         // Locate data from individual event posts
         const eventName = event.name;
         const eventImage = event.image_src;
