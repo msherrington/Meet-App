@@ -17,5 +17,5 @@
 </div>
 <h1>Events Map</h1>
 <div>
-  <google-map events="eventsIndex.all"></google-map>
+  <google-map events="eventsIndex.all" ng-if="eventsIndex.all.$resolved"></google-map>
 </div>

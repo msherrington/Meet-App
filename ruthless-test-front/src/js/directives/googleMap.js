@@ -43,7 +43,7 @@ function googleMap($window, mapStyles, Event){
         map
       });
 
-      //Runs function to find latlng of all users
+      //Runs function to find latlng of all events
       // getUserLatLng();
       getEventLatLng();
 
@@ -82,10 +82,10 @@ function googleMap($window, mapStyles, Event){
         marker.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
       }
 
-      // Function to plot user locations on the map
+      // Function to plot event locations on the map
       function getEventLatLng(pos) {
         console.log('running')
-        const events = $scope.events.$promise.$$state;
+        const events = $scope.events;
         console.log(events);
         // console.log(events.event[0])
 
@@ -95,9 +95,8 @@ function googleMap($window, mapStyles, Event){
 
         markers = [];
 
-        // Loops through users and passes user location to addmarker function
+        // Loops through events and passes event location to addmarker function
         for (i=0; i<events.length; i++) {
-          console.log('placing marker!');
           const event = events[i];
           eventLat = events[i].latitude;
           eventLng = events[i].longitude;
@@ -105,57 +104,56 @@ function googleMap($window, mapStyles, Event){
         }
       }
 
-      // Adds marker to each users latlng
+      // Adds marker to each events latlng
       function addMarker(latLng, pos, event) {
-        latLng = { lat: event.latitude, lng: event.longitude };
+        latLng = { lat: parseFloat(event.latitude), lng: parseFloat(event.longitude) };
         console.log(event)
         new google.maps.Marker({
           position: latLng,
           map: map,
           marker
-          // icon: '../images/userMarker.png',
+          // icon: '../images/eventMarker.png',
           // distance: findDistance(new google.maps.LatLng(pos), new google.maps.LatLng(latLng))
         });
-      //
-      //   // Event listener for user markers
-      //   marker.addListener('click', () => {
-      //     console.log('marker clicked');
-      //     markerClick(marker, event, latLng);
-      //   });
-      //
-      //   // Push markers into an array to use later
-      //   markers.push(marker);
-      // //   filterMarkersByRadius();
+
+        // Event listener for event markers
+        marker.addListener('click', () => {
+          console.log('click event added');
+          markerClick(marker, event, latLng);
+        });
+
+        // Push markers into an array to use later
+        markers.push(marker);
+      //   filterMarkersByRadius();
       }
 
+      function markerClick(marker, event){
+        // Close any open infowindows
+        if(infowindow) infowindow.close();
 
+        console.log('info window closing')
+        // Locate data from individual event posts
+        const eventName = event.name;
+        const eventImage = event.image_src;
 
-      // function markerClick(marker, user){
-      //   // Close any open infowindows
-      //   if(infowindow) infowindow.close();
-      //
-      //   // Locate data from individual user posts
-      //   const userName = user.username;
-      //   const userImage = user.profilePic;
-      //
-      //   // Info window settings and display
-      //   infowindow = new google.maps.InfoWindow({
-      //     content: `
-      //     <div class="infowindow">
-      //     <a href="/users/${user.id}"><img src="${userImage}"></a>
-      //       <a href="/users/${user.id}"><h3>${userName}</h3></a>
-      //     </div>`,
-      //     maxWidth: 200
-      //   });
-      //
-      //   // Event listener for user markers
-      //   marker.addListener('click', () => {
-      //     markerClick(marker, user);
-      //   });
-      //
-      //   // Open the new InfoWindow
-      //   infowindow.open(map, marker);
-      // }
+        // Info window settings and display
+        infowindow = new google.maps.InfoWindow({
+          content: `
+          <div class="infowindow">
+          <a href="/events/${event.id}"><img src="${eventName}"></a>
+            <a href="/events/${event.id}"><h3>${eventImage}</h3></a>
+          </div>`,
+          maxWidth: 200
+        });
+
+        // Event listener for event markers
+        marker.addListener('click', () => {
+          markerClick(marker, event);
+        });
+
+        // Open the new InfoWindow
+        infowindow.open(map, marker);
+      }
 
     }
   };

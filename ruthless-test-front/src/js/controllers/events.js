@@ -11,13 +11,13 @@ function EventsIndexCtrl(Event){
   const vm = this;
 
 // Get event data from our API to use in Google Markers
-function getEvents(){
-  vm.all = Event.query()
-  .$promise;
-  // console.log(vm.all);
-  // console.log(vm.all.size)
-}
-getEvents();
+// function getEvents(){
+//   vm.all = Event.query()
+//   .$promise;
+//   // console.log(vm.all);
+//   // console.log(vm.all.size)
+// }
+// getEvents();
 
   vm.all = Event.query();
 }

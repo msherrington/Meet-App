@@ -1,6 +1,8 @@
 <h1>Create New Event</h1>
 <form ng-submit="eventsNew.create()">
 {{ eventsNew.event }}
+{{ eventsNew.event.latitude }}
+{{ eventsNew.event.longitude }}
   <div>
     <label for="name">Event Name</label>
     <input type="text" ng-model="eventsNew.event.name">
