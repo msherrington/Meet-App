@@ -5,6 +5,7 @@ angular
 MainCtrl.$inject = ['$rootScope', '$state', '$auth'];
 function MainCtrl($rootScope, $state, $auth) {
   const vm = this;
+  vm.currentUser = $auth.getPayload();
   vm.isAuthenticated = $auth.isAuthenticated;
 
   $rootScope.$on('error', (e, err) => {
