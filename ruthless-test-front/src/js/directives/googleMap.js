@@ -131,11 +131,6 @@ function googleMap($window, mapStyles){
         // Close any open infowindows
         if(infowindow) infowindow.close();
 
-<<<<<<< HEAD
-        console.log('info window closing');
-=======
-        // console.log('info window closing')
->>>>>>> development
         // Locate data from individual event posts
         const eventName = event.name;
         const eventImage = event.image_src;
