@@ -9,19 +9,6 @@ function TicketsConfirmCtrl(Event, User, Ticket, $stateParams, $auth, $state) {
   vm.event = Event.get($stateParams);
   vm.currentUserId = $auth.getPayload().id;
 
-  //Pull in tickets from factory
-  // Ticket.query()
-  //   .$promise
-  //   .then((tickets)=>{
-  //     vm.all = tickets;
-  //     console.log(tickets);
-  //   });
-
-  // console.log('eventId: ', $stateParams.id);
-  // console.log('userId: ', $auth.getPayload().id);
-
-  console.log(vm.ticket)
-
   function ticketCreate() {
     vm.ticket.event_id = vm.event.id;
 
@@ -32,8 +19,6 @@ function TicketsConfirmCtrl(Event, User, Ticket, $stateParams, $auth, $state) {
   }
   vm.create = ticketCreate;
 
-  // console.log(vm.ticket)
-
   function ticketDelete() {
     const ticket = vm.event.tickets.find((ticket) => {
       return ticket.user.id === vm.currentUserId;
@@ -42,7 +27,7 @@ function TicketsConfirmCtrl(Event, User, Ticket, $stateParams, $auth, $state) {
     Ticket
       .remove({ id: ticket.id })
       .$promise
-      .then(() => $state.go('eventsUnattend'));
+      .then(() => $state.go('eventsUnattend', { id: vm.event.id }));
   }
   vm.delete = ticketDelete;
 }

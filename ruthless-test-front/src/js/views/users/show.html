@@ -4,7 +4,6 @@
 <img class="UserShowImg" ng-src="{{ usersShow.user.image_src }}" alt="{{ usersShow.user.username }}'s Photo">
 <p><strong>Bio:</strong> {{ usersShow.user.bio }} </p>
 
-<<<<<<< HEAD
 <div class=" test col-md-2">
   <ul class="nav nav-pills nav-stacked">
       <li ng-class="{ active: usersShow.isSet(1) }">
@@ -19,46 +18,47 @@
 
 
 <div class="col-md-8">
-    <!-- TAB 1 -->
-    <div ng-show="usersShow.isSet(1)">
+  <!-- TAB 1 -->
+  <div ng-show="usersShow.isSet(1)">
 
-        <strong>Events hosted:</strong>
-        <ul>
-          <li ng-repeat="events_created in usersShow.user.events_created">
-            <div class="EventIndexDiv">
-              <p><a ui-sref="eventsShow({ id: events_created.id })"><strong>{{ events_created.name }}</strong></a></p>
-              <p>{{ events_created.location }}</p>
-              <p>{{ events_created.date | date: 'd MMM yyyy' }}</p>
-              <a ui-sref="eventsShow({ id: events_created.id })"><img src="{{ events_created.image_src }}" alt="{{ events_created.name }}"></a>
-            </div>
-          </li>
-        </ul>
-=======
-<button ng-click="usersShow.conversationCreate()">Create Conversation</button>
+    <strong>Events hosted:</strong>
+    <ul>
+      <li ng-repeat="events_created in usersShow.user.events_created">
+        <div class="EventIndexDiv">
+          <p><a ui-sref="eventsShow({ id: events_created.id })"><strong>{{ events_created.name }}</strong></a></p>
+          <p>{{ events_created.location }}</p>
+          <p>{{ events_created.date | date: 'd MMM yyyy' }}</p>
+          <a ui-sref="eventsShow({ id: events_created.id })"><img src="{{ events_created.image_src }}" alt="{{ events_created.name }}"></a>
+        </div>
+      </li>
+    </ul>
 
-<strong>Events hosted:</strong>
-<ul>
-  <li ng-repeat="events_created in usersShow.user.events_created">
-    <div class="EventIndexDiv">
-      <p><a ui-sref="eventsShow({ id: events_created.id })"><strong>{{ events_created.name }}</strong></a></p>
-      <p>{{ events_created.location }}</p>
-      <p>{{ events_created.date | date: 'd MMM yyyy' }}</p>
-      <a ui-sref="eventsShow({ id: events_created.id })"><img src="{{ events_created.image_src }}" alt="{{ events_created.name }}"></a>
-    </div>
-  </li>
-</ul>
+    <button ng-click="usersShow.conversationCreate()">Create Conversation</button>
 
-<strong>Events attending:</strong>
-<ul>
-  <li ng-repeat="event in usersShow.user.events">
-    <div class="EventIndexDiv">
-      <p><a ui-sref="eventsShow({ id: event.id })"><strong>{{ event.name }}</strong></a></p>
-      <p>{{ event.location }}</p>
-      <p>{{ event.date | date: 'd MMM yyyy' }}</p>
-      <a ui-sref="eventsShow({ id: event.id })"><img src="{{ event.image_src }}" alt="{{ event.name }}"></a>
->>>>>>> development
-    </div>
-  <!-- </div> -->
+    <strong>Events hosted:</strong>
+    <ul>
+      <li ng-repeat="events_created in usersShow.user.events_created">
+        <div class="EventIndexDiv">
+          <p><a ui-sref="eventsShow({ id: events_created.id })"><strong>{{ events_created.name }}</strong></a></p>
+          <p>{{ events_created.location }}</p>
+          <p>{{ events_created.date | date: 'd MMM yyyy' }}</p>
+          <a ui-sref="eventsShow({ id: events_created.id })"><img src="{{ events_created.image_src }}" alt="{{ events_created.name }}"></a>
+        </div>
+      </li>
+    </ul>
+
+    <strong>Events attending:</strong>
+    <ul>
+      <li ng-repeat="event in usersShow.user.events">
+        <div class="EventIndexDiv">
+          <p><a ui-sref="eventsShow({ id: event.id })"><strong>{{ event.name }}</strong></a></p>
+          <p>{{ event.location }}</p>
+          <p>{{ event.date | date: 'd MMM yyyy' }}</p>
+          <a ui-sref="eventsShow({ id: event.id })"><img src="{{ event.image_src }}" alt="{{ event.name }}"></a>
+        </div>
+      </li>
+    </ul>
+  </div>
 
   <!-- TAB 2 -->
   <div ng-show="usersShow.isSet(2)">
@@ -74,10 +74,6 @@
         </div>
       </li>
     </ul>
-
-
   </div>
-
-
-
+  
 </div>
