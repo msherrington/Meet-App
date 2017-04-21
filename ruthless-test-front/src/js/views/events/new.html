@@ -1,8 +1,9 @@
 <h1>Create New Event</h1>
 <form ng-submit="eventsNew.create()">
 {{ eventsNew.event }}
-{{ eventsNew.event.latitude }}
-{{ eventsNew.event.longitude }}
+{{ eventsNew.event.tickets_left }}
+<!-- {{ eventsNew.event.latitude }} -->
+<!-- {{ eventsNew.event.longitude }} -->
   <div>
     <label for="name">Event Name</label>
     <input type="text" ng-model="eventsNew.event.name">
@@ -15,7 +16,7 @@
 
   <div>
     <label for="maxTickets">Max Tickets</label>
-    <input type="integer" ng-model="eventsNew.event.max_tickets">
+    <input type="integer" ng-model="eventsNew.event.max_tickets" ng-change="eventsNew.change()">
   </div>
 
   <div>

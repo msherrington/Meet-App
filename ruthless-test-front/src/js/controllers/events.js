@@ -48,6 +48,13 @@ function EventsNewCtrl(Event, User, $state) {
   vm.event = {};
   vm.users = User.query();
 
+  // ng change function, maybe?
+  function change(){
+    vm.event.tickets_left = vm.event.max_tickets;
+  }
+  vm.change = change;
+
+
   function eventsCreate() {
     //Wrap data in an event object//
     Event

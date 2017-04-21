@@ -18,7 +18,7 @@ function TicketsConfirmCtrl(Event, User, Ticket, $stateParams, $auth, $state) {
       .then(() => $state.go('eventsAttend', { id: vm.event.id }));
   }
   vm.create = ticketCreate;
-
+  
   function ticketDelete() {
     const ticket = vm.event.tickets.find((ticket) => {
       return ticket.user.id === vm.currentUserId;
