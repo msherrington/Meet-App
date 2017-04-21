@@ -31,6 +31,7 @@ function googleMap($window, mapStyles){
         center: $scope.center,
         styles: mapStyles
       });
+      // google.maps.event.trigger(map, 'resize')
 
       // Event listener to close infowindows by clicking anywhere on map
       map.addListener('click', () => {
@@ -84,9 +85,9 @@ function googleMap($window, mapStyles){
 
       // Function to plot event locations on the map
       function getEventLatLng(pos) {
-        console.log('running');
+        // console.log('running');
         const events = $scope.events;
-        console.log(events);
+        // console.log(events);
         // console.log(events.event[0])
 
         for(var i = 0; i < markers.length; i++){
@@ -107,7 +108,7 @@ function googleMap($window, mapStyles){
       // Adds marker to each events latlng
       function addMarker(latLng, pos, event) {
         latLng = { lat: parseFloat(event.latitude), lng: parseFloat(event.longitude) };
-        console.log('marker added!');
+        // console.log('marker added!');
         const marker = new google.maps.Marker({
           position: latLng,
           map: map,
@@ -118,7 +119,7 @@ function googleMap($window, mapStyles){
 
         // Event listener for event markers
         marker.addListener('click', () => {
-          console.log('click event added');
+          // console.log('click event added');
           markerClick(marker, event, latLng);
         });
 
@@ -153,6 +154,11 @@ function googleMap($window, mapStyles){
         // Open the new InfoWindow
         infowindow.open(map, marker);
       }
+
+      // Updates markers within radius on map according to filter results
+      $scope.$watch('events', () => {
+        getEventLatLng(pos);
+      });
 
     }
   };
