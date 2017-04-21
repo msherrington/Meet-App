@@ -74,24 +74,29 @@ li{
   width: 500px;
 }
 
+//UsersShow tabs
+.tabitems{
+  display: inline;
+}
+
 //infowindow
 .infowind{
   height: 100px;
   width: 100px;
 }
 
-//tabs
-.tab1{
-  // background-color: blue;
-  height: 90vh;
-  width: 100%;
-}
+// index tabs
+// .tab1{
+//   // background-color: blue;
+//   height: 90vh;
+//   width: 100%;
+// }
 
-.tab2{
-  background-color: red;
-  height: 90vh;
-  width: 100%;
-}
+// .tab2{
+//   background-color: red;
+//   height: 90vh;
+//   width: 100%;
+// }
 
 /* text recolor */
 h1, p, button {

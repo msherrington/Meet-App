@@ -32,6 +32,17 @@ function UsersShowCtrl(User, $stateParams, $state){
 
   vm.user = User.get($stateParams);
 
+  //Tabs
+  vm.tab = 1;
+      vm.setTab = function(newTab){
+        console.log('clicked');
+        vm.tab = newTab;
+      };
+
+      vm.isSet = function(tabNum){
+        return vm.tab === tabNum;
+      };
+
   function usersDelete() {
     vm.user
       .$remove()

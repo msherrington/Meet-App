@@ -14,11 +14,11 @@ function EventsIndexCtrl(Event, filterFilter, orderByFilter, $http, $scope){
     .$promise
     .then((events)=>{
       vm.all = events;
-      filterEvents()
-    })
+      filterEvents();
+    });
 
   //Tabs
-  vm.tab = 1
+  vm.tab = 1;
       vm.setTab = function(newTab){
         console.log('clicked');
         vm.tab = newTab;
@@ -32,7 +32,7 @@ function EventsIndexCtrl(Event, filterFilter, orderByFilter, $http, $scope){
   // filterEvents()
   // Function for searching and filtering through events
   function filterEvents() {
-    const params = { name: vm.q }
+    const params = { name: vm.q };
 
     vm.filtered = filterFilter(vm.all, params);
     vm.filtered = orderByFilter(vm.filtered, vm.sort);
