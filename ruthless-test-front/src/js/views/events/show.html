@@ -15,7 +15,7 @@
 
 <!-- THESE BUTTONS ARE A WORK IN PROGRESS -->
 <div ng-controller="TicketsConfirmCtrl as ticketsConfirm">
-  <button class="btn btn-primary" ng-if="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id ng-click="ticketsConfirm.create()">Attend This Event</button>
+  <button class="btn btn-primary" ng-if="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id" ng-click="ticketsConfirm.create()">Attend This Event</button>
 
   <button class="btn btn-danger" ng-if="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id &&  (eventsShow.event.users.indexOf(main.currentUser.id))" ng-click="ticketsConfirm.delete()">Unattend This Event</button>
 </div>
