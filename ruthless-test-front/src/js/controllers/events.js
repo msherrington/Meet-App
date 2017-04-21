@@ -19,17 +19,16 @@ function EventsIndexCtrl(Event, filterFilter, orderByFilter, $http, $scope){
 
   //Tabs
   vm.tab = 1;
-      vm.setTab = function(newTab){
-        console.log('clicked');
-        vm.tab = newTab;
-      };
 
-      vm.isSet = function(tabNum){
-        return vm.tab === tabNum;
-      };
+  vm.setTab = function(newTab){
+    console.log('clicked');
+    vm.tab = newTab;
+  };
 
+  vm.isSet = function(tabNum){
+    return vm.tab === tabNum;
+  };
 
-  // filterEvents()
   // Function for searching and filtering through events
   function filterEvents() {
     const params = { name: vm.q };
@@ -65,12 +64,6 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.event = Event.get($stateParams);
-  // vm.event.users= [];
-
-
-  // vm.tickets = Ticket.query();
-  // console.log(vm.tickets);
-
 
   function openModal() {
     $uibModal.open({
@@ -110,32 +103,6 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
   }
 
   vm.deleteComment = deleteComment;
-
-  // function eventsUpdate() {
-  //   Event
-  //     .update({id: vm.event.id, event: vm.event });
-  // }
-
-  // function toggleAttending() {
-  //   const index = vm.event.users.indexOf(vm.currentUser.id);
-  //   console.log(index);
-  //   if (index > -1) {
-  //     vm.event.users.splice(index, 1);
-  //     // vm.event..splice(index, 1);
-  //   } else {
-  //     vm.event.users.push(vm.currentUser.id);
-  //     // vm.event.attendees.push(vm.currentUser);
-  //   }
-  //   eventsUpdate();
-  // }
-  //
-  // vm.toggleAttending = toggleAttending;
-  //
-  // function isAttending() {
-  //   return $auth.getPayload() && vm.event.$resolved && vm.event.users.includes(vm.currentUser.id);
-  // }
-  //
-  // vm.isAttending = isAttending;
 
 }
 
