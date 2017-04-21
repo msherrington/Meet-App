@@ -14,25 +14,25 @@ function EventsIndexCtrl(Event, filterFilter, orderByFilter, $http, $scope){
     .$promise
     .then((events)=>{
       vm.all = events;
-      filterEvents()
-    })
+      filterEvents();
+    });
 
   //Tabs
-  vm.tab = 1
-      vm.setTab = function(newTab){
-        console.log('clicked');
-        vm.tab = newTab;
-      };
+  vm.tab = 1;
+  vm.setTab = function(newTab){
+    console.log('clicked');
+    vm.tab = newTab;
+  };
 
-      vm.isSet = function(tabNum){
-        return vm.tab === tabNum;
-      };
+  vm.isSet = function(tabNum){
+    return vm.tab === tabNum;
+  };
 
 
   // filterEvents()
   // Function for searching and filtering through events
   function filterEvents() {
-    const params = { name: vm.q }
+    const params = { name: vm.q };
 
     vm.filtered = filterFilter(vm.all, params);
     vm.filtered = orderByFilter(vm.filtered, vm.sort);
@@ -65,6 +65,7 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.event = Event.get($stateParams);
+  // console.log(vm.event.id);
   // vm.event.users= [];
 
 

@@ -26,11 +26,15 @@ function UsersNewCtrl(User, $state){
   vm.submit = submit;
 }
 
-UsersShowCtrl.$inject = ['User', '$stateParams', '$state'];
-function UsersShowCtrl(User, $stateParams, $state){
+UsersShowCtrl.$inject = ['User', '$stateParams', '$state', 'Conversation', '$auth'];
+function UsersShowCtrl(User, $stateParams, $state, Conversation, $auth){
   const vm = this;
-
-  vm.user = User.get($stateParams);
+  vm.currentUser = $auth.getPayload();
+  console.log(vm.currentUser.id);
+  User.get($stateParams).$promise.then((user)=> {
+    vm.user = user;
+  });
+  console.log(parseFloat($stateParams.id));
 
   function usersDelete() {
     vm.user
@@ -39,6 +43,18 @@ function UsersShowCtrl(User, $stateParams, $state){
   }
 
   vm.delete = usersDelete;
+
+  vm.conversation = { receiver_id: parseInt($stateParams.id), sender_id: vm.currentUser.id };
+  
+  console.log(vm.conversation);
+  function conversationCreate() {
+    Conversation
+    .save({sender_id: vm.currentUser.id, receiver_id: parseInt($stateParams.id), conversation: vm.conversation})
+    .$promise
+    .then((conversation) => console.log(conversation));
+  }
+
+  vm.conversationCreate = conversationCreate;
 }
 
 UsersEditCtrl.$inject = ['User', '$stateParams', '$state'];

@@ -4,6 +4,8 @@
 <img class="UserShowImg" ng-src="{{ usersShow.user.image_src }}" alt="{{ usersShow.user.username }}'s Photo">
 <p><strong>Bio:</strong> {{ usersShow.user.bio }} </p>
 
+<button ng-click="usersShow.conversationCreate()">Create Conversation</button>
+
 <strong>Events hosted:</strong>
 <ul>
   <li ng-repeat="events_created in usersShow.user.events_created">
