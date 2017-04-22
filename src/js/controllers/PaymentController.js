@@ -2,16 +2,18 @@ angular
   .module('meetApp')
   .controller('PaymentController', PaymentController);
 
-PaymentController.$inject = ['API_URL', '$http', '$window', '$state', '$stateParams', 'Event', 'User'];
-function PaymentController(API_URL, $http, $window, $state, $stateParams, Event, User) {
+PaymentController.$inject = ['API_URL', '$http', '$window', '$state', '$stateParams', 'Event', 'User', 'Ticket'];
+function PaymentController(API_URL, $http, $window, $state, $stateParams, Event, User, Ticket) {
   const vm = this;
   let requester;
   const Stripe = $window.Stripe;
-
+  vm.ticket = {};
   vm.card = {};
   vm.donation ={};
   vm.currency = 'gbp';
   vm.paymentSuccessful = false;
+
+  console.log($state);
 
   Event
     .get($stateParams)
@@ -45,11 +47,20 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Event,
         currency: vm.currency
       };
       paymentTransaction(data);
-      // createDonation();
+      ticketCreate();
       // create ticket??
+
     });
   };
 
+  function ticketCreate() {
+    vm.ticket.event_id = vm.event.id;
+
+    Ticket
+      .save({ ticket: vm.ticket })
+      .$promise
+      .then(() => $state.go('eventsAttend', { id: vm.event.id }));
+  }
   // vm.reset = function() {
   //   vm.card = {};
   //   vm.payee = '';
