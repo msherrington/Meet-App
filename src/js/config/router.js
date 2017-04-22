@@ -46,6 +46,12 @@ function Router($urlRouterProvider, $locationProvider, $stateProvider){
       templateUrl: 'js/views/tickets/unattend.html',
       controller: 'TicketsConfirmCtrl as ticketsConfirm'
     })
+    //payment state
+    .state('payment', {
+      url: '/events/:id/payment',
+      templateUrl: 'js/views/events/payment.html',
+      controller: 'PaymentController as payment'
+    })
     //users states
     .state('usersIndex', {
       url: '/users',

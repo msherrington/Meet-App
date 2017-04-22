@@ -1,5 +1,5 @@
 angular.module('meetApp')
-.controller('MessagesIndexCtrl', MessagesIndexCtrl);
+  .controller('MessagesIndexCtrl', MessagesIndexCtrl);
 
 MessagesIndexCtrl.$inject = ['Message', '$stateParams'];
 function MessagesIndexCtrl(Message, $stateParams) {

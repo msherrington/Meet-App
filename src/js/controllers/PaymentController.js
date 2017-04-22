@@ -1,9 +1,9 @@
 angular
-  .module('fundraiser')
+  .module('meetApp')
   .controller('PaymentController', PaymentController);
 
-PaymentController.$inject = ['API_URL', '$http', '$window', '$state', '$stateParams', 'Event', 'User', '$uibModal'];
-function PaymentController(API_URL, $http, $window, $state, $stateParams, Event, User, $uibModal) {
+PaymentController.$inject = ['API_URL', '$http', '$window', '$state', '$stateParams', 'Event', 'User'];
+function PaymentController(API_URL, $http, $window, $state, $stateParams, Event, User) {
   const vm = this;
   let requester;
   const Stripe = $window.Stripe;
@@ -13,11 +13,11 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Event,
   vm.currency = 'gbp';
   vm.paymentSuccessful = false;
 
-  Project
+  Event
     .get($stateParams)
     .$promise
     .then(response =>{
-      vm.project = response;
+      vm.event = response;
     });
 
   function paymentTransaction(data){
@@ -41,7 +41,7 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Event,
         card: vm.card,
         token: response.id,
         payee: vm.card.payee,
-        amount: vm.card.amount * 100,
+        amount: vm.event.price * 100,
         currency: vm.currency
       };
       paymentTransaction(data);
@@ -49,20 +49,6 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Event,
       // create ticket??
     });
   };
-
-  function postPaymentRoute(req, res, next) {
-  var token = req.body.token;
-  stripe.charges.create({
-    amount: req.body.amount,
-    currency: req.body.currency,
-    source: token,
-    description: 'TEST'
-  }, function(err) {
-    if(err) return res.status(500).json({ message: err });
-    res.status(200).json({ message: 'Payment successful' });
-  })
-  .catch(next);
-}
 
   // vm.reset = function() {
   //   vm.card = {};
