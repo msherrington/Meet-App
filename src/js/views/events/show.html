@@ -13,21 +13,21 @@
   <button class="btn btn-danger" ng-if="main.isAuthenticated() && main.currentUser.id === eventsShow.event.user.id" ng-click="eventsShow.open()">Delete Your Event</button>
 </div>
 
-<!-- THESE BUTTONS ARE A WORK IN PROGRESS -->
-<div ng-controller="TicketsConfirmCtrl as ticketsConfirm">
-  <button class="btn btn-primary" ng-if="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id" ng-click="ticketsConfirm.create()">Attend This Event</button>
 
-  <button class="btn btn-danger" ng-if="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id &&  (eventsShow.event.users.indexOf(main.currentUser.id))" ng-click="ticketsConfirm.delete()">Unattend This Event</button>
+<!-- These attend/unattend buttons only show if user is logged in and not event host and -->
+<div ng-controller="TicketsConfirmCtrl as ticketsConfirm">
+  <!-- not attending the event already -->
+  <button class="btn btn-primary" ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && !eventsShow.attending() && eventsShow.event.tickets_left > 0" ng-click="ticketsConfirm.create()">Attend This Event</button>
+
+  <!-- already attending the event -->
+  <button class="btn btn-danger" ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && eventsShow.attending()" ng-click="ticketsConfirm.delete()">Unattend This Event</button>
 </div>
 <!-- ////////////////////////////////////////// -->
-
 
 <h1>Attendees!</h1>
 <div>
   <p class="attendees" ng-repeat="user in eventsShow.event.users"><a ui-sref="usersShow({ id: user.id })">{{ user.username }}</a></p>
 </div>
-
-
 
 <div class="comments">
   <div class="row">

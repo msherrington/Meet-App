@@ -11,11 +11,6 @@ function TicketsConfirmCtrl(Event, User, Ticket, $stateParams, $auth, $state) {
 
   function ticketCreate() {
     vm.ticket.event_id = vm.event.id;
-    //reduce tickets available by 1
-    // console.log(vm.event.tickets_left);
-    // console.log(vm.event.max_tickets);
-    // vm.event.tickets_left = vm.event.max_tickets;
-
 
     Ticket
       .save({ ticket: vm.ticket })
@@ -28,12 +23,7 @@ function TicketsConfirmCtrl(Event, User, Ticket, $stateParams, $auth, $state) {
     const ticket = vm.event.tickets.find((ticket) => {
       return ticket.user.id === vm.currentUserId;
     });
-    //increase tickets available by 1
-    // console.log(vm.event.tickets_left);
-
-
-
-
+  
     Ticket
       .remove({ id: ticket.id })
       .$promise
