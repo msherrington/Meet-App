@@ -1,8 +1,0 @@
-<ul class="row">
-  <li ng-repeat="conversation in conversationsIndex.all" class="col-md-6">
-    <div class="conversation">
-      <h2>{{ conversation.recipient.username }} <span>{{ conversation.unread_message_count }}</span> Unread Messages</h2>
-      <button ui-sref="messagesIndex({id: conversation.id})">View</button>
-    </div>
-  </li>
-</ul>
