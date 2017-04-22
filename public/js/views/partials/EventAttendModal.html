@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <h3 class="modal-title">Success!</h3>
+</div>
+<div class="modal-body">
+  <h4>You are attending the  <strong>{{ tickets.event.name }}</strong> event</h4>
+  <p>on {{ tickets.event.date | date:'EEEE, d MMMM yyyy' }}</p>
+  <p>at {{ tickets.event.location }}</p>
+  <h3>Check your email inbox for your ticket!</h3>
+</div>
+<div class="modal-footer">
+  <button ui-sref="eventsShow({ id: tickets.event.id })">Back to Event Page</button>
+</div>

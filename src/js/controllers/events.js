@@ -40,6 +40,8 @@ function EventsIndexCtrl(Event, filterFilter, orderByFilter, $http, $scope){
     () => vm.q,
     () => vm.sort
   ], filterEvents);
+
+
 }
 
 EventsNewCtrl.$inject = ['Event', 'User', '$state'];
@@ -49,10 +51,10 @@ function EventsNewCtrl(Event, User, $state) {
   vm.users = User.query();
 
   // ng change function, maybe?
-  function change(){
-    vm.event.tickets_left = vm.event.max_tickets;
-  }
-  vm.change = change;
+  // function change(){
+  //   vm.event.tickets_left = vm.event.max_tickets;
+  // }
+  // vm.change = change;
 
 
   function eventsCreate() {
@@ -74,7 +76,7 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
     //Reduce number of tickets when someone attends
     // console.log(vm.event.tickets.length);
     // console.log(vm.event.max_tickets);
-    vm.event.tickets_left = vm.event.max_tickets - vm.event.tickets.length;
+    // vm.event.tickets_left = vm.event.max_tickets - vm.event.tickets.length;
     // console.log(vm.event.tickets_left);
   });
 
@@ -125,6 +127,7 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
 
   function isAttending() {
     return $auth.getPayload() && vm.event.$resolved && vm.event.users.map((object) => object.id).includes(vm.currentUser.id);
+    // This map function takes all id values from inside event.users object, puts the values into an array and checks that array to see if it includes the current user id.
   }
   vm.attending = isAttending;
 }
@@ -168,4 +171,5 @@ function EventsDeleteCtrl($uibModalInstance, currentEvent, $state) {
       });
   }
   vm.delete = eventsDelete;
+
 }
