@@ -70,7 +70,13 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
-  vm.event = Event.get($stateParams);
+  vm.event = Event.get($stateParams,()=>{
+    //Reduce number of tickets when someone attends
+    // console.log(vm.event.tickets.length);
+    // console.log(vm.event.max_tickets);
+    vm.event.tickets_left = vm.event.max_tickets - vm.event.tickets.length;
+    // console.log(vm.event.tickets_left);
+  });
 
   function openModal() {
     $uibModal.open({
@@ -84,6 +90,11 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
     });
   }
   vm.open = openModal;
+
+
+  // console.log(vm.events.users)
+  // vm.event.tickets_left = vm.event.max_tickets;
+  // console.log(vm.event);
 
   function addComment() {
     vm.comment.event_id = vm.event.id;
