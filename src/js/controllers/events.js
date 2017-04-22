@@ -111,6 +111,11 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
 
   vm.deleteComment = deleteComment;
 
+
+  function isAttending() {
+    return $auth.getPayload() && vm.event.$resolved && vm.event.users.map((object) => object.id).includes(vm.currentUser.id);
+  }
+  vm.attending = isAttending;
 }
 
 

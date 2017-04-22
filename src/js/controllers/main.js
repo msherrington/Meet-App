@@ -2,10 +2,11 @@ angular
   .module('meetApp')
   .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', '$state', '$auth'];
-function MainCtrl($rootScope, $state, $auth) {
+MainCtrl.$inject = ['$rootScope', '$state', '$auth', 'User'];
+function MainCtrl($rootScope, $state, $auth, User) {
   const vm = this;
   vm.currentUser = $auth.getPayload();
+  vm.currentUserWhole = User.get({ id: vm.currentUser.id });
   vm.isAuthenticated = $auth.isAuthenticated;
 
   $rootScope.$on('error', (e, err) => {
