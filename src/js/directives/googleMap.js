@@ -38,7 +38,7 @@ function googleMap($window, mapStyles){
         if(infowindow) infowindow.close();
       });
       // Sets location marker on map
-      const Marker = new $window.google.maps.Marker({
+      const marker = new $window.google.maps.Marker({
         // position: $scope.center
         // icon: '../images/blueMarker.png',
         map: map
@@ -111,8 +111,7 @@ function googleMap($window, mapStyles){
         // console.log('marker added!');
         const marker = new google.maps.Marker({
           position: latLng,
-          map: map,
-          marker: marker
+          map: map
           // icon: '../images/eventMarker.png',
           // distance: findDistance(new google.maps.LatLng(pos), new google.maps.LatLng(latLng))
         });
