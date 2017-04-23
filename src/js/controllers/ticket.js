@@ -1,9 +1,9 @@
 angular
   .module('meetApp')
-  .controller('TicketsConfirmCtrl', TicketsConfirmCtrl);
+  .controller('TicketsCtrl', TicketsCtrl);
 
-TicketsConfirmCtrl.$inject = ['Event', 'User','Ticket', '$stateParams', '$auth', '$state'];
-function TicketsConfirmCtrl(Event, User, Ticket, $stateParams, $auth, $state) {
+TicketsCtrl.$inject = ['Event', 'User','Ticket', '$stateParams', '$auth', '$state'];
+function TicketsCtrl(Event, User, Ticket, $stateParams, $auth, $state) {
   const vm = this;
   vm.ticket = {};
   vm.event = Event.get($stateParams);

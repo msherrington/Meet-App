@@ -1,6 +1,6 @@
-<h1>You are attending the {{ ticketsConfirm.event.name }} event</h1>
-<p>on {{ ticketsConfirm.event.date | date:'EEEE, d MMMM yyyy' }}</p>
-<p>at {{ ticketsConfirm.event.location }}</p>
+<h1>You are attending the {{ tickets.event.name }} event</h1>
+<p>on {{ tickets.event.date | date:'EEEE, d MMMM yyyy' }}</p>
+<p>at {{ tickets.event.location }}</p>
 <h3>Please check your email inbox for your ticket.</h3>
 
-<button ui-sref="eventsShow({ id: ticketsConfirm.event.id })">Back to Event Page</button>
+<button ui-sref="eventsShow({ id: tickets.event.id })">Back to Event Page</button>
