@@ -18,7 +18,7 @@
 <div>
   <!-- not attending the event already -->
   <!-- <button class="btn btn-primary" ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && !eventsShow.attending() && eventsShow.event.tickets_left > 0" ui-sref="payment({ id: eventsShow.event.id })">Attend This Event</button> -->
-  <button class="btn btn-primary" ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && !eventsShow.attending() && eventsShow.event.tickets_left > 0" ui-sref="payment({ id: eventsShow.event.id })">Attend This Event</button>
+  <button class="btn btn-primary" ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && !eventsShow.attending() && eventsShow.event.tickets_left > 0" ng-click="eventsShow.route()">Attend This Event</button>
 
 
   <!-- already attending the event -->

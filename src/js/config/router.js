@@ -36,16 +36,16 @@ function Router($urlRouterProvider, $locationProvider, $stateProvider){
       controller: 'EventsEditCtrl as eventsEdit'
     })
     //ticket states
-    .state('eventsAttend', {
-      url: '/events/:id/attend',
-      templateUrl: 'js/views/tickets/attend.html',
-      controller: 'TicketsCtrl as tickets'
-    })
-    .state('eventsUnattend', {
-      url: '/events/:id/unattend',
-      templateUrl: 'js/views/tickets/unattend.html',
-      controller: 'TicketsCtrl as tickets'
-    })
+    // .state('eventsAttend', {
+    //   url: '/events/:id/attend',
+    //   templateUrl: 'js/views/tickets/attend.html',
+    //   controller: 'TicketsCtrl as tickets'
+    // })
+    // .state('eventsUnattend', {
+    //   url: '/events/:id/unattend',
+    //   templateUrl: 'js/views/tickets/unattend.html',
+    //   controller: 'TicketsCtrl as tickets'
+    // })
     //payment state
     .state('payment', {
       url: '/events/:id/payment',

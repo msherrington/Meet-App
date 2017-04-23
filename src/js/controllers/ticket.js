@@ -14,15 +14,6 @@ function TicketsCtrl(Event, User, Ticket, $stateParams, $auth, $state, $uibModal
   }
   vm.close = closeModal;
 
-  function ticketRoute() {
-    if (vm.event.price === 0){
-      console.log('not zero');
-    } else {
-      console.log('not zero');
-    }
-  }
-  vm.route = ticketRoute;
-
   function ticketDelete() {
     const ticket = vm.event.tickets.find((ticket) => {
       return ticket.user.id === vm.currentUserId;
@@ -31,7 +22,6 @@ function TicketsCtrl(Event, User, Ticket, $stateParams, $auth, $state, $uibModal
     Ticket
       .remove({ id: ticket.id })
       .$promise
-      // .then(() => closeModal());
       .then(() => $state.go('eventsShow', { id: vm.event.id }, { reload: true }));
 
     closeModal();

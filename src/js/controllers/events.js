@@ -70,6 +70,8 @@ function EventsNewCtrl(Event, User, $state) {
 EventsShowCtrl.$inject = ['Event', 'User', 'Comment','Ticket', '$stateParams', '$state', '$auth', '$uibModal'];
 function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $auth, $uibModal) {
   const vm = this;
+  vm.ticket = {};
+
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.event = Event.get($stateParams,()=>{
@@ -79,6 +81,47 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
     // vm.event.tickets_left = vm.event.max_tickets - vm.event.tickets.length;
     // console.log(vm.event.tickets_left);
   });
+
+  function ticketRoute() {
+    if (vm.event.price === 0){
+      attendModal();
+      ticketCreate();
+    } else {
+      $state.go('payment', $stateParams);
+    }
+  }
+  vm.route = ticketRoute;
+
+  function ticketCreate() {
+    vm.ticket.event_id = vm.event.id;
+
+    Ticket
+      .save({ ticket: vm.ticket })
+      .$promise
+      .then(() => $state.go('eventsShow', { id: vm.event.id }, { reload: true }));
+  }
+  vm.create = ticketCreate;
+
+  function attendModal() {
+    $uibModal.open({
+      templateUrl: 'js/views/partials/EventAttendModal.html',
+      controller: 'TicketsCtrl as tickets'
+      // resolve: {
+      //   currentEvent: () => {
+      //     return vm.event;
+      //   }
+      // }
+    });
+  }
+  vm.attend = attendModal;
+
+  function unattendModal() {
+    $uibModal.open({
+      templateUrl: 'js/views/partials/EventUnattendModal.html',
+      controller: 'TicketsCtrl as tickets'
+    });
+  }
+  vm.unattend = unattendModal;
 
   function openModal() {
     $uibModal.open({
@@ -92,20 +135,6 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
     });
   }
   vm.open = openModal;
-
-  function unattendModal() {
-    $uibModal.open({
-      templateUrl: 'js/views/partials/EventUnattendModal.html',
-      controller: 'TicketsCtrl as tickets'
-      // resolve: {
-      //   currentEvent: () => {
-      //     return vm.event;
-      //   }
-      // }
-    });
-  }
-  vm.unattend = unattendModal;
-
 
   // console.log(vm.events.users)
   // vm.event.tickets_left = vm.event.max_tickets;

@@ -56,7 +56,7 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Event,
 
     Ticket
       .save({ ticket: vm.ticket })
-      .$promise
-      .then(() => $state.go('eventsAttend', { id: vm.event.id }));
+      .$promise;
+      // .then(() => $state.go('eventsAttend', { id: vm.event.id }));
   }
 }
