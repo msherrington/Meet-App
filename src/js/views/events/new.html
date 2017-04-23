@@ -1,17 +1,25 @@
 <h1>Create New Event</h1>
-<form ng-submit="eventsNew.create()">
-{{ eventsNew.event }}
-{{ eventsNew.event.tickets_left }}
+<form name="eventsNew.eventForm" ng-submit="eventsNew.create()" novalidate>
+<!-- {{ eventsNew.event }} -->
+<!-- {{ eventsNew.event.tickets_left }} -->
 <!-- {{ eventsNew.event.latitude }} -->
 <!-- {{ eventsNew.event.longitude }} -->
   <div>
     <label for="name">Event Name</label>
-    <input type="text" ng-model="eventsNew.event.name">
+    <input name="name" type="text" ng-model="eventsNew.event.name" required>
+  </div>
+  <!-- Error message! -->
+  <div ng-messages="eventsNew.eventForm.name.$error" ng-show="(eventsNew.eventForm.$submitted || eventsNew.eventForm.name.$touched)">
+    <div class="error" ng-message="required">name is required!</div>
   </div>
 
   <div>
     <label for="date">Date</label>
-    <input type="date" ng-model="eventsNew.event.date">
+    <input type="date" ng-model="eventsNew.event.date" required>
+  </div>
+  <!-- Error message! -->
+  <div ng-messages="eventsNew.eventForm.date.$error" ng-show="(eventsNew.eventForm.$submitted || eventsNew.eventForm.name.$touched)">
+    <div class="error" ng-message="required">date is required!</div>
   </div>
 
   <div>
@@ -29,7 +37,7 @@
     <input type="text" ng-model="eventsNew.event.description">
   </div>
 
-  {{ eventsNew.event.base64 }}
+  <!-- {{ eventsNew.event.base64 }} -->
   <div>
     <label for="base64">Image</label>
     <input type="file" base64 name="base64" id="base64" ng-model="eventsNew.event.base64">
