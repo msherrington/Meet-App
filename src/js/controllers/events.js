@@ -93,6 +93,19 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
   }
   vm.open = openModal;
 
+  function unattendModal() {
+    $uibModal.open({
+      templateUrl: 'js/views/partials/EventUnattendModal.html',
+      controller: 'TicketsCtrl as tickets'
+      // resolve: {
+      //   currentEvent: () => {
+      //     return vm.event;
+      //   }
+      // }
+    });
+  }
+  vm.unattend = unattendModal;
+
 
   // console.log(vm.events.users)
   // vm.event.tickets_left = vm.event.max_tickets;
