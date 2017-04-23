@@ -48,8 +48,6 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Event,
       };
       paymentTransaction(data);
       ticketCreate();
-      // create ticket??
-
     });
   };
 
@@ -61,22 +59,4 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Event,
       .$promise
       .then(() => $state.go('eventsAttend', { id: vm.event.id }));
   }
-  // vm.reset = function() {
-  //   vm.card = {};
-  //   vm.payee = '';
-  //   vm.amount = null;
-  //   vm.paymentSuccessful = false;
-  //   vm.Form.$setPristine(true);
-  // };
-  // function createDonation(){
-  //   vm.donation.project_id = $stateParams.id;
-  //   vm.donation.amount = vm.card.amount;
-  //   Donation
-  //   .save(vm.donation)
-  //   .$promise
-  //   .then(()=> $state.go('projectsIndex'));
-  // }
-
-  //CREATE TICKET FUNCTION GOES HERE??
-  //AND EMAIL FUNCTION??
 }
