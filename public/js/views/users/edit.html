@@ -31,16 +31,6 @@
       <div ng-message="minlength"><em class="error">Password needs to be at least 4 characters!</em></div>
     </div>
 
-    <!-- <div> -->
-      <!-- <label>New Password Confirmation</label> -->
-      <!-- <input name ="password_confirmation" type="password" ng-model="usersEdit.user.password_confirmation" minlength="4" required placeholder="Password Confirmation"> -->
-    <!-- </div> -->
-    <!-- Error message! -->
-    <!-- <div ng-messages="usersEdit.userForm.password_confirmation.$error" ng-show="(usersEdit.userForm.$submitted || usersEdit.userForm.password_confirmation.$touched)"> -->
-      <!-- <div ng-message="required"><em class="error">Password is required!</em></div> -->
-      <!-- <div ng-message="minlength"><em class="error">Password needs to be at least 4 characters!</em> -->
-    <!-- </div> -->
-
     <div>
       <label class="base64Lbl" for="base64">Image</label>
       <input type="file" base64 name="base64" id="base64" ng-model="usersEdit.user.base64">
@@ -48,7 +38,11 @@
 
     <div>
       <label>Bio</label>
-      <input name="Bio" type="text" ng-model="usersEdit.user.bio">
+      <input name="bio" type="text" ng-model="usersEdit.user.bio" required>
+    </div>
+    <!-- Error message! -->
+    <div ng-messages="usersEdit.usersForm.bio.$error" ng-show="(usersEdit.usersForm.$submitted || usersEdit.usersForm.bio.$touched)">
+      <div class="error" ng-message="required">Bio is required!</div>
     </div>
 
     <button>Finished</button>

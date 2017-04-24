@@ -61,19 +61,19 @@
         </div>
       </div>
     </div>
-      <button class="btn btn-primary">Make Payment</button>
+      <button class="btn btn-primary">Pay</button>
       <p>Press ONCE and wait for confirmation</p>
   </form>
 
   <!-- Payment successful message -->
-  <div ng-show="payment.paymentSuccessful">
+  <div class="centered" ng-show="payment.paymentSuccessful">
     <h2>Thank you!</h2>
     <p>Your payment for &pound;{{ payment.event.price }} was successful</p>
     <h1>You are attending the {{ payment.event.name }} event</h1>
     <p>on {{ payment.event.date | date:'EEEE, d MMMM yyyy' }}</p>
     <p>at {{ payment.event.location }}</p>
     <h3>Please check your email inbox for your ticket.</h3>
-    <button ui-sref="eventsShow({ id: payment.event.id })">Back to Event Page</button>
+    <button ui-sref="eventsShow({ id: payment.event.id })">Back</button>
   </div>
 </div>
 <!-- End of stripe form  -->
