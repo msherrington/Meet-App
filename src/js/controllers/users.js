@@ -62,7 +62,7 @@ function UsersShowCtrl(User, $stateParams, $state, Conversation, $auth){
     Conversation
     .save({sender_id: vm.currentUser.id, receiver_id: parseInt($stateParams.id), conversation: vm.conversation})
     .$promise
-    .then();
+    .then(() => $state.go('conversationsIndex'));
   }
   vm.conversationCreate = conversationCreate;
 }

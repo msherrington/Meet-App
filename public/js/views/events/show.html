@@ -1,4 +1,5 @@
 <div class="eventShow">
+  <h1>{{ eventsShow.event.name }}</h1>
   <div class="eventShowTop">
 
     <h1>{{ eventsShow.event.name }}</h1>
@@ -38,7 +39,7 @@
     <div class="comments">
       <h2>Comments</h2>
       <ul>
-        <li ng-repeat="comment in eventsShow.event.comments"><strong></strong>{{ comment.body }} - <a ui-sref="usersShow({ id: comment.user.id })">{{ comment.user.username }}</a><button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete Comment</button></li>
+        <li ng-repeat="comment in eventsShow.event.comments"><strong></strong>{{ comment.body }} - <a ui-sref="usersShow({ id: comment.user.id })">{{ comment.user.username }}</a><button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
       </ul>
 
       <div ng-if="main.isAuthenticated()">
