@@ -1,9 +1,10 @@
 angular.module('meetApp')
   .controller('MessagesIndexCtrl', MessagesIndexCtrl);
 
-MessagesIndexCtrl.$inject = ['Message', '$stateParams'];
-function MessagesIndexCtrl(Message, $stateParams) {
+MessagesIndexCtrl.$inject = ['Message', '$stateParams', '$auth'];
+function MessagesIndexCtrl(Message, $stateParams, $auth) {
   const vm = this;
+  vm.currentUser = $auth.getPayload();
   vm.messages = Message.query({ conversationId: $stateParams.id });
   // console.log(vm.messages);
   // vm.message = {};
@@ -18,4 +19,10 @@ function MessagesIndexCtrl(Message, $stateParams) {
       });
   }
   vm.reply = addMessage;
+
+  // function leftRight() {
+  //   if (vm.message.user !== vm.currentUser) {
+  //
+  //   }
+  // }
 }

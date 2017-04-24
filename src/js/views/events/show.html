@@ -1,7 +1,7 @@
 <div class="eventShow">
+  <h1>{{ eventsShow.event.name }}</h1>
   <div class="eventShowTop">
 
-  <h1>{{ eventsShow.event.name }}</h1>
 <img class="eventShowImg" ng-src="{{ eventsShow.event.image_src }}" alt="{{ eventsShow.event.name }}">
 <img src="eventsShow.event.user.image" alt="{{ eventsShow.event.user.username }}'s Photo" class="eventShowUserPic">
 <div class="eventInfo">
@@ -22,13 +22,13 @@
 
 
 <!-- These attend/unattend buttons only show if user is logged in and not event host and -->
-
-<div class="attendBtns" ng-controller="TicketsConfirmCtrl as ticketsConfirm">
+<div>
   <!-- not attending the event already -->
-  <button ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && !eventsShow.attending() && eventsShow.event.tickets_left > 0" ng-click="ticketsConfirm.create()">Attend</button>
+  <button ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && !eventsShow.attending() && eventsShow.event.tickets_left > 0" ng-click="eventsShow.route()">Attend</button>
+
 
   <!-- already attending the event -->
-  <button ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && eventsShow.attending()" ng-click="ticketsConfirm.delete()">Unattend</button>
+  <button ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && eventsShow.attending()" ng-click="eventsShow.unattend()">Unattend</button>
 </div>
 
 </div>
@@ -42,7 +42,7 @@
 <div class="comments">
       <h2>Comments</h2>
       <ul>
-        <li ng-repeat="comment in eventsShow.event.comments"><strong></strong>{{ comment.body }} - <a ui-sref="usersShow({ id: comment.user.id })">{{ comment.user.username }}</a><button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete Comment</button></li>
+        <li ng-repeat="comment in eventsShow.event.comments"><strong></strong>{{ comment.body }} - <a ui-sref="usersShow({ id: comment.user.id })">{{ comment.user.username }}</a><button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
       </ul>
 
 
