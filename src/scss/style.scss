@@ -515,14 +515,28 @@ button {
   text-align: justify;
   width: 80%;
   margin-left: 10%;
+  h1 {
+    background-color: #f24;
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    color: white;
+    padding: 2vh;
+    border-radius: 10px;
+    // border-top-left-radius: 10px;
+    // border-top-right-radius: 10px;
+
+  }
   ul {
     padding-left: 0;
     list-style: none;
     li {
       .conversation {
         background-color: white;
-        border: 5px solid #303030;
+        // border: 5px solid #303030;
         text-align: center;
+        padding: 2vh;
+        margin: 1vh;
         h2 {
           font-family: 'Josefin Sans', sans-serif;
           font-weight: bold;
@@ -545,6 +559,16 @@ button {
   background-color: white;
   margin-left: 20%;
   width: 60%;
+  h1 {
+    color: white;
+    background-color: #f24;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 2vh;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+
+  }
   ul {
     padding-top: 5vh;
     list-style: none;
@@ -607,21 +631,23 @@ button {
   width: 80%;
   margin-left: 10%;
   text-align: center;
+  h1 {
+    background-color: #f24;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    padding: 3vh;
+    color: white;
+    border-radius: 10px;
+    // margin-bottom: 2vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
   .profileHead {
     padding-top: 5vh;
     text-align: left;
     width: 80%;
     margin-left: 10%;
     position: relative;
-    h1 {
-      background-color: #f24;
-      position: absolute;
-      // top: 20%;
-      left: 50%;
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: bold;
-      // float: right;
-    }
     .userShowImg {
       width: 300px;
       height: 300px;

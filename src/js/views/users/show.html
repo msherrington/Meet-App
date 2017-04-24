@@ -1,8 +1,8 @@
 <!-- <h1>User Profile</h1> -->
 <div class="userProfile">
+<h1><strong>{{ usersShow.user.username}} 's Profile</strong></h1>
 
 <div class="profileHead">
-  <h1><strong>{{ usersShow.user.username}} 's Profile</strong></h1>
 <!-- {{ usersShow.user.image }} -->
 <img class="userShowImg" ng-src="{{ usersShow.user.image_src }}" alt="{{ usersShow.user.username }}'s Photo">
 <p>{{ usersShow.user.bio }} <button ng-click="usersShow.conversationCreate()">Message</button></p>
