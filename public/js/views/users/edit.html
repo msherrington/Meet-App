@@ -25,7 +25,7 @@
       <input name ="password" type="password" ng-model="usersEdit.user.password" minlength="4" required placeholder="Password">
     </div>
     <!-- Error message! -->
-    <div ng-messages="auth.registerForm.password.$error" ng-show="(usersEdit.userForm.$submitted || usersEdit.userForm.password.$touched)">
+    <div ng-messages="usersEdit.usersForm.password.$error" ng-show="(usersEdit.userForm.$submitted || usersEdit.usersForm.password.$touched)">
       <div ng-message="required"><em class="error">Password is required!</em></div>
       <div ng-message="minlength"><em class="error">Password needs to be at least 4 characters!</em></div>
     </div>
