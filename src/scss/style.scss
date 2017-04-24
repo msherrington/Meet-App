@@ -336,7 +336,7 @@ button {
               width: 200px;
             }
             p {
-              height: 4vh;  
+              height: 4vh;
               span {
                 font-family: 'Josefin Sans', sans-serif;
                 color: #f24;
@@ -692,8 +692,117 @@ button {
       }
     }
   }
+}
 
+//-----------------------------Home-----------------------------
+#home {
+  background-image: url('../../images/home.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 87vh;
+  margin-top: -1%;
+  position: relative;
+}
 
+.welcomeBox {
+  margin: 0 auto;
+  background-color: black;
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  padding: 2.5vh;
+  transform: translate(-50%);
+  text-align: center;
+  padding: 2.3% 3% 1%;
+}
+
+.welcome {
+  margin: 0% 10%;
+  font-weight: bold;
+  background-color: #f24;
+  border-radius: 0px;
+  padding: 1.5vh;
+  text-align: center;
+  width: 80%;
+}
+
+//-------------------------------EventEdit-------------------------------
+.eventForm {
+  padding-top: 5vh;
+  padding-bottom: 3vh;
+  background-color: white;
+  text-align: center;
+  div {
+    label {
+      .custom-file-upload {
+        border: 1px solid black;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+      }
+      display: none;
+    }
+    input {
+      font-size: 20px;
+      width: 60%;
+      height: 5vh;
+      text-align: center;
+      border: none;
+      border-bottom: 2px solid #aaa;
+      margin: 2% auto;
+      &:focus {
+        outline: none;
+        &::-webkit-input-placeholder {
+          color: white;
+        }
+      }
+      &::-webkit-input-placeholder {
+        color: #ccc;
+      }
+      &::-webkit-datetime-edit-text {
+        color: #ccc;
+      }
+      &::-webkit-datetime-edit-month-field {
+        color: #ccc;
+      }
+      &::-webkit-datetime-edit-day-field {
+        color: #ccc;
+        margin-left: 40px;
+      }
+      &::-webkit-datetime-edit-year-field {
+        color: #ccc;
+      }
+      &::-webkit-inner-spin-button {
+        display: none;
+       }
+    }
+    #lastInput {
+      margin-bottom: 5vh;
+    }
+    .base64Lbl {
+      display: block;
+      width: 40%;
+      margin-left: 30%;
+      color: #ccc;
+      font-size: 20px;
+      border: 2px solid #aaa;
+      border-radius: 10px;
+      padding-bottom: 0.8vh;
+      padding-top: 1.2vh;
+      &:hover {
+        cursor: pointer;
+        color: black;
+      }
+      &:focus {
+        color: black;
+      }
+    }
+    #base64 {
+      display: none;
+    }
+  }
 }
 
 
