@@ -1,9 +1,10 @@
 <div class="modal-header">
-  <h3 class="modal-title">Ticket Deleted!</h3>
+  <h3 class="modal-title">Ticket Deletion</h3>
 </div>
 <div class="modal-body">
-  <h2>You are no longer attending the <strong>{{ tickets.event.name }}</strong> event</h2>
+  <h2>Are you sure you want to delete your ticket for <strong>{{ tickets.event.name }}</strong>?</h2>
 </div>
 <div class="modal-footer">
-  <button ui-sref="eventsShow({ id: tickets.event.id })">Back to Event Page</button>
+  <button ng-click="tickets.delete()">Delete Ticket</button>
+  <button ng-click="tickets.close()">Cancel</button>
 </div>

@@ -5,10 +5,10 @@ MessagesIndexCtrl.$inject = ['Message', '$stateParams'];
 function MessagesIndexCtrl(Message, $stateParams) {
   const vm = this;
   vm.messages = Message.query({ conversationId: $stateParams.id });
-  console.log(vm.messages);
+  // console.log(vm.messages);
   // vm.message = {};
   function addMessage() {
-    console.log({ conversationId: $stateParams.id, message: vm.message });
+    // console.log({ conversationId: $stateParams.id, message: vm.message });
     Message
       .save({ conversationId: $stateParams.id, message: vm.message })
       .$promise

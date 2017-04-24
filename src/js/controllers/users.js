@@ -30,22 +30,22 @@ UsersShowCtrl.$inject = ['User', '$stateParams', '$state', 'Conversation', '$aut
 function UsersShowCtrl(User, $stateParams, $state, Conversation, $auth){
   const vm = this;
   vm.currentUser = $auth.getPayload();
-  console.log(vm.currentUser.id);
+  // console.log(vm.currentUser.id);
   User.get($stateParams).$promise.then((user)=> {
     vm.user = user;
   });
-  console.log(parseFloat($stateParams.id));
+  // console.log(parseFloat($stateParams.id));
 
   //Tabs
   vm.tab = 1;
-      vm.setTab = function(newTab){
-        console.log('clicked');
-        vm.tab = newTab;
-      };
+  vm.setTab = function(newTab){
+    // console.log('clicked');
+    vm.tab = newTab;
+  };
 
-      vm.isSet = function(tabNum){
-        return vm.tab === tabNum;
-      };
+  vm.isSet = function(tabNum){
+    return vm.tab === tabNum;
+  };
 
   function usersDelete() {
     vm.user
@@ -56,15 +56,14 @@ function UsersShowCtrl(User, $stateParams, $state, Conversation, $auth){
   vm.delete = usersDelete;
 
   vm.conversation = { receiver_id: parseInt($stateParams.id), sender_id: vm.currentUser.id };
-  
-  console.log(vm.conversation);
+
+  // console.log(vm.conversation);
   function conversationCreate() {
     Conversation
     .save({sender_id: vm.currentUser.id, receiver_id: parseInt($stateParams.id), conversation: vm.conversation})
-    .$promise
-    .then((conversation) => console.log(conversation));
+    .$promise;
+    // .then((conversation) => console.log(conversation));
   }
-
   vm.conversationCreate = conversationCreate;
 }
 
@@ -77,14 +76,12 @@ function UsersEditCtrl(User, $stateParams, $state) {
   });
 
   function usersUpdate() {
-    // wrap the data in a `user` object and pass the bird's id
+    // wrap the data in a `user` object and pass the user's id
     // to the model so it can generate the correct URL
     User
       .update({ id: vm.user.id, user: vm.user})
       .$promise
       .then(() => $state.go('usersShow', $stateParams));
   }
-
   vm.update = usersUpdate;
-
 }

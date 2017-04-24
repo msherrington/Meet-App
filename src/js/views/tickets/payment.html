@@ -1,18 +1,16 @@
 <!-- Stripe form  -->
 <div class="container">
-  <h1>Stripe Payment Form</h1>
-  {{payment.paymentSuccessful}}
+  <h1>Payment Form</h1>
   <form class="form" name="payment.Form" ng-hide="payment.paymentSuccessful" ng-submit="payment.pay()" novalidate>
     <div class="row">
       <div class="col-sm-8">
         <div class="form-group" ng-class="{ 'has-feedback': payment.Form.payee.$dirty, 'has-success': (payment.Form.payee.$valid && payment.Form.payee.$dirty), 'has-error': (payment.Form.payee.$invalid && payment.Form.payee.$dirty) }">
           <label class="control-label">Card Holder's Name</label>
-          <input type="text" name="payee" class="form-control" ng-model="payment.payee" placeholder="Mr A Smith" required ng-minlength="2">
+          <input type="text" name="payee" class="form-control" ng-model="payment.payee" placeholder="Mr M. Zuckerberg" required ng-minlength="2">
           <span ng-if="(payment.Form.payee.$valid && payment.Form.payee.$dirty)" class="glyphicon glyphicon-ok form-control-feedback"></span>
           <span ng-if="(payment.Form.payee.$invalid && payment.Form.payee.$dirty)" class="glyphicon glyphicon-remove form-control-feedback"></span>
         </div>
       </div>
-
 
       <div class="col-sm-4">
         <div class="form-group" ng-class="{ 'has-feedback': payment.Form.amount.$dirty, 'has-success': (payment.Form.amount.$valid), 'has-error': (payment.Form.amount.$invalid && payment.Form.amount.$dirty) }">
@@ -26,7 +24,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="row">
       <div class="col-sm-8">
@@ -58,19 +55,25 @@
       <div class="col-sm-4">
         <div class="form-group" ng-class="{ 'has-feedback': payment.Form.exp_year.$dirty, 'has-success': (payment.Form.exp_year.$valid && payment.Form.exp_year.$dirty), 'has-error': (payment.Form.exp_year.$invalid && payment.Form.exp_year.$dirty) }">
           <label class="control-label">Exipry Year</label>
-          <input type="text" name="exp_year" class="form-control" ng-model="payment.card.exp_year" placeholder="2016" required ng-pattern="/20(1[6-9]|2[0-9])/">
+          <input type="text" name="exp_year" class="form-control" ng-model="payment.card.exp_year" placeholder="2020" required ng-pattern="/20(1[6-9]|2[0-9])/">
           <span ng-if="(payment.Form.exp_year.$valid && payment.Form.exp_year.$dirty)" class="glyphicon glyphicon-ok form-control-feedback"></span>
           <span ng-if="(payment.Form.exp_year.$invalid && payment.Form.exp_year.$dirty)" class="glyphicon glyphicon-remove form-control-feedback"></span>
         </div>
       </div>
     </div>
-    <button class="btn btn-primary">Make Payment</button>
+      <button class="btn btn-primary">Make Payment</button>
+      <p>Press ONCE and wait for confirmation</p>
   </form>
 
   <!-- Payment successful message -->
   <div ng-show="payment.paymentSuccessful">
     <h2>Thank you!</h2>
-    <p>Your payment for &pound;{{payment.event.price}} was successful</p>
+    <p>Your payment for &pound;{{ payment.event.price }} was successful</p>
+    <h1>You are attending the {{ payment.event.name }} event</h1>
+    <p>on {{ payment.event.date | date:'EEEE, d MMMM yyyy' }}</p>
+    <p>at {{ payment.event.location }}</p>
+    <h3>Please check your email inbox for your ticket.</h3>
+    <button ui-sref="eventsShow({ id: payment.event.id })">Back to Event Page</button>
   </div>
 </div>
 <!-- End of stripe form  -->

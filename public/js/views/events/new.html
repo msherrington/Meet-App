@@ -1,4 +1,5 @@
 <h1>Create New Event</h1>
+
 <form name="eventsNew.eventsForm" ng-submit="eventsNew.create()" novalidate>
 
   <div>
@@ -8,7 +9,7 @@
   <!-- error message -->
   <div class="errorDiv" ng-messages="eventsNew.eventsForm.name.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.name.$touched">
     <div class="error" ng-message="required">Event name is required.</div>
-  </div>
+  </div>  
 
   <div>
     <label for="date">Date</label>
