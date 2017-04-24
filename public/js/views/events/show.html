@@ -35,7 +35,7 @@
   <div class="eventShowBottom">
     <div class="attendees">
       <h2>Attendees</h2>
-      <p class="attendees" ng-repeat="user in eventsShow.event.users"><a ui-sref="usersShow({ id: user.id })">{{ user.username }}</a></p>
+      <p class="attendees" ng-repeat="user in eventsShow.event.users"><a ui-sref="usersShow({ id: user.id })"><img src="{{ user.image_src }}" alt=""> {{ user.username }}</a></p>
     </div>
 
     <div class="comments">
