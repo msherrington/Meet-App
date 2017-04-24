@@ -56,6 +56,7 @@ function PaymentCtrl(API_URL, $http, $window, $state, $stateParams, Event, User,
 
     Ticket
       .save({ ticket: vm.ticket })
-      .$promise;
+      .$promise
+      .then();
   }
 }
