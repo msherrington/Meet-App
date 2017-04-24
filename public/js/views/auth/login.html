@@ -1,7 +1,10 @@
-<form name="login.loginForm" ng-submit="auth.login()" novalidate>
+
+<section>
+  <div class="container">
+<form class="authForm" name="login.loginForm" ng-submit="auth.login()" novalidate>
   <div>
     <label>Email</label>
-    <input name="email" type="email" ng-model="auth.credentials.email" required>
+    <input name="email" type="email" ng-model="auth.credentials.email" required placeholder="Email">
   </div>
   <!-- error message -->
   <div class="errorDiv" ng-messages="login.loginForm.email.$error" ng-show="login.loginForm.$submitted || login.loginForm.email.$touched" role="alert">
@@ -11,15 +14,21 @@
 
   <div>
     <label>Password</label>
-    <input name="password" type="password" ng-model="auth.credentials.password" minlength="4" required>
+    <input name="password" type="password" ng-model="auth.credentials.password" minlength="4" required placeholder="Password">
   </div>
   <!-- error message -->
   <div class="errorDiv" ng-messages="login.loginForm.password.$error" ng-show="login.loginForm.$submitted || login.loginForm.email.$touched" role="alert">
     <div class="error" ng-message="required">Your password is required.</div>
     <div class="error" ng-message="minlength">Password needs to be at least 4 characters!</div>
+
   </div>
 
   <button>Login</button>
 </form>
-<button ng-click="auth.authenticate('github')">Login with Github</button>
-<button ng-click="auth.authenticate('facebook')">Login with Facebook</button>
+<div class="loginBtns">
+
+<button id="github" ng-click="auth.authenticate('github')">Github</button>
+<button id="facebook" ng-click="auth.authenticate('facebook')">Facebook</button>
+</div>
+</div>
+</section>

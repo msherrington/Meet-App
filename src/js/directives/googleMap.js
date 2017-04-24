@@ -40,8 +40,10 @@ function googleMap($window, mapStyles){
       // Sets location marker on map
       const marker = new $window.google.maps.Marker({
         // position: $scope.center
-        // icon: '../images/blueMarker.png',
-        map: map
+        icon: '/images/locationMarker.png',
+        map: map,
+        optimized: false,
+        zIndex: 99999999
       });
 
       //Runs function to find latlng of all events
