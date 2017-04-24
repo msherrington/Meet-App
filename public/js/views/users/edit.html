@@ -15,5 +15,20 @@
     <input type="file" base64 name="base64" id="base64" ng-model="usersEdit.user.base64">
   </div>
 
+  <div>
+    <label>Bio</label>
+    <textarea name="Bio" type="text" ng-model="usersEdit.user.bio"></textarea>
+  </div>
+
   <button>Finished</button>
 </form>
+
+
+
+t.string   "username"
+t.string   "email"
+t.string   "image"
+t.text     "bio"
+t.datetime "created_at",      null: false
+t.datetime "updated_at",      null: false
+t.string   "password_digest"
