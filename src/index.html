@@ -16,34 +16,16 @@
     <nav>
       <ul>
         <li ng-if="main.isAuthenticated()"><a ui-sref="eventsIndex">Events</a></li>
-        <!-- <li ng-if="main.isAuthenticated()"><a ui-sref="eventsNew">Add Event</a></li> -->
+        <li ng-if="main.isAuthenticated()"><a ui-sref="eventsNew">Start Event</a></li>
         <li ng-if="main.isAuthenticated()"><a ui-sref="conversationsIndex">Chats</a></li>
         <li ng-if="main.isAuthenticated()"><a ui-sref="usersIndex">Users</a></li>
         <li ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUser.id })">Profile</a></li>
         <li ng-if="!main.isAuthenticated()"><a ui-sref="login">Login</a></li>
         <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
-        <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
+        <li class="right" ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
       </ul>
       <h1>MeetApp</h1>
-      <!-- <input type="text" name="" placeholder="Search Events"> -->
     </nav>
-    <!-- <nav class="navbar navbar-default" role="navigation">
-      <div class="navbar-header">
-        <a class="navbar-brand" ui-sref="home">EVENTS APP</a>
-      </div>
-      <div>
-        <ul class="nav navbar-nav">
-          <li ng-if="main.isAuthenticated()"><a ui-sref="eventsIndex">Events Index</a></li>
-          <li ng-if="main.isAuthenticated()"><a ui-sref="eventsNew">Add Event</a></li>
-          <li ng-if="main.isAuthenticated()"><a ui-sref="conversationsIndex">Conversations</a></li>
-          <li ng-if="main.isAuthenticated()"><a ui-sref="usersIndex">Users Index</a></li>
-          <li ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUser.id })">Profile</a></li>
-          <li ng-if="!main.isAuthenticated()"><a ui-sref="login">Login</a></li>
-          <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
-          <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
-        </ul>
-      </div>
-    </nav> -->
     <main ui-view></main>
   </body>
   <footer>
