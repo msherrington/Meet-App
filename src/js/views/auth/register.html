@@ -45,7 +45,15 @@
   <div ng-messages="auth.registerForm.password_confirmation.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.password_confirmation.$touched)">
     <div ng-message="required"><em class="error">Password is required!</em></div>
     <div ng-message="minlength"><em class="error">Password needs to be at least 4 characters!</em></div>
+  </div>
 
+  <div>
+    <label>Bio</label>
+    <input name="bio" type="text" ng-model="auth.user.bio" required>
+  </div>
+  <!-- Error message! -->
+  <div ng-messages="auth.registerForm.bio.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.bio.$touched)">
+    <div class="error" ng-message="required">Bio is required!</div>
   </div>
 
   <button>Register</button>
