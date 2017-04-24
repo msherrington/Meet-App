@@ -4,11 +4,12 @@
 <form class="authForm" name="auth.registerForm" ng-submit="auth.register()" novalidate>
   <div>
     <label>Username</label>
-    <input name="username" type="text" ng-model="auth.user.username" required placeholder="Username">
+    <input name="username" type="text" ng-model="auth.user.username" ng-maxlength="12" required placeholder="Username">
   </div>
   <!-- Error message! -->
   <div ng-messages="auth.registerForm.username.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.username.$touched)">
-    <div ng-message="required"><em class="error">Username is required!</em></div>
+    <div class="error" ng-message="required">Username is required!</div>
+    <div class="error" ng-message="maxlength">Username must be less than 12 characters</div>
   </div>
 
   <div>
