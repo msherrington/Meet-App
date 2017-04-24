@@ -668,11 +668,13 @@ button {
     }
   }
   .test {
+    vertical-align: top;
     ul {
       margin-top: 20px;
       padding-left: 0;
       list-style: none;
       margin-bottom: 0;
+      vertical-align: top;
       li {
         // width: 30%;
         vertical-align: top;
@@ -978,4 +980,9 @@ footer {
 
 div, p {
   border-radius: 10px;
+}
+
+
+.centered{
+  text-align: center;
 }
