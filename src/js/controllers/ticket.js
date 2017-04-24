@@ -1,33 +1,30 @@
 angular
   .module('meetApp')
-  .controller('TicketsConfirmCtrl', TicketsConfirmCtrl);
+  .controller('TicketsCtrl', TicketsCtrl);
 
-TicketsConfirmCtrl.$inject = ['Event', 'User','Ticket', '$stateParams', '$auth', '$state'];
-function TicketsConfirmCtrl(Event, User, Ticket, $stateParams, $auth, $state) {
+TicketsCtrl.$inject = ['Event', 'User','Ticket', '$stateParams', '$auth', '$state', '$uibModalInstance'];
+function TicketsCtrl(Event, User, Ticket, $stateParams, $auth, $state, $uibModalInstance) {
   const vm = this;
   vm.ticket = {};
   vm.event = Event.get($stateParams);
   vm.currentUserId = $auth.getPayload().id;
 
-  function ticketCreate() {
-    vm.ticket.event_id = vm.event.id;
-
-    Ticket
-      .save({ ticket: vm.ticket })
-      .$promise
-      .then(() => $state.go('eventsAttend', { id: vm.event.id }));
+  function closeModal() {
+    $uibModalInstance.close();
   }
-  vm.create = ticketCreate;
+  vm.close = closeModal;
 
   function ticketDelete() {
     const ticket = vm.event.tickets.find((ticket) => {
       return ticket.user.id === vm.currentUserId;
     });
-  
+
     Ticket
       .remove({ id: ticket.id })
       .$promise
-      .then(() => $state.go('eventsUnattend', { id: vm.event.id }));
+      .then(() => $state.go('eventsShow', { id: vm.event.id }, { reload: true }));
+
+    closeModal();
   }
   vm.delete = ticketDelete;
 }

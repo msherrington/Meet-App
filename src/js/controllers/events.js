@@ -21,7 +21,7 @@ function EventsIndexCtrl(Event, filterFilter, orderByFilter, $http, $scope){
   vm.tab = 1;
 
   vm.setTab = function(newTab){
-    console.log('clicked');
+    // console.log('clicked');
     vm.tab = newTab;
   };
 
@@ -40,8 +40,6 @@ function EventsIndexCtrl(Event, filterFilter, orderByFilter, $http, $scope){
     () => vm.q,
     () => vm.sort
   ], filterEvents);
-
-
 }
 
 EventsNewCtrl.$inject = ['Event', 'User', '$state'];
@@ -49,20 +47,16 @@ function EventsNewCtrl(Event, User, $state) {
   const vm = this;
   vm.event = {};
   vm.users = User.query();
-
-  // ng change function, maybe?
-  // function change(){
-  //   vm.event.tickets_left = vm.event.max_tickets;
-  // }
-  // vm.change = change;
-
+  vm.currentDate = new Date();
 
   function eventsCreate() {
     //Wrap data in an event object//
+  if(vm.eventsForm.$valid){
     Event
       .save({ event: vm.event })
       .$promise
       .then(() => $state.go('eventsIndex'));
+    }
   }
   vm.create = eventsCreate;
 }
@@ -70,17 +64,53 @@ function EventsNewCtrl(Event, User, $state) {
 EventsShowCtrl.$inject = ['Event', 'User', 'Comment','Ticket', '$stateParams', '$state', '$auth', '$uibModal'];
 function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $auth, $uibModal) {
   const vm = this;
+  vm.ticket = {};
+
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
-  vm.event = Event.get($stateParams,()=>{
-    //Reduce number of tickets when someone attends
-    // console.log(vm.event.tickets.length);
-    // console.log(vm.event.max_tickets);
-    // vm.event.tickets_left = vm.event.max_tickets - vm.event.tickets.length;
-    // console.log(vm.event.tickets_left);
-  });
+  vm.event = Event.get($stateParams);
 
-  function openModal() {
+  function ticketRoute() {
+    if (vm.event.price === 0){
+      attendModal();
+      ticketCreate();
+    } else {
+      // paymentModal();
+      $state.go('payment', $stateParams);
+    }
+  }
+  vm.route = ticketRoute;
+
+  function ticketCreate() {
+    vm.ticket.event_id = vm.event.id;
+
+    Ticket
+      .save({ ticket: vm.ticket })
+      .$promise
+      .then(() => $state.go('eventsShow', { id: vm.event.id }, { reload: true }));
+  }
+  vm.create = ticketCreate;
+
+  // Modal to confirm attendance of free event
+  function attendModal() {
+    $uibModal.open({
+      templateUrl: 'js/views/partials/EventAttendModal.html',
+      controller: 'TicketsCtrl as tickets'
+    });
+  }
+  vm.attend = attendModal;
+
+  // Modal to confirm ticket has been deleted
+  function unattendModal() {
+    $uibModal.open({
+      templateUrl: 'js/views/partials/EventUnattendModal.html',
+      controller: 'TicketsCtrl as tickets'
+    });
+  }
+  vm.unattend = unattendModal;
+
+  // Opens modal asking for confirmation to delete event
+  function eventDeleteModal() {
     $uibModal.open({
       templateUrl: 'js/views/partials/EventDeleteModal.html',
       controller: 'EventsDeleteCtrl as eventsDelete',
@@ -91,12 +121,7 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
       }
     });
   }
-  vm.open = openModal;
-
-
-  // console.log(vm.events.users)
-  // vm.event.tickets_left = vm.event.max_tickets;
-  // console.log(vm.event);
+  vm.open = eventDeleteModal;
 
   function addComment() {
     vm.comment.event_id = vm.event.id;
@@ -112,6 +137,7 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
 
   vm.addComment = addComment;
 
+  // Function to delete a comment
   function deleteComment(comment) {
     Comment
       .delete({ id: comment.id })
@@ -121,10 +147,9 @@ function EventsShowCtrl(Event, User, Comment, Ticket, $stateParams, $state, $aut
         vm.event.comments.splice(index, 1);
       });
   }
-
   vm.deleteComment = deleteComment;
 
-
+  // Function for displaying or hiding attendance buttons
   function isAttending() {
     return $auth.getPayload() && vm.event.$resolved && vm.event.users.map((object) => object.id).includes(vm.currentUser.id);
     // This map function takes all id values from inside event.users object, puts the values into an array and checks that array to see if it includes the current user id.
@@ -143,19 +168,22 @@ function EventsEditCtrl(Event, $stateParams, $state) {
   });
 
   function eventsUpdate() {
-    Event
-    .update({id: vm.event.id, event: vm.event })
-    .$promise
-    .then(() => $state.go('eventsShow', $stateParams));
+    if(vm.eventsForm.$valid){
+      Event
+      .update({id: vm.event.id, event: vm.event })
+      .$promise
+      .then(() => $state.go('eventsShow', $stateParams));
+    }
   }
   vm.update = eventsUpdate;
 }
+
 
 EventsDeleteCtrl.$inject = ['$uibModalInstance', 'currentEvent', '$state'];
 function EventsDeleteCtrl($uibModalInstance, currentEvent, $state) {
   const vm = this;
   vm.event = currentEvent;
-  console.log(vm.event.comments);
+  // console.log(vm.event.comments);
 
   function closeModal() {
     $uibModalInstance.close();

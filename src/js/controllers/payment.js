@@ -1,17 +1,19 @@
 angular
   .module('meetApp')
-  .controller('PaymentController', PaymentController);
+  .controller('PaymentCtrl', PaymentCtrl);
 
-PaymentController.$inject = ['API_URL', '$http', '$window', '$state', '$stateParams', 'Event', 'User'];
-function PaymentController(API_URL, $http, $window, $state, $stateParams, Event, User) {
+PaymentCtrl.$inject = ['API_URL', '$http', '$window', '$state', '$stateParams', 'Event', 'User', 'Ticket'];
+function PaymentCtrl(API_URL, $http, $window, $state, $stateParams, Event, User, Ticket) {
   const vm = this;
-  let requester;
+  // let requester;
   const Stripe = $window.Stripe;
-
+  vm.ticket = {};
   vm.card = {};
   vm.donation ={};
   vm.currency = 'gbp';
   vm.paymentSuccessful = false;
+
+  console.log($state);
 
   Event
     .get($stateParams)
@@ -45,27 +47,15 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Event,
         currency: vm.currency
       };
       paymentTransaction(data);
-      // createDonation();
-      // create ticket??
+      ticketCreate();
     });
   };
 
-  // vm.reset = function() {
-  //   vm.card = {};
-  //   vm.payee = '';
-  //   vm.amount = null;
-  //   vm.paymentSuccessful = false;
-  //   vm.Form.$setPristine(true);
-  // };
-  // function createDonation(){
-  //   vm.donation.project_id = $stateParams.id;
-  //   vm.donation.amount = vm.card.amount;
-  //   Donation
-  //   .save(vm.donation)
-  //   .$promise
-  //   .then(()=> $state.go('projectsIndex'));
-  // }
+  function ticketCreate() {
+    vm.ticket.event_id = vm.event.id;
 
-  //CREATE TICKET FUNCTION GOES HERE??
-  //AND EMAIL FUNCTION??
+    Ticket
+      .save({ ticket: vm.ticket })
+      .$promise;
+  }
 }

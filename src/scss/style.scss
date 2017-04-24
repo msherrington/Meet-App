@@ -305,7 +305,7 @@ button {
   margin-left: 12.5%;
   position: relative;
   .eventShowTop {
-    background-color: white; 
+    background-color: white;
     h1 {
       background-color: #f24;
       color: white;
@@ -550,6 +550,7 @@ h1, p, button {
 }
 
 
+
 footer {
   background-color: black;
   height: 5vh;
@@ -562,4 +563,9 @@ footer {
     margin-top: 2vh;
     color: #fff;
   }
+
+.error{
+  color: red;
+  font-weight: bold;
+
 }

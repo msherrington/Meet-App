@@ -1,17 +1,37 @@
+<<<<<<< HEAD
 <section>
   <div class="container">
   <form ng-submit="auth.register()" class="authForm">
   <div>
     <label>Username</label>
     <input type="text" ng-model="auth.user.username" placeholder="Username">
+=======
+<form name="auth.registerForm" ng-submit="auth.register()" novalidate>
+  <div>
+    <label>Username</label>
+    <input name="username" type="text" ng-model="auth.user.username" required>
+  </div>
+  <!-- Error message! -->
+  <div ng-messages="auth.registerForm.username.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.username.$touched)">
+    <div ng-message="required"><em class="error">username is required!</em></div>
+>>>>>>> development
   </div>
 
   <div>
     <label>Email</label>
+<<<<<<< HEAD
     <input type="text" ng-model="auth.user.email" placeholder="Email">
+=======
+    <input name="email" type="email" ng-model="auth.user.email" required>
+  </div>
+  <!-- Error message! -->
+  <div ng-messages="auth.registerForm.email.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.email.$touched)">
+    <div ng-message="required"><em class="error">email is required!</em></div>
+    <div class="error" ng-message="email">valid email address is required!</div>
+>>>>>>> development
   </div>
 
-  {{ auth.user.base64 }}
+  <!-- {{ auth.user.base64 }} -->
   <div>
     <label for="base64" id="base64Lbl">Select Image</label>
     <input type="file" base64 name="base64" id="base64" ng-model="auth.user.base64" id="base64">
@@ -19,12 +39,30 @@
 
   <div>
     <label>Password</label>
+<<<<<<< HEAD
     <input type="password" ng-model="auth.user.password" placeholder="Password">
+=======
+    <input name ="password" type="password" ng-model="auth.user.password" minlength="4" required>
+  </div>
+  <!-- Error message! -->
+  <div ng-messages="auth.registerForm.password.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.password.$touched)">
+    <div ng-message="required"><em class="error">password is required!</em></div>
+    <div ng-message="minlength"><em class="error">Password needs to be at least 4 characters!</em></div>
+>>>>>>> development
   </div>
 
   <div>
     <label>Password Confirmation</label>
+<<<<<<< HEAD
     <input type="password" ng-model="auth.user.password_confirmation" placeholder="Password Confirmation" id="lastInput">
+=======
+    <input name ="password_confirmation" type="password" ng-model="auth.user.password_confirmation" minlength="4" required>
+  </div>
+  <!-- Error message! -->
+  <div ng-messages="auth.registerForm.password_confirmation.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.password_confirmation.$touched)">
+    <div ng-message="required"><em class="error">password is required!</em></div>
+    <div ng-message="minlength"><em class="error">Password needs to be at least 4 characters!</em></div>
+>>>>>>> development
   </div>
 
   <button>Register</button>
