@@ -28,7 +28,7 @@ function googleMap($window, mapStyles){
       const map = new $window.google.maps.Map(element[0], {
         zoom: 15,
         scrollwheel: false,
-        center: $scope.center,
+        center: { lat: 51.5089891, lng: -0.0874529 },
         styles: mapStyles
       });
       // google.maps.event.trigger(map, 'resize')
@@ -76,13 +76,6 @@ function googleMap($window, mapStyles){
         }, function () {
           handleLocationError(true, map.getCenter());
         });
-      } else {
-      // If browser doesn't support Geolocation
-        handleLocationError(false, map.getCenter());
-      }
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        marker.setPosition(pos);
-        marker.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
       }
 
       // Function to plot event locations on the map
