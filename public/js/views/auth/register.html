@@ -8,7 +8,7 @@
   </div>
   <!-- Error message! -->
   <div ng-messages="auth.registerForm.username.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.username.$touched)">
-    <div ng-message="required"><em class="error">username is required!</em></div>
+    <div ng-message="required"><em class="error">Username is required!</em></div>
   </div>
 
   <div>
@@ -17,8 +17,8 @@
   </div>
   <!-- Error message! -->
   <div ng-messages="auth.registerForm.email.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.email.$touched)">
-    <div ng-message="required"><em class="error">email is required!</em></div>
-    <div class="error" ng-message="email">valid email address is required!</div>
+    <div ng-message="required"><em class="error">Email is required!</em></div>
+    <div class="error" ng-message="email">Valid email address is required!</div>
   </div>
 
   <!-- {{ auth.user.base64 }} -->
@@ -33,7 +33,7 @@
   </div>
   <!-- Error message! -->
   <div ng-messages="auth.registerForm.password.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.password.$touched)">
-    <div ng-message="required"><em class="error">password is required!</em></div>
+    <div ng-message="required"><em class="error">Password is required!</em></div>
     <div ng-message="minlength"><em class="error">Password needs to be at least 4 characters!</em></div>
   </div>
 
@@ -43,7 +43,7 @@
   </div>
   <!-- Error message! -->
   <div ng-messages="auth.registerForm.password_confirmation.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.password_confirmation.$touched)">
-    <div ng-message="required"><em class="error">password is required!</em></div>
+    <div ng-message="required"><em class="error">Password is required!</em></div>
     <div ng-message="minlength"><em class="error">Password needs to be at least 4 characters!</em></div>
 
   </div>
