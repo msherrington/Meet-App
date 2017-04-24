@@ -16,7 +16,33 @@ html, body {
   background-position: center;
   height: 87vh;
   margin-top: -1%;
+  position: relative;
 }
+
+.welcomeBox {
+  margin: 0 auto;
+  background-color: black;
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  padding: 2.5vh;
+  transform: translate(-50%);
+  text-align: center;
+  padding: 2.3% 3% 1%;
+}
+
+.welcome {
+  margin: 0% 10%;
+  font-weight: bold;
+  background-color: #f24;
+  border-radius: 0px;
+  padding: 1.5vh;
+  text-align: center;
+  width: 80%;
+}
+
 
 nav {
   top: 0;
