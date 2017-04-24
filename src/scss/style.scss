@@ -23,6 +23,7 @@ nav {
   background-color: black;
   height: 10vh;
   width: 100%;
+  // border-bottom: 1px solid black;
   margin: 0;
   position: fixed;
   z-index: 3;
@@ -216,6 +217,8 @@ button {
         margin-left: 12.5%;
         padding-left: 0;
         margin-bottom: 0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
         li {
           display: inline-block;
           input {
@@ -368,6 +371,7 @@ button {
     font-weight: bold;
     padding: 20px;
     margin: 0;
+    border-radius: 10px;
   }
   .eventShowTop {
     border: 5px solid #303030;
@@ -657,24 +661,43 @@ button {
       top: 30%;
       left: 55%;
     }
+    button {
+      position: absolute;
+      top: 40%;
+      left: 55%;
+    }
   }
   .test {
     ul {
+      margin-top: 20px;
       padding-left: 0;
       list-style: none;
+      margin-bottom: 0;
       li {
-        width: 30%;
+        // width: 30%;
         display: inline-block;
+        background-color: #f24;
+        padding-top: 0;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
         button {
+          margin-bottom: 0;
+          margin-top: 3px;
           color: white;
-          border-color: white;
-          border-width: 1px;
+          border-color: #f24;
+          // border-width: 1px;
           border-radius: 0;
-          background-color: #303030;
+          // border-bottom: 1px solid white;
+          background-color: #f24;
+          // padding-bottom: 20px;
 
           &:focus {
             outline: none;
-            border-width: 2px;
+            border-bottom: none;
+            background-color: #f24;
+            color: white;
+
+            // border-width: 2px;
             // border-color: white;
 
           }
@@ -686,6 +709,7 @@ button {
   .waz {
     // background-color: #303030;
     div {
+      background-color: #f24;
       ul {
         width: 90%;
         margin-left: 5%;
@@ -696,10 +720,12 @@ button {
           width: 200px;
           height: 200px;
           margin: 2px;
+          margin-top: 20px;
           border: 2px solid black;
-          // background-color: white;
+          background-color: white;
           display: inline-block;
           .userShowEvents {
+            background-color: white;
             p {
               a {
                   text-transform: capitalize;
@@ -759,78 +785,98 @@ button {
 }
 
 //-------------------------------EventEdit-------------------------------
-.eventForm {
-  padding-top: 5vh;
-  padding-bottom: 3vh;
-  background-color: white;
+.eventFormContainer {
+  margin-top: 14vh;
   text-align: center;
-  div {
-    label {
-      .custom-file-upload {
-        border: 1px solid black;
-        display: inline-block;
-        padding: 6px 12px;
-        cursor: pointer;
+  width: 50%;
+  margin-left: 25%;
+  h1 {
+    background-color: #f24;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    padding: 3vh;
+    color: white;
+    border-radius: 10px;
+    // margin-bottom: 2vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 0;
+  }
+  .eventForm {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-top: 5vh;
+    padding-bottom: 3vh;
+    background-color: white;
+    text-align: center;
+    div {
+      label {
+        .custom-file-upload {
+          border: 1px solid black;
+          display: inline-block;
+          padding: 6px 12px;
+          cursor: pointer;
+        }
+        display: none;
       }
-      display: none;
-    }
-    input {
-      font-size: 20px;
-      width: 60%;
-      height: 5vh;
-      text-align: center;
-      border: none;
-      border-bottom: 2px solid #aaa;
-      margin: 2% auto;
-      &:focus {
-        outline: none;
+      input {
+        font-size: 20px;
+        width: 60%;
+        height: 5vh;
+        text-align: center;
+        border: none;
+        border-bottom: 2px solid #aaa;
+        margin: 2% auto;
+        &:focus {
+          outline: none;
+          &::-webkit-input-placeholder {
+            color: white;
+          }
+        }
         &::-webkit-input-placeholder {
-          color: white;
+          color: #ccc;
+        }
+        &::-webkit-datetime-edit-text {
+          color: #ccc;
+        }
+        &::-webkit-datetime-edit-month-field {
+          color: #ccc;
+        }
+        &::-webkit-datetime-edit-day-field {
+          color: #ccc;
+          margin-left: 40px;
+        }
+        &::-webkit-datetime-edit-year-field {
+          color: #ccc;
+        }
+        &::-webkit-inner-spin-button {
+          display: none;
+         }
+      }
+      #lastInput {
+        margin-bottom: 5vh;
+      }
+      .base64Lbl {
+        display: block;
+        width: 40%;
+        margin-left: 30%;
+        color: #ccc;
+        font-size: 20px;
+        border: 2px solid #aaa;
+        border-radius: 10px;
+        padding-bottom: 0.8vh;
+        padding-top: 1.2vh;
+        &:hover {
+          cursor: pointer;
+          color: black;
+        }
+        &:focus {
+          color: black;
         }
       }
-      &::-webkit-input-placeholder {
-        color: #ccc;
-      }
-      &::-webkit-datetime-edit-text {
-        color: #ccc;
-      }
-      &::-webkit-datetime-edit-month-field {
-        color: #ccc;
-      }
-      &::-webkit-datetime-edit-day-field {
-        color: #ccc;
-        margin-left: 40px;
-      }
-      &::-webkit-datetime-edit-year-field {
-        color: #ccc;
-      }
-      &::-webkit-inner-spin-button {
+      #base64 {
         display: none;
-       }
-    }
-    #lastInput {
-      margin-bottom: 5vh;
-    }
-    .base64Lbl {
-      display: block;
-      width: 40%;
-      margin-left: 30%;
-      color: #ccc;
-      font-size: 20px;
-      border: 2px solid #aaa;
-      border-radius: 10px;
-      padding-bottom: 0.8vh;
-      padding-top: 1.2vh;
-      &:hover {
-        cursor: pointer;
-        color: black;
       }
-      &:focus {
-        color: black;
-      }
-    }
-    #base64 {
-      display: none;
     }
   }
 }
@@ -867,9 +913,9 @@ button {
 //   display: inline-block;
 // }
 
-.ticksleft{
-
-}
+// .ticksleft{
+//
+// }
 
 // //EVENT SHOW
 // .EventShowImg{
@@ -877,47 +923,47 @@ button {
 //   width: 500px;
 // }
 
-.btn{
-  margin: 5px 10px;
-}
-
-.attendees{
-  display: block;
-  list-style-type: none;
-}
-
-//USER INDEX
-.UserIndexDiv{
-  width: 300px;
-  height: 300px;
-  border: 1px solid black;
-  margin: 5px;
-  img{
-    height: 200px;
-    width: 200px;
-  }
-}
-
-.UserInnerDiv{
-  margin: 4px;
-}
-
-//USER SHOW
-// .UserShowImg{
-//   height: 500px;
-//   width: 500px;
+// .btn{
+//   margin: 5px 10px;
 // }
-
-//UsersShow tabs
-.tabitems{
-  display: inline;
-}
-
-//infowindow
-.infowind{
-  height: 100px;
-  width: 100px;
-}
+//
+// .attendees{
+//   display: block;
+//   list-style-type: none;
+// }
+//
+// //USER INDEX
+// .UserIndexDiv{
+//   width: 300px;
+//   height: 300px;
+//   border: 1px solid black;
+//   margin: 5px;
+//   img{
+//     height: 200px;
+//     width: 200px;
+//   }
+// }
+//
+// // .UserInnerDiv{
+// //   margin: 4px;
+// // }
+//
+// //USER SHOW
+// // .UserShowImg{
+// //   height: 500px;
+// //   width: 500px;
+// // }
+//
+// //UsersShow tabs
+// // .tabitems{
+// //   display: inline;
+// // }
+//
+// //infowindow
+// .infowind{
+//   height: 100px;
+//   width: 100px;
+// }
 
 // index tabs
 // .tab1{
@@ -933,22 +979,22 @@ button {
 // }
 
 /* text recolor */
-h1, p, button {
-  // color:  !important;
-}
+// h1, p, button {
+//   // color:  !important;
+// }
 
 /* button recolor */
-.nav-pills > li.active > button, .btn-primary {
-  background-color: #6C6C6C !important;
-  // feeling like it's a rounded corners kind of day
-  border-color: #6C6C6C !important;
-  border-radius: 25px;
-}
-
-.col-md-8 {
-  height: 200px;
-  // background-color: red;
-}
+// .nav-pills > li.active > button, .btn-primary {
+//   background-color: #6C6C6C !important;
+//   // feeling like it's a rounded corners kind of day
+//   border-color: #6C6C6C !important;
+//   border-radius: 25px;
+// }
+//
+// .col-md-8 {
+//   height: 200px;
+//   // background-color: red;
+// }
 
 
 

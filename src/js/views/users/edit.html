@@ -1,4 +1,5 @@
-<div class="container">
+<div class="eventFormContainer">
+  <h1>Edit your profile</h1>
   <form class="eventForm" name="usersEdit.usersForm" ng-submit="usersEdit.update()" novalidate>
     <div>
       <label>Username</label>
@@ -6,7 +7,7 @@
     </div>
     <!-- Error message! -->
     <div ng-messages="usersEdit.usersForm.username.$error" ng-show="(usersEdit.usersForm.$submitted || usersEdit.usersForm.username.$touched)">
-      <div class="error" ng-message="required">username is required!</div>
+      <div class="error" ng-message="required">Username is required!</div>
       <div class="error" ng-message="maxlength"> Username must be less than 12 characters</div>
     </div>
 
@@ -25,7 +26,7 @@
       <input name ="password" type="password" ng-model="usersEdit.user.password" minlength="4" required placeholder="Password">
     </div>
     <!-- Error message! -->
-    <div ng-messages="auth.registerForm.password.$error" ng-show="(usersEdit.userForm.$submitted || usersEdit.userForm.password.$touched)">
+    <div ng-messages="usersEdit.usersForm.password.$error" ng-show="(usersEdit.userForm.$submitted || usersEdit.usersForm.password.$touched)">
       <div ng-message="required"><em class="error">Password is required!</em></div>
       <div ng-message="minlength"><em class="error">Password needs to be at least 4 characters!</em></div>
     </div>
