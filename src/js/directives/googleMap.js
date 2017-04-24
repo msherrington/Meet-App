@@ -74,11 +74,11 @@ function googleMap($window, mapStyles){
           map.setCenter(pos);
           // getEventLatLng(pos);
         }, function () {
-          handleLocationError(true,  googleMap.getCenter());
+          handleLocationError(true, map.getCenter());
         });
       } else {
       // If browser doesn't support Geolocation
-        handleLocationError(false, googleMap.getCenter());
+        handleLocationError(false, map.getCenter());
       }
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         marker.setPosition(pos);
