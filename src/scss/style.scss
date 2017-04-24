@@ -3,7 +3,7 @@ html, body {
   min-height: 100vh;
   max-width: 200vh;
   background-color: #303030;
-  font-family: 'Poiret One', cursive;
+  font-family: 'Josefine Sans', sans-serif;
 }
 
 * {
@@ -685,12 +685,8 @@ button {
           margin-top: 3px;
           color: white;
           border-color: #f24;
-          // border-width: 1px;
           border-radius: 0;
-          // border-bottom: 1px solid white;
           background-color: #f24;
-          // padding-bottom: 20px;
-
           &:focus {
             outline: none;
             border-bottom: none;
