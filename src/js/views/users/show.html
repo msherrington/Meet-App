@@ -1,51 +1,52 @@
-<h1>User Profile</h1>
-<h1><strong>{{ usersShow.user.username}}</strong></h1>
-{{ usersShow.user.image }}
-<img class="UserShowImg" ng-src="{{ usersShow.user.image_src }}" alt="{{ usersShow.user.username }}'s Photo">
-<p><strong>Bio:</strong> {{ usersShow.user.bio }} </p>
+<!-- <h1>User Profile</h1> -->
+<div class="userProfile">
 
-<div class=" test col-md-2">
-  <ul class="nav nav-pills nav-stacked">
+<div class="profileHead">
+  <h1><strong>{{ usersShow.user.username}} 's Profile</strong></h1>
+<!-- {{ usersShow.user.image }} -->
+<img class="userShowImg" ng-src="{{ usersShow.user.image_src }}" alt="{{ usersShow.user.username }}'s Photo">
+<p>{{ usersShow.user.bio }} <button ng-click="usersShow.conversationCreate()">Message</button></p>
+</div>
+
+<div class="test">
+  <ul>
     <li ng-class="{ active: usersShow.isSet(1) }">
-      <button ng-click="usersShow.setTab(1)">Events Hosted</button>
+      <button ng-click="usersShow.setTab(1)">Hosting</button>
     </li>
 
     <li ng-class="{ active: usersShow.isSet(2) }">
-      <button ng-click="usersShow.setTab(2)">Events attending</button>
+      <button ng-click="usersShow.setTab(2)">Attending</button>
     </li>
   </ul>
 </div>
 
-<div class="col-md-8">
+<div class="waz">
   <!-- TAB 1 -->
   <div ng-show="usersShow.isSet(1)">
-    <strong>Events hosted:</strong>
     <ul>
       <li ng-repeat="events_created in usersShow.user.events_created">
-        <div class="EventIndexDiv">
+        <div class="userShowEvents">
           <p><a ui-sref="eventsShow({ id: events_created.id })"><strong>{{ events_created.name }}</strong></a></p>
-          <p>{{ events_created.location }}</p>
-          <p>{{ events_created.date | date: 'd MMM yyyy' }}</p>
+          <!-- <p>{{ events_created.location }}</p>
+          <p>{{ events_created.date | date: 'd MMM yyyy' }}</p> -->
           <a ui-sref="eventsShow({ id: events_created.id })"><img src="{{ events_created.image_src }}" alt="{{ events_created.name }}"></a>
         </div>
       </li>
     </ul>
   </div>
 
-  <button ng-click="usersShow.conversationCreate()">Create Conversation</button>
-
   <!-- TAB 2 -->
   <div ng-show="usersShow.isSet(2)">
-    <strong>Events attending:</strong>
     <ul>
       <li ng-repeat="event in usersShow.user.events">
-        <div class="EventIndexDiv">
+        <div class="userShowEvents">
           <p><a ui-sref="eventsShow({ id: event.id })"><strong>{{ event.name }}</strong></a></p>
-          <p>{{ event.location }}</p>
-          <p>{{ event.date | date: 'd MMM yyyy' }}</p>
+          <!-- <p>{{ event.location }}</p>
+          <p>{{ event.date | date: 'd MMM yyyy' }}</p> -->
           <a ui-sref="eventsShow({ id: event.id })"><img src="{{ event.image_src }}" alt="{{ event.name }}"></a>
         </div>
       </li>
     </ul>
   </div>
+</div>
 </div>
