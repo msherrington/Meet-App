@@ -78,10 +78,12 @@ function UsersEditCtrl(User, $stateParams, $state) {
   function usersUpdate() {
     // wrap the data in a `user` object and pass the user's id
     // to the model so it can generate the correct URL
-    User
-      .update({ id: vm.user.id, user: vm.user})
-      .$promise
-      .then(() => $state.go('usersShow', $stateParams));
+    if(vm.usersForm.$valid){
+      User
+        .update({ id: vm.user.id, user: vm.user})
+        .$promise
+        .then(() => $state.go('usersShow', $stateParams));
+    }
   }
   vm.update = usersUpdate;
 }
