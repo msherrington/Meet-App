@@ -3,7 +3,7 @@
     <h1>Conversations</h1>
     <ul class="row">
       <li ng-repeat="conversation in conversationsIndex.all" class="col-md-6">
-        <div class="conversation">
+        <div class="conversation" ng-show="main.currentUser.id !== conversation.recipient.id">
           <h2>{{ conversation.recipient.username }} <span>{{ conversation.unread_message_count }}</span> New Messages</h2>
           <button ui-sref="messagesIndex({id: conversation.id})">View</button>
         </div>
