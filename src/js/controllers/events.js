@@ -139,10 +139,12 @@ function EventsEditCtrl(Event, $stateParams, $state) {
   });
 
   function eventsUpdate() {
-    Event
-    .update({id: vm.event.id, event: vm.event })
-    .$promise
-    .then(() => $state.go('eventsShow', $stateParams));
+    if(vm.eventsForm.$valid){
+      Event
+      .update({id: vm.event.id, event: vm.event })
+      .$promise
+      .then(() => $state.go('eventsShow', $stateParams));
+    }
   }
   vm.update = eventsUpdate;
 }
