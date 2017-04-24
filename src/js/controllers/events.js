@@ -49,20 +49,16 @@ function EventsNewCtrl(Event, User, $state) {
   const vm = this;
   vm.event = {};
   vm.users = User.query();
-
-  // ng change function, maybe?
-  // function change(){
-  //   vm.event.tickets_left = vm.event.max_tickets;
-  // }
-  // vm.change = change;
-
+  vm.currentDate = new Date();
 
   function eventsCreate() {
     //Wrap data in an event object//
+  if(vm.eventsForm.$valid){
     Event
       .save({ event: vm.event })
       .$promise
       .then(() => $state.go('eventsIndex'));
+    }
   }
   vm.create = eventsCreate;
 }
