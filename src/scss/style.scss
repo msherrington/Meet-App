@@ -28,7 +28,7 @@ nav {
   z-index: 3;
   ul {
     list-style: none;
-    width: 50%;
+    width: 85%;
     margin-left: 6.75%;
     padding-left: 0;
     li {
@@ -88,7 +88,11 @@ nav {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;
   }
+}
 
+.right {
+  float: right;
+  margin-left: 35%;
 }
 
 main {

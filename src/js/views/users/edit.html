@@ -2,11 +2,12 @@
 
   <div>
     <label>Username</label>
-    <input name="username" type="text" ng-model="usersEdit.user.username" required>
+    <input name="username" type="text" ng-model="usersEdit.user.username" ng-maxlength="12" required>
   </div>
   <!-- Error message! -->
   <div ng-messages="usersEdit.usersForm.username.$error" ng-show="(usersEdit.usersForm.$submitted || usersEdit.usersForm.username.$touched)">
-    <div ng-message="required"><em class="error">username is required!</em></div>
+    <div class="error" ng-message="required">username is required!</div>
+    <div class="error" ng-message="maxlength"> Username must be less than 12 characters</div>
   </div>
 
   <div>
