@@ -95,7 +95,7 @@ button {
   font-size: 15px;
   background-color: white;
   border: 2px solid black;
-  border-radius: 30px;
+  border-radius: 10px;
   width: 100px;
   height: 30px;
   margin: 15px 5px;
@@ -428,12 +428,20 @@ button {
       }
       div {
         h2 {
-          font-family: 'Josefin Sans', sans-serif;
-          font-weight: bold;
+          display: none;
         }
         form {
           text-align: center;
-          textarea {
+          input {
+            text-align: center;
+            border: none;
+            border-bottom: 2px solid #303030;
+            &:focus {
+              outline: none;
+              &::-webkit-input-placeholder {
+                color: white;
+              }
+            }
 
           }
           button {
