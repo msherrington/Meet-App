@@ -1,11 +1,6 @@
-<<<<<<< HEAD
+
 <section>
   <div class="container">
-  <form ng-submit="auth.login()" class="authForm">
-  <div>
-    <label>Email</label>
-    <input type="text" ng-model="auth.credentials.email" placeholder="Email">
-=======
 <form name="login.loginForm" ng-submit="auth.login()" novalidate>
   <div>
     <label>Email</label>
@@ -15,21 +10,17 @@
   <div class="errorDiv" ng-messages="login.loginForm.email.$error" ng-show="login.loginForm.$submitted || login.loginForm.email.$touched" role="alert">
     <div class="error" ng-message="required">Your email address is required.</div>
     <div class="error" ng-message="email">valid email address is required!</div>
->>>>>>> development
   </div>
 
   <div>
     <label>Password</label>
-<<<<<<< HEAD
-    <input type="password" ng-model="auth.credentials.password" placeholder="Password" id="lastInput">
-=======
     <input name="password" type="password" ng-model="auth.credentials.password" minlength="4" required>
   </div>
   <!-- error message -->
   <div class="errorDiv" ng-messages="login.loginForm.password.$error" ng-show="login.loginForm.$submitted || login.loginForm.email.$touched" role="alert">
     <div class="error" ng-message="required">Your password is required.</div>
     <div class="error" ng-message="minlength">Password needs to be at least 4 characters!</div>
->>>>>>> development
+
   </div>
 
   <button>Login</button>
