@@ -4,7 +4,9 @@
 
 
     <img class="eventShowImg" ng-src="{{ eventsShow.event.image_src }}" alt="{{ eventsShow.event.name }}">
-    <img ng-src="{{eventsShow.event.user.image_src}}" alt="{{ eventsShow.event.user.username }}'s Photo" class="eventShowUserPic">
+
+    <img src="{{ eventsShow.event.user.image_src }}" alt="{{ eventsShow.event.user.username }}'s Photo" class="eventShowUserPic">
+
 
     <div class="eventInfo">
       <p><strong>Where: </strong>{{ eventsShow.event.location }}</p>
