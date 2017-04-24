@@ -1,15 +1,22 @@
-<form ng-submit="auth.login()">
+<section>
+  <div class="container">
+  <form ng-submit="auth.login()" class="authForm">
   <div>
     <label>Email</label>
-    <input type="text" ng-model="auth.credentials.email">
+    <input type="text" ng-model="auth.credentials.email" placeholder="Email">
   </div>
 
   <div>
     <label>Password</label>
-    <input type="password" ng-model="auth.credentials.password">
+    <input type="password" ng-model="auth.credentials.password" placeholder="Password" id="lastInput">
   </div>
 
   <button>Login</button>
 </form>
-<button ng-click="auth.authenticate('github')">Login with Github</button>
-<button ng-click="auth.authenticate('facebook')">Login with Facebook</button>
+<div class="loginBtns">
+
+<button id="github" ng-click="auth.authenticate('github')">Github</button>
+<button id="facebook" ng-click="auth.authenticate('facebook')">Facebook</button>
+</div>
+</div>
+</section>
