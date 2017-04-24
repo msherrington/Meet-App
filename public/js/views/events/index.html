@@ -8,7 +8,7 @@
   		<ul class="tabs">
         <li><input type="text" class="search" ng-model="eventsIndex.q" placeholder="Search..." ></li>
        	<li ng-class="{ active: eventsIndex.isSet(1) }">
-          	<button ng-click="eventsIndex.setTab(1)">Map</button>
+          	<button ng-click="eventsIndex.setTab(1)" >Map</button>
        	</li>
        	<li ng-class="{ active: eventsIndex.isSet(2) }">
           	<button ng-click="eventsIndex.setTab(2)">List</button>
@@ -28,7 +28,7 @@
 
       <!-- TAB 2 -->
       <div ng-show="eventsIndex.isSet(2)" class="indexTab">
-        <h1>Events Index</h1>
+        <h1>Events List</h1>
          <ul>
           <!-- <div class="row">
             <div class="col-sm-6"> -->
@@ -37,7 +37,7 @@
                   <!-- <div class="eventInnerDiv"> -->
                     <a ui-sref="eventsShow({ id: event.id })"><h3><strong>{{ event.name }}</strong></h3></a>
                       <img src="{{ event.image_src }}" alt="{{ event.name }}">
-                    <h4>{{ event.location }}</h4>
+                    <p>{{ event.location }}</p>
                     <p>{{ event.date | date: 'd MMM yyyy' }}</p>
                     <p><span class="ticksleft">{{ event.tickets_left }}</span> tickets left</p>
                     <p>Host: <a ui-sref="usersShow({ id: event.user.id })">{{ event.user.username }}</a></p>
