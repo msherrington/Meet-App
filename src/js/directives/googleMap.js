@@ -73,8 +73,6 @@ function googleMap($window, mapStyles){
           marker.setPosition(pos);
           map.setCenter(pos);
           // getEventLatLng(pos);
-        }, function () {
-          handleLocationError(true, map.getCenter());
         });
       }
 
