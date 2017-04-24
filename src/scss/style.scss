@@ -10,6 +10,14 @@ html, body {
   font-family: inherit;
 }
 
+#home {
+  background-image: url('../../images/home.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 87vh;
+  margin-top: -1%;
+}
+
 nav {
   top: 0;
   background-color: black;
@@ -563,7 +571,7 @@ footer {
     margin-top: 2vh;
     color: #fff;
   }
-}  
+}
 
 .error{
   color: red;
