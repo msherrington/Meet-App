@@ -1,10 +1,10 @@
 
 <section>
   <div class="container">
-<form name="auth.registerForm" ng-submit="auth.register()" novalidate>
+<form class="authForm" name="auth.registerForm" ng-submit="auth.register()" novalidate>
   <div>
     <label>Username</label>
-    <input name="username" type="text" ng-model="auth.user.username" required>
+    <input name="username" type="text" ng-model="auth.user.username" required placeholder="Username">
   </div>
   <!-- Error message! -->
   <div ng-messages="auth.registerForm.username.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.username.$touched)">
@@ -13,7 +13,7 @@
 
   <div>
     <label>Email</label>
-    <input name="email" type="email" ng-model="auth.user.email" required>
+    <input name="email" type="email" ng-model="auth.user.email" required placeholder="Email">
   </div>
   <!-- Error message! -->
   <div ng-messages="auth.registerForm.email.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.email.$touched)">
@@ -39,7 +39,7 @@
 
   <div>
     <label>Password Confirmation</label>
-    <input name ="password_confirmation" type="password" ng-model="auth.user.password_confirmation" minlength="4" required>
+    <input name ="password_confirmation" type="password" ng-model="auth.user.password_confirmation" minlength="4" required placeholder="Password Confirmation">
   </div>
   <!-- Error message! -->
   <div ng-messages="auth.registerForm.password_confirmation.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.password_confirmation.$touched)">
