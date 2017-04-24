@@ -5,11 +5,12 @@
       <!-- {{ eventsEdit.event }} -->
       <div>
         <label for="name">Event Name</label>
-        <input name="name" type="text" ng-model="eventsEdit.event.name" placeholder="Event name" required>
+        <input name="name" type="text" ng-model="eventsEdit.event.name" placeholder="Event name" ng-maxlength="12" required>
       </div>
       <!-- error message -->
       <div class="errorDiv" ng-messages="eventsEdit.eventsForm.name.$error" ng-show="eventsEdit.eventsForm.$submitted || eventsEdit.eventsForm.name.$touched">
         <div class="error" ng-message="required">Event name is required.</div>
+        <div class="error" ng-message="maxlength">Event name must be less than 12 characters</div>
       </div>
 
       <div>
