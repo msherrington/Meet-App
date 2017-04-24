@@ -15,6 +15,7 @@ function MainCtrl($rootScope, $state, $auth) {
   });
 
   $rootScope.$on('$stateChangeSuccess', () => {
+    window.scrollTo(0, 0); // workaround to scroll back to top of page on page change
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
     if($auth.getPayload()) vm.currentUser = $auth.getPayload();
