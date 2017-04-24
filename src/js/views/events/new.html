@@ -1,72 +1,75 @@
-<h1>Create New Event</h1>
+<section>
+  <div class="container">
+    <form class="eventForm" name="eventsNew.eventsForm" ng-submit="eventsNew.create()" novalidate>
+      <h1>Create New Event</h1>
 
-<form name="eventsNew.eventsForm" ng-submit="eventsNew.create()" novalidate>
+      <div>
+        <label for="name">Event Name</label>
+        <input name="name" type="text" ng-model="eventsNew.event.name" placeholder="Event name" ng-maxlength="12" required>
+      </div>
+      <!-- error message -->
+      <div class="errorDiv" ng-messages="eventsNew.eventsForm.name.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.name.$touched">
+        <div class="error" ng-message="required">Event name is required.</div>
+        <div class="error" ng-message="maxlength">Event name must be less than 12 characters</div>
+      </div>
 
-  <div>
-    <label for="name">Event Name</label>
-    <input name="name" type="text" ng-model="eventsNew.event.name" required>
-  </div>
-  <!-- error message -->
-  <div class="errorDiv" ng-messages="eventsNew.eventsForm.name.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.name.$touched">
-    <div class="error" ng-message="required">Event name is required.</div>
-  </div>
+      <div>
+        <label for="date">Date</label>
+        <input name="date" type="date" ng-model="eventsNew.event.date" min="{{currentDate | date:'yyyy-MM-dd'}}" required>
+      </div>
+      <!-- error message -->
+      <div class="errorDiv" ng-messages="eventsNew.eventsForm.date.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.date.$touched">
+        <div class="error" ng-message="required">The event date is required.</div>
+        <div class="error" ng-message="min">This date has already passed. A future date is required.</div>
+      </div>
 
-  <div>
-    <label for="date">Date</label>
-    <input name="date" type="date" ng-model="eventsNew.event.date" min="{{currentDate | date:'yyyy-MM-dd'}}" required>
-  </div>
-  <!-- error message -->
-  <div class="errorDiv" ng-messages="eventsNew.eventsForm.date.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.date.$touched">
-    <div class="error" ng-message="required">The event date is required.</div>
-    <div class="error" ng-message="min">This date has already passed. A future date is required.</div>
-  </div>
+      <div>
+        <label for="maxTickets">Max Tickets</label>
+        <input name="maxTickets" type="integer" ng-model="eventsNew.event.max_tickets" ng-change="eventsNew.change()" ng-pattern="/^[0-9]+(\.[0-9]{2})?$/" placeholder="Max. tickets" required>
+      </div>
+      <!-- error message -->
+      <div class="errorDiv" ng-messages="eventsNew.eventsForm.maxTickets.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.maxTickets.$touched">
+        <div class="error" ng-message="required">The number of tickets is required</div>
+        <div class="error" ng-message="pattern">You must enter a number</div>
+      </div>
 
-  <div>
-    <label for="maxTickets">Max Tickets</label>
-    <input name="maxTickets" type="integer" ng-model="eventsNew.event.max_tickets" ng-change="eventsNew.change()" ng-pattern="/^[0-9]+(\.[0-9]{2})?$/" required>
-  </div>
-  <!-- error message -->
-  <div class="errorDiv" ng-messages="eventsNew.eventsForm.maxTickets.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.maxTickets.$touched">
-    <div class="error" ng-message="required">The number of tickets is required</div>
-    <div class="error" ng-message="pattern">You must enter a number</div>
-  </div>
+      <div>
+        <label for="price">Price</label>
+        <input name="price" type="integer" ng-model="eventsNew.event.price" ng-pattern="/^[0-9]+(\.[0-9]{2})?$/" placeholder="Price (£)" required>
+      </div>
+      <!-- error message -->
+      <div class="errorDiv" ng-messages="eventsNew.eventsForm.price.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.price.$touched">
+        <div class="error" ng-message="required">Price is required (enter zero for free event)</div>
+        <div class="error" ng-message="pattern">You must enter a number</div>
+      </div>
 
-  <div>
-    <label for="price">Price</label>
-    <input name="price" type="integer" ng-model="eventsNew.event.price" ng-pattern="/^[0-9]+(\.[0-9]{2})?$/" required>
-  </div>
-  <!-- error message -->
-  <div class="errorDiv" ng-messages="eventsNew.eventsForm.price.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.price.$touched">
-    <div class="error" ng-message="required">Price is required</div>
-    <div class="error" ng-message="pattern">You must enter a number</div>
-  </div>
+      <div>
+        <label for="description">Description</label>
+        <input name="description" type="text" ng-model="eventsNew.event.description" placeholder="Description" required>
+      </div>
+      <!-- error message -->
+      <div class="errorDiv" ng-messages="eventsNew.eventsForm.description.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.description.$touched">
+        <div class="error" ng-message="required">A description is required. Please include the time of your event</div>
+      </div>
 
-  <div>
-    <label for="description">Description</label>
-    <input name="description" type="text" ng-model="eventsNew.event.description" required>
-  </div>
-  <!-- error message -->
-  <div class="errorDiv" ng-messages="eventsNew.eventsForm.description.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.description.$touched">
-    <div class="error" ng-message="required">A description is required. Please include the time of your event</div>
-  </div>
+      <div>
+        <label class="base64Lbl" for="base64">Image</label>
+        <input type="file" base64 name="base64" id="base64" ng-model="eventsNew.event.base64">
+      </div>
 
-  <div>
-    <label for="base64">Image</label>
-    <input type="file" base64 name="base64" id="base64" ng-model="eventsNew.event.base64">
-  </div>
+      <div>
+        <label for="location">Location</label>
+        <input id="location" type="text" name="location" autocomplete ng-model="eventsNew.event.location" lat="eventsNew.event.latitude" lng="eventsNew.event.longitude" placeholder="Location" required>
+      </div>
+      <!-- error message -->
+      <div class="errorDiv" ng-messages="eventsNew.eventsForm.location.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.location.$touched">
+        <div class="error" ng-message="required">A location is required</div>
+      </div>
 
-  <div>
-    <label for="location">Location</label>
-    <input id="location" type="text" name="location" autocomplete ng-model="eventsNew.event.location" lat="eventsNew.event.latitude" lng="eventsNew.event.longitude" required>
+      <div>
+        <button class="btn btn-success">Submit</button>
+          <button class="btn btn-danger" ui-sref="eventsIndex">Cancel</button>
+      </div>
+    </form>
   </div>
-  <!-- error message -->
-  <div class="errorDiv" ng-messages="eventsNew.eventsForm.location.$error" ng-show="eventsNew.eventsForm.$submitted || eventsNew.eventsForm.location.$touched">
-    <div class="error" ng-message="required">A location is required</div>
-  </div>
-
-  <div>
-    <button class="btn btn-success">Submit</button>
-      <button class="btn btn-danger" ui-sref="eventsIndex">Cancel</button>
-  </div>
-
-</form>
+</section>

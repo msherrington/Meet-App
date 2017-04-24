@@ -41,9 +41,9 @@ function googleMap($window, mapStyles){
       const marker = new $window.google.maps.Marker({
         // position: $scope.center
         icon: '/images/locationMarker.png',
-        map: map,
-        optimized: false,
-        zIndex: 99999999
+        map
+        // optimized: false,
+        // zIndex: 99999999
       });
 
       //Runs function to find latlng of all events
