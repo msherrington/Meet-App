@@ -1,1 +1,11 @@
-<div class="UserIndexDiv"><ul><li ng-repeat="user in usersIndex.all"><a ui-sref="usersShow({ id: user.id })"><h3><strong>{{ user.username }}</strong></h3></a><a ui-sref="usersShow({ id: user.id })"><img ng-src="{{ user.image_src }}" alt="{{ user.username}}"></a><p>{{ user.bio }}</p></li></ul></div>
+<div class="UserIndexDiv">
+<ul>
+  <li ng-repeat="user in usersIndex.all">
+    <!-- <div class="UserInnerDiv"> -->
+    <a ui-sref="usersShow({ id: user.id })"><h3><strong>{{ user.username }}</strong></h3></a>
+    <a ui-sref="usersShow({ id: user.id })"><img ng-src="{{ user.image_src }}" alt="{{ user.username}}"></a>
+    <p>{{ user.bio }}</p>
+    <!-- </div> -->
+  </li>
+</ul>
+</div>

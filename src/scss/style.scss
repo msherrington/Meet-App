@@ -1121,6 +1121,7 @@ header {
       }
     }
 
+    //EVENTS INDEX
     .eventIndexPage {
       // background-color: red;
       text-align: center;
@@ -1280,4 +1281,58 @@ header {
         }
       }
     }
+
+  //USER INDEX
+  .UserIndexDiv{
+    ul {
+      text-align: center;
+      padding-left: 0;
+      list-style: none;
+      width: 100%;
+      margin-left: 0%;
+      li {
+        width: 48%;
+        display: inline-block;
+        color: black;
+        height: 330px;
+        border-radius: 10px;
+        margin: 5px;
+        background-color: white;
+        a {
+          text-decoration: none;
+          }
+          h3 {
+            color: #f24;
+            font-family: 'Josefin Sans', sans-serif;
+            position: relative;
+            &:hover {
+              &:after {
+                content: '';
+                background-color: #f24;
+                height: 2px;
+                width: 50px;
+                position: absolute;
+                bottom: -4px;
+                left: 50%;
+                transform: translate(-50%);
+              }
+            }
+          }
+          img{
+            display: inline-block;
+            height: 200px;
+            width: 200px;
+          }
+          p {
+            height: 4vh;
+            margin-top: 10px;
+            span {
+              font-family: 'Josefin Sans', sans-serif;
+              color: #f24;
+            }
+          }
+        }
+
+    }
+  }
 }
