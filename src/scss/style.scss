@@ -11,7 +11,7 @@ html, body {
 }
 
 #home {
-  background-image: url('../../images/home.jpg');
+  background-image: url('../images/home.jpg');
   background-size: cover;
   background-position: center;
   height: 87vh;
@@ -23,7 +23,6 @@ nav {
   background-color: black;
   height: 10vh;
   width: 100%;
-  // border-bottom: 1px solid black;
   margin: 0;
   position: fixed;
   z-index: 3;
@@ -39,6 +38,12 @@ nav {
       margin-top: 3vh;
       text-transform: capitalize;
       font-size: 15px;
+      &.menu {
+        color: white;
+        cursor: pointer;
+        display: none;
+        font-size: 20px;
+      }
       a {
         text-transform: uppercase;
         font-family: 'Josefin Sans', sans-serif;
@@ -990,4 +995,120 @@ div, p {
 
 .centered{
   text-align: center;
+}
+
+$gray:      #484b50;
+$red:				#9e1326;
+$white:     #fff;
+
+header {
+  width:100%;
+  background:$gray;
+  height:80px;
+  position:relative;
+
+  h1 {
+   font-family: 'Raleway', sans-serif;
+    font-size:30px;
+    line-height:40px;
+    font-weight:600;
+      :hover {
+          color:$red;
+        }
+    a {
+      text-decoration:none;
+      color:#fff;
+      }
+   }
+}
+
+.logo {
+  float:left;
+  width:15%;
+  margin-left:20px;
+  margin-top:20px;
+}
+
+.menu {
+  width:80%;
+  float:right;
+  display:inline-block;
+  text-align:right;
+  margin-top:30px;
+  font-family: 'Raleway', sans-serif;
+  font-weight:300;
+  text-transform:uppercase;
+  letter-spacing:3px;
+
+
+  li {
+
+    display:inline-block;
+    padding:0 1% ;
+    border-right:thin solid $red;
+    &:last-child{
+      border:none;
+    }
+    :hover {
+      color:darken($red, 9%);
+      }
+
+    a {
+      color:$white;
+      text-decoration:none;
+      font-size:16px;
+      padding:0;
+      }
+   }
+}
+
+ .clearfix:after {
+   content: " ";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+//*--------------------900------------------//
+@media only screen and (max-width: 800px) {
+  body{
+    // background-color: red;
+  }
+    nav {
+      ul {
+        li {
+          &.menu {
+            margin-top: 0;
+            font-size: 5em;
+            display: block;
+          }
+        }
+        div {
+          li {
+            width: 100%;
+            background-color: #f24;
+            // border: 1px solid white;
+            &:hover{
+              // background-color: #ff0026;
+            }
+            display: block;
+            float: right;
+            text-align: right;
+            margin: 0;
+            padding-top: 2vh;
+            padding-bottom: 2vh;
+            text-align: center;
+            font-size: 2em;
+            &:first-child{
+              // background-color: green;
+            }
+          }
+        }
+        //only shows when you click on burger menu//
+        .dropdown {
+          display: none;
+        }
+      }
+    }
 }
