@@ -1,11 +1,1 @@
-<div class="messages">
-<!-- <h1>{{ messagesIndex.messages.conversationI }}</h1> -->
-<ul>
-  <li ng-repeat="message in messagesIndex.messages">{{ message.body }} <strong>{{ message.user.username }} {{ message.user.image }}</strong></li>
-</ul>
-<form ng-submit="messagesIndex.reply()">
-  <label for="mess">New Message</label>
-  <input type="text" name="message" ng-model="messagesIndex.message.body" placeholder="New message..."><br>
-  <button>Send</button>
-</form>
-</div>
+<div class="messages"><ul><li ng-repeat="message in messagesIndex.messages">{{ message.body }} <strong>{{ message.user.username }} {{ message.user.image }}</strong></li></ul><form ng-submit="messagesIndex.reply()"><label for="mess">New Message</label><input type="text" name="message" ng-model="messagesIndex.message.body" placeholder="New message..."><br><button>Send</button></form></div>

@@ -1077,24 +1077,33 @@ header {
   }
     nav {
       ul {
+        padding-left: 0;
+        margin-left: 0;
+        width: 100%;
         li {
           &.menu {
+            padding-right: 40px;
             margin-top: 0;
+            padding-top: 0;
+            padding-bottom: 0;
             font-size: 5em;
             display: block;
           }
         }
         div {
+          width: 100%;
+          border: 1px solid black;
           li {
+            left: 0;
             width: 100%;
-            background-color: #f24;
+            background-color: black;
             // border: 1px solid white;
             &:hover{
               // background-color: #ff0026;
             }
             display: block;
             float: right;
-            text-align: right;
+            // text-align: right;
             margin: 0;
             padding-top: 2vh;
             padding-bottom: 2vh;
@@ -1120,8 +1129,8 @@ header {
         .test {
           .tabs {
             background-color: #f24;
-            width: 75%;
-            margin-left: 12.5%;
+            width: 100%;
+            margin-left: 0;
             padding-left: 0;
             margin-bottom: 0;
             border-top-left-radius: 10px;
@@ -1185,24 +1194,31 @@ header {
           }
         }
         .mapTab {
+          width: 100%;
+          margin-left: 0;
           h1 {
             margin-top: 0;
               font-family: 'Josefin Sans', sans-serif;
               background-color: #f24;
-              width: 75%;
-              margin-left: 12.5%;
+              width: 100%;
+              margin-left: 0;
               border-bottom-left-radius: 10px;
               border-bottom-right-radius: 10px;
               padding: 3vh;
           }
+          .google-map {
+            width: 100%;
+          }
         }
         .indexTab {
+          width: 100%;
+          margin-left: 0;
           h1 {
             margin-top: 0;
             font-family: 'Josefin Sans', sans-serif;
             background-color: #f24;
-            width: 75%;
-            margin-left: 12.5%;
+            width: 100%;
+            margin-left: 0;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
             padding: 3vh;
@@ -1210,10 +1226,11 @@ header {
           ul {
             padding-left: 0;
             list-style: none;
-            width: 80%;
-            margin-left: 10%;
+            width: 100%;
+            margin-left: 0;
             li {
-              width: 40%;
+              //SIZE OF DIVS
+              width: 48%;
               display: inline-block;
               color: black;
               // display: inline-block;
