@@ -49,7 +49,7 @@
 
   <div>
     <label>Bio</label>
-    <input name="bio" type="text" ng-model="auth.user.bio" required>
+    <input name="bio" type="text" ng-model="auth.user.bio" placeholder="Bio: Something about yourself" required>
   </div>
   <!-- Error message! -->
   <div ng-messages="auth.registerForm.bio.$error" ng-show="(auth.registerForm.$submitted || auth.registerForm.bio.$touched)">
