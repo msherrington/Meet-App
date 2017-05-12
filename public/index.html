@@ -3,6 +3,7 @@
   <head>
     <base href="/">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
     <title>Frontend</title>
     <!-- inject:js -->
     <script src="/js/app.js"></script>
@@ -21,14 +22,17 @@
   <body ng-controller="MainCtrl as main">
     <nav>
       <ul>
-        <li ng-if="main.isAuthenticated()"><a ui-sref="eventsIndex">Events</a></li>
-        <li ng-if="main.isAuthenticated()"><a ui-sref="eventsNew">Start Event</a></li>
-        <li ng-if="main.isAuthenticated()"><a ui-sref="conversationsIndex">Chats</a></li>
-        <li ng-if="main.isAuthenticated()"><a ui-sref="usersIndex">Users</a></li>
-        <li ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUser.id })">Profile</a></li>
-        <li ng-if="!main.isAuthenticated()"><a ui-sref="login">Login</a></li>
-        <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
-        <li class="right" ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
+        <li ng-click="toggle = ! toggle" class="menu">&#9776;</li>
+        <div ng-class="{'dropdown' : toggle }">
+          <li ng-if="main.isAuthenticated()"><a ui-sref="eventsIndex">Events</a></li>
+          <li ng-if="main.isAuthenticated()"><a ui-sref="eventsNew">Start Event</a></li>
+          <li ng-if="main.isAuthenticated()"><a ui-sref="conversationsIndex">Chats</a></li>
+          <li ng-if="main.isAuthenticated()"><a ui-sref="usersIndex">Users</a></li>
+          <li ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUser.id })">Profile</a></li>
+          <li ng-if="!main.isAuthenticated()"><a ui-sref="login">Login</a></li>
+          <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
+          <li class="right" ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
+        </div>
       </ul>
       <h1>MeetApp</h1>
     </nav>

@@ -7,6 +7,7 @@ function AuthCtrl($auth, $state) {
   const vm = this;
 
   function register() {
+    if(vm.registerForm.$invalid) return;
     $auth.signup(vm.user)
       .then(() => $state.go('login'));
   }
