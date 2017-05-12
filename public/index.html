@@ -22,7 +22,6 @@
   <body ng-controller="MainCtrl as main">
     <nav>
       <ul>
-         <!-- ng-click="main.menuIsOpen = !main.menuIsOpen" ng-class="{ 'open': main.menuIsOpen }" -->
         <li ng-click="main.toggle = !main.toggle" class="menu">&#9776;</li>
         <div ng-class="{'dropdown' : !main.toggle }">
           <li ng-if="main.isAuthenticated()"><a ui-sref="eventsIndex">Events</a></li>
