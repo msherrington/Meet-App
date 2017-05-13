@@ -1745,4 +1745,168 @@ header {
       }
     }
   }
+
+  //------------------------EventShow--------------------------------
+  .eventShow {
+    text-align: center;
+    // background-color : #303030;
+    width: 80%;
+    margin-left: 10%;
+    position: relative;
+    h1 {
+      background-color: #f24;
+      color: white;
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: bold;
+      padding: 20px;
+      margin: 0;
+      border-radius: 10px;
+    }
+    .eventShowTop {
+      border: 5px solid #303030;
+      border-left: none;
+      width: 100%;
+      background-color: white;
+      .eventShowImg {
+        height: 200px;
+        width: 80%;
+        margin-bottom: 20px;
+        margin-top: 2vh;
+      }
+      .eventShowUserPic {
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        border: 5px solid white;
+        position: absolute;
+        top: 34%;
+        left: 10%;
+      }
+      .eventInfo {
+        // width: 30%;
+        // margin-left: 35%;
+        background-color: white;
+        p {
+          .ticksLeft {
+            color: red;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: bold;
+          }
+        }
+      }
+      a {
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: bold;
+        position: relative;
+        &:hover {
+          text-decoration: none;
+          &:after {
+            content: '';
+            background-color: #f24;
+            height: 2px;
+            width: 20px;
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translate(-50%);
+          }
+        }
+      }
+    }
+    .editBtns {
+      button {
+
+      }
+    }
+    .attendBtns {
+      button {
+
+      }
+    }
+    .eventShowBottom {
+      width: 100%;
+      display: block;
+      position: static;
+      top: 11.3vh;
+      // left: 60%;
+      text-align: left;
+      // float: right;
+      border-top: 5px solid #303030;
+      min-height: 30vh;
+      // border-left: none;
+      .attendees {
+        background-color: white;
+        text-align: center;
+        h2 {
+          font-family: 'Josefin Sans', sans-serif;
+          font-weight: bold;
+          padding-top: 2vh;
+          margin-top: 0;
+        }
+        p {
+          border: none;
+          width: 100%;
+          &:last-child {
+            padding-bottom: 2vh;
+            margin-bottom: 5px;
+          }
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+          }
+        }
+      }
+      .comments {
+        background-color: white;
+        text-align: center;
+        h2 {
+          font-family: 'Josefin Sans', sans-serif;
+          font-weight: bold;
+          margin-top: 0;
+          padding-top: 2vh;
+        }
+        ul {
+          padding-left: 0;
+          list-style: none;
+          li {
+            display: block;
+            a {
+              &:hover {
+                text-decoration: none;
+              }
+
+            }
+            button {
+              margin-bottom: 50px;
+            }
+          }
+        }
+        div {
+          h2 {
+            display: none;
+          }
+          form {
+            text-align: center;
+            input {
+              text-align: center;
+              border: none;
+              border-bottom: 2px solid #303030;
+              &:focus {
+                outline: none;
+                &::-webkit-input-placeholder {
+                  color: white;
+                }
+              }
+
+            }
+            button {
+              margin-bottom: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+
 }
