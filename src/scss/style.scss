@@ -1074,6 +1074,7 @@ header {
 @media only screen and (max-width: 1200px) {
   body{
     // background-color: red;
+    min-height: 0;
   }
     nav {
       ul {
@@ -1335,4 +1336,19 @@ header {
 
     }
   }
+
+  //userShow
+  .userProfile {
+    .profileHead {
+      p {
+        left: 75%;
+      }
+      button {
+        left: 75%;
+      }
+    }
+  }
+
+  //eventsShow
+  
 }
