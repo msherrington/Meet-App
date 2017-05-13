@@ -1070,6 +1070,7 @@ header {
    clear: both;
 }
 
+
 //*--------------------900------------------//
 @media only screen and (max-width: 1200px) {
   body{
@@ -1349,6 +1350,277 @@ header {
     }
   }
 
-  //eventsShow
-  
+  .payment {
+    margin-top: 10px;
+    width: 96%;
+  }
+}
+
+//*--------------------900------------------//
+@media only screen and (max-width: 420px) {
+  body{
+    color: red;
+  }
+  nav {
+    ul {
+      padding-left: 0;
+      margin-left: 0;
+      width: 100%;
+      li {
+        &.menu {
+          padding-right: 20px;
+          margin-top: 10px;
+          padding-top: 0;
+          padding-bottom: 0;
+          font-size: 3em;
+          display: block;
+        }
+      }
+      div {
+        width: 100%;
+        border: 1px solid black;
+        li {
+          left: 0;
+          width: 100%;
+          background-color: black;
+          // border: 1px solid white;
+          &:hover{
+            // background-color: #ff0026;
+          }
+          display: block;
+          float: right;
+          // text-align: right;
+          margin: 0;
+          padding-top: 2vh;
+          padding-bottom: 2vh;
+          text-align: center;
+          font-size: 2em;
+          &:first-child{
+            // background-color: green;
+          }
+        }
+      }
+      //only shows when you click on burger menu//
+      .dropdown {
+        display: none;
+      }
+    }
+  }
+
+
+  .welcome {
+    font-size: 30px;
+  }
+
+  //EVENTS INDEX
+  .eventIndexPage {
+    // background-color: red;
+    text-align: center;
+    .wrap {
+      color: white;
+      .test {
+        .tabs {
+          background-color: #f24;
+          width: 100%;
+          margin-left: 0;
+          padding-left: 0;
+          margin-bottom: 0;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          li {
+            display: inline-block;
+            input {
+              border: none;
+              background-color: #f24;
+              border-bottom: 2px solid #fff;
+              text-align: center;
+              width: 30vh;
+              height: 4vh;
+              color: #fff;
+              font-size: 15px;
+              margin-right: 200px;
+              &:focus {
+                outline: none;
+                &::-webkit-input-placeholder {
+                  color: #f24;
+                }
+              }
+              &::-webkit-input-placeholder {
+                color: #fff;
+                font-size: 15px;
+                margin-bottom: 0;
+              }
+            }
+            button {
+              position: relative;
+              margin-bottom: 0;
+              border-color: #f24;
+              border-bottom-left-radius: 0;
+              border-bottom-right-radius: 0;
+              background-color: #f24;
+              padding-bottom: 4vh;
+              // border-bottom-color: #303030;
+              &:hover {
+                color: #fff;
+                text-decoration: none;
+                &:after {
+                  content: '';
+                  background-color: white;
+                  height: 2px;
+                  width: 20px;
+                  position: absolute;
+                  bottom: 2px;
+                  left: 50%;
+                  transform: translate(-50%);
+                }
+              }
+              &:focus {
+                outline: none;
+                border-bottom-color: #f24;
+                // border-width: 2px;
+                // border-color: white;
+
+              }
+            }
+          }
+        }
+      }
+      .mapTab {
+        width: 100%;
+        margin-left: 0;
+        h1 {
+          margin-top: 0;
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: #f24;
+            width: 100%;
+            margin-left: 0;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 3vh;
+        }
+        .google-map {
+          width: 100%;
+        }
+      }
+      .indexTab {
+        width: 100%;
+        margin-left: 0;
+        h1 {
+          margin-top: 0;
+          font-family: 'Josefin Sans', sans-serif;
+          background-color: #f24;
+          width: 100%;
+          margin-left: 0;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          padding: 3vh;
+        }
+        ul {
+          padding-left: 0;
+          list-style: none;
+          width: 100%;
+          margin-left: 0;
+          li {
+            //SIZE OF DIVS
+            width: 98%;
+            .eventIndexDiv {
+              a {
+                text-decoration: none;
+                }
+                h3 {
+                  color: #f24;
+                  font-family: 'Josefin Sans', sans-serif;
+                  position: relative;
+                  &:hover {
+                    &:after {
+                      content: '';
+                      background-color: #f24;
+                      height: 2px;
+                      width: 50px;
+                      position: absolute;
+                      bottom: -4px;
+                      left: 50%;
+                      transform: translate(-50%);
+                    }
+                }
+              }
+              img{
+                display: inline-block;
+                height: 200px;
+                width: 200px;
+              }
+              p {
+                height: 4vh;
+                span {
+                  font-family: 'Josefin Sans', sans-serif;
+                  color: #f24;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+  //USER INDEX
+  .UserIndexDiv{
+    ul {
+      text-align: center;
+      padding-left: 0;
+      list-style: none;
+      width: 100%;
+      margin-left: 0%;
+      li {
+        width: 98%;
+        display: inline-block;
+        color: black;
+        height: 330px;
+        border-radius: 10px;
+        margin: 5px;
+        background-color: white;
+        a {
+          text-decoration: none;
+          }
+          h3 {
+            color: #f24;
+            font-family: 'Josefin Sans', sans-serif;
+            position: relative;
+            &:hover {
+              &:after {
+                content: '';
+                background-color: #f24;
+                height: 2px;
+                width: 50px;
+                position: absolute;
+                bottom: -4px;
+                left: 50%;
+                transform: translate(-50%);
+              }
+            }
+          }
+          img{
+            display: inline-block;
+            height: 200px;
+            width: 200px;
+          }
+          p {
+            height: 4vh;
+            margin-top: 10px;
+            span {
+              font-family: 'Josefin Sans', sans-serif;
+              color: #f24;
+            }
+          }
+        }
+      }
+    }
+
+  .payment {
+    margin-top: 10px;
+    width: 96%;
+  }
+
 }
