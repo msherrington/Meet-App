@@ -2,7 +2,6 @@
   <h1>{{ eventsShow.event.name }}</h1>
   <div class="eventShowTop">
 
-
     <img class="eventShowImg" ng-src="{{ eventsShow.event.image_src }}" alt="{{ eventsShow.event.name }}">
 
     <img src="{{ eventsShow.event.user.image_src }}" alt="{{ eventsShow.event.user.username }}'s Photo" class="eventShowUserPic">
@@ -44,14 +43,13 @@
         <li ng-repeat="comment in eventsShow.event.comments"><strong></strong>{{ comment.body }} - <a ui-sref="usersShow({ id: comment.user.id })">{{ comment.user.username }}</a><button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
       </ul>
 
-
-    <div ng-if="main.isAuthenticated()">
-      <h2>Add Comment</h2>
-      <form ng-submit="eventsShow.addComment()">
-        <input type="text" name="body" ng-model="eventsShow.comment.body" placeholder="New Comment.."><br>
-        <button>Post</button>
-      </form>
-    </div>
+      <div ng-if="main.isAuthenticated()">
+        <h2>Add Comment</h2>
+        <form ng-submit="eventsShow.addComment()">
+          <input type="text" name="body" ng-model="eventsShow.comment.body" placeholder="New Comment.."><br>
+          <button>Post</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

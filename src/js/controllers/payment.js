@@ -5,7 +5,6 @@ angular
 PaymentCtrl.$inject = ['API_URL', '$http', '$window', '$state', '$stateParams', 'Event', 'User', 'Ticket'];
 function PaymentCtrl(API_URL, $http, $window, $state, $stateParams, Event, User, Ticket) {
   const vm = this;
-  // let requester;
   const Stripe = $window.Stripe;
   vm.ticket = {};
   vm.card = {};

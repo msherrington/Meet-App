@@ -1,54 +1,46 @@
 <section>
   <div class="eventIndexPage">
-  <!-- <h1>Events</h1> -->
-  <div class="searchBoxIndex">
-  </div>
-  <div class="wrap">
-  	<div class="test">
-  		<ul class="tabs">
-        <li><input type="text" class="search" ng-model="eventsIndex.q" placeholder="Search..." ></li>
-       	<li ng-class="{ active: eventsIndex.isSet(1) }">
-          	<button ng-click="eventsIndex.setTab(1)" >Map</button>
-       	</li>
-       	<li ng-class="{ active: eventsIndex.isSet(2) }">
-          	<button ng-click="eventsIndex.setTab(2)">List</button>
-       	</li>
-     	</ul>
-  	</div>
+    <div class="searchBoxIndex">
+    </div>
+    <div class="wrap">
+    	<div class="test">
+    		<ul class="tabs">
+          <li><input type="text" class="search" ng-model="eventsIndex.q" placeholder="Search..." ></li>
+         	<li ng-class="{ active: eventsIndex.isSet(1) }">
+            	<button ng-click="eventsIndex.setTab(1)" >Map</button>
+         	</li>
+         	<li ng-class="{ active: eventsIndex.isSet(2) }">
+            	<button ng-click="eventsIndex.setTab(2)">List</button>
+         	</li>
+       	</ul>
+    	</div>
 
-    <div class="mapTab">
-        <!-- TAB 1 -->
-        <div ng-show="eventsIndex.isSet(1)">
-            <h1>Events Map</h1>
-            <div>
-              <google-map events="eventsIndex.filtered" ng-if="eventsIndex.all.$resolved"></google-map>
-            </div>
-        </div>
-      <!-- </div> -->
-
-      <!-- TAB 2 -->
-      <div ng-show="eventsIndex.isSet(2)" class="indexTab">
-        <h1>Events List</h1>
-         <ul>
-          <!-- <div class="row">
-            <div class="col-sm-6"> -->
-              <li ng-repeat="event in  eventsIndex.filtered track by $index">
-                <div class="eventIndexDiv">
-                  <!-- <div class="eventInnerDiv"> -->
-                    <a ui-sref="eventsShow({ id: event.id })"><h3><strong>{{ event.name }}</strong></h3></a>
-                      <img src="{{ event.image_src }}" alt="{{ event.name }}">
-                    <p>{{ event.location }}</p>
-                    <p>{{ event.date | date: 'd MMM yyyy' }}</p>
-                    <p><span class="ticksleft">{{ event.tickets_left }}</span> tickets left</p>
-                    <p>Host: <a ui-sref="usersShow({ id: event.user.id })">{{ event.user.username }}</a></p>
-                  <!-- </div> -->
-                </div>
-              </li>
-            <!-- </div>
-          </div> -->
-        </ul>
+      <div class="mapTab">
+      <!-- TAB 1 -->
+      <div ng-show="eventsIndex.isSet(1)">
+          <h1>Events Map</h1>
+          <div>
+            <google-map events="eventsIndex.filtered" ng-if="eventsIndex.all.$resolved"></google-map>
+          </div>
       </div>
-  	</div>
+
+        <!-- TAB 2 -->
+        <div ng-show="eventsIndex.isSet(2)" class="indexTab">
+          <h1>Events List</h1>
+           <ul>
+            <li ng-repeat="event in  eventsIndex.filtered track by $index">
+              <div class="eventIndexDiv">
+                  <a ui-sref="eventsShow({ id: event.id })"><h3><strong>{{ event.name }}</strong></h3></a>
+                    <img src="{{ event.image_src }}" alt="{{ event.name }}">
+                  <p>{{ event.location }}</p>
+                  <p>{{ event.date | date: 'd MMM yyyy' }}</p>
+                  <p><span class="ticksleft">{{ event.tickets_left }}</span> tickets left</p>
+                  <p>Host: <a ui-sref="usersShow({ id: event.user.id })">{{ event.user.username }}</a></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+    	</div>
     </div>
   </div>
 </section>

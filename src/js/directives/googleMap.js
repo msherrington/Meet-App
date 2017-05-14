@@ -12,9 +12,7 @@ function googleMap($window, mapStyles){
     replace: true,
     template: '<div class="google-map"></div>',
     scope: {
-      // users: '=',
-      events: '=' // just added this
-      // query: '='
+      events: '='
     },
     link($scope, element){
       // Declare variables for positioning markers
@@ -31,7 +29,6 @@ function googleMap($window, mapStyles){
         center: { lat: 51.5089891, lng: -0.0874529 },
         styles: mapStyles
       });
-      // google.maps.event.trigger(map, 'resize')
 
       // Event listener to close infowindows by clicking anywhere on map
       map.addListener('click', () => {
@@ -39,11 +36,8 @@ function googleMap($window, mapStyles){
       });
       // Sets location marker on map
       const marker = new $window.google.maps.Marker({
-        // position: $scope.center
         icon: '/images/locationMarker.png',
         map
-        // optimized: false,
-        // zIndex: 99999999
       });
 
       //Runs function to find latlng of all events
@@ -51,17 +45,6 @@ function googleMap($window, mapStyles){
       getEventLatLng();
 
       let infowindow = null;
-
-      // Filters map markers by radius
-      // function filterMarkersByRadius() {
-      //   for(var i = 0; i < markers.length; i++){
-      //     if(markers[i].distance <= circle.radius){
-      //       markers[i].setMap(map);
-      //     } else{
-      //       markers[i].setMap(null);
-      //     }
-      //   }
-      // }
 
       // HTML5 Geolocation..
       if (navigator.geolocation) {
@@ -78,10 +61,7 @@ function googleMap($window, mapStyles){
 
       // Function to plot event locations on the map
       function getEventLatLng(pos) {
-        // console.log('running');
         const events = $scope.events;
-        // console.log(events);
-        // console.log(events.event[0])
 
         for(var i = 0; i < markers.length; i++){
           markers[i].setMap(null);
@@ -101,23 +81,18 @@ function googleMap($window, mapStyles){
       // Adds marker to each events latlng
       function addMarker(latLng, pos, event) {
         latLng = { lat: parseFloat(event.latitude), lng: parseFloat(event.longitude) };
-        // console.log('marker added!');
         const marker = new google.maps.Marker({
           position: latLng,
           map: map
-          // icon: '../images/eventMarker.png',
-          // distance: findDistance(new google.maps.LatLng(pos), new google.maps.LatLng(latLng))
         });
 
         // Event listener for event markers
         marker.addListener('click', () => {
-          // console.log('click event added');
           markerClick(marker, event, latLng);
         });
 
         // Push markers into an array to use later
         markers.push(marker);
-      //   filterMarkersByRadius();
       }
 
       function markerClick(marker, event){
@@ -137,11 +112,6 @@ function googleMap($window, mapStyles){
           </div>`,
           maxWidth: 200
         });
-
-        // Event listener for event markers
-        // marker.addListener('click', () => {
-        //   markerClick(marker, event);
-        // });
 
         // Open the new InfoWindow
         infowindow.open(map, marker);

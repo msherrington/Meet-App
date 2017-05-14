@@ -30,16 +30,13 @@ UsersShowCtrl.$inject = ['User', '$stateParams', '$state', 'Conversation', '$aut
 function UsersShowCtrl(User, $stateParams, $state, Conversation, $auth){
   const vm = this;
   vm.currentUser = $auth.getPayload();
-  // console.log(vm.currentUser.id);
   User.get($stateParams).$promise.then((user)=> {
     vm.user = user;
   });
-  // console.log(parseFloat($stateParams.id));
 
   //Tabs
   vm.tab = 1;
   vm.setTab = function(newTab){
-    // console.log('clicked');
     vm.tab = newTab;
   };
 
@@ -57,7 +54,6 @@ function UsersShowCtrl(User, $stateParams, $state, Conversation, $auth){
 
   vm.conversation = { receiver_id: parseInt($stateParams.id), sender_id: vm.currentUser.id };
 
-  // console.log(vm.conversation);
   function conversationCreate() {
     Conversation
     .save({sender_id: vm.currentUser.id, receiver_id: parseInt($stateParams.id), conversation: vm.conversation})

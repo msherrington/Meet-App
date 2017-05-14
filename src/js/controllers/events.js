@@ -21,7 +21,6 @@ function EventsIndexCtrl(Event, filterFilter, orderByFilter, $http, $scope){
   vm.tab = 1;
 
   vm.setTab = function(newTab){
-    // console.log('clicked');
     vm.tab = newTab;
   };
 
@@ -51,11 +50,11 @@ function EventsNewCtrl(Event, User, $state) {
 
   function eventsCreate() {
     //Wrap data in an event object//
-  if(vm.eventsForm.$valid){
-    Event
-      .save({ event: vm.event })
-      .$promise
-      .then(() => $state.go('eventsIndex'));
+    if(vm.eventsForm.$valid){
+      Event
+        .save({ event: vm.event })
+        .$promise
+        .then(() => $state.go('eventsIndex'));
     }
   }
   vm.create = eventsCreate;
