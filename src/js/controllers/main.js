@@ -8,6 +8,8 @@ function MainCtrl($rootScope, $state, $auth) {
   vm.currentUser = $auth.getPayload();
   vm.isAuthenticated = $auth.isAuthenticated;
 
+  vm.toggle = false;
+
   $rootScope.$on('error', (e, err) => {
     vm.stateHasChanged = false;
     vm.message = err.data.message;
@@ -15,6 +17,8 @@ function MainCtrl($rootScope, $state, $auth) {
   });
 
   $rootScope.$on('$stateChangeSuccess', () => {
+    vm.toggle = false;
+
     window.scrollTo(0, 0); // workaround to scroll back to top of page on page change
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
