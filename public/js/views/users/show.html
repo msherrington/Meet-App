@@ -1,1 +1,48 @@
-<div class="userProfile"><h1><strong>{{ usersShow.user.username}}'s Profile</strong></h1><div class="profileHead"><img class="userShowImg" ng-src="{{ usersShow.user.image_src }}" alt="{{ usersShow.user.username }}'s Photo"><p>{{ usersShow.user.bio }}</p><button ng-show="main.currentUser.id !== usersShow.user.id" ng-click="usersShow.conversationCreate()">Message</button> <button ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id" ui-sref="usersEdit({ id:usersShow.user.id })">Edit</button></div><div class="test"><ul><li ng-class="{ active: usersShow.isSet(1) }"><button ng-click="usersShow.setTab(1)">Hosting</button></li><li ng-class="{ active: usersShow.isSet(2) }"><button ng-click="usersShow.setTab(2)">Attending</button></li></ul></div><div class="waz"><div ng-show="usersShow.isSet(1)"><ul><li ng-repeat="events_created in usersShow.user.events_created"><div class="userShowEvents"><p><a ui-sref="eventsShow({ id: events_created.id })"><strong>{{ events_created.name }}</strong></a></p><a ui-sref="eventsShow({ id: events_created.id })"><img src="{{ events_created.image_src }}" alt="{{ events_created.name }}"></a></div></li></ul></div><div ng-show="usersShow.isSet(2)"><ul><li ng-repeat="event in usersShow.user.events"><div class="userShowEvents"><p><a ui-sref="eventsShow({ id: event.id })"><strong>{{ event.name }}</strong></a></p><a ui-sref="eventsShow({ id: event.id })"><img src="{{ event.image_src }}" alt="{{ event.name }}"></a></div></li></ul></div></div></div>
+<div class="userProfile">
+  <h1><strong>{{ usersShow.user.username}}'s Profile</strong></h1>
+
+  <div class="profileHead">
+    <img class="userShowImg" ng-src="{{ usersShow.user.image_src }}" alt="{{ usersShow.user.username }}'s Photo">
+    <p> {{ usersShow.user.bio }}</p>
+    <button ng-show="main.currentUser.id !== usersShow.user.id" ng-click="usersShow.conversationCreate()">Message</button>
+    <button ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id" ui-sref="usersEdit({ id:usersShow.user.id })">Edit </button>
+  </div>
+
+  <div class="test">
+    <ul>
+      <li ng-class="{ active: usersShow.isSet(1) }">
+        <button ng-click="usersShow.setTab(1)">Hosting</button>
+      </li>
+
+      <li ng-class="{ active: usersShow.isSet(2) }">
+        <button ng-click="usersShow.setTab(2)">Attending</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="waz">
+    <!-- TAB 1 -->
+    <div ng-show="usersShow.isSet(1)">
+      <ul>
+        <li ng-repeat="events_created in usersShow.user.events_created">
+          <div class="userShowEvents">
+            <p><a ui-sref="eventsShow({ id: events_created.id })"><strong>{{ events_created.name }}</strong></a></p>
+            <a ui-sref="eventsShow({ id: events_created.id })"><img src="{{ events_created.image_src }}" alt="{{ events_created.name }}"></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- TAB 2 -->
+    <div ng-show="usersShow.isSet(2)">
+      <ul>
+        <li ng-repeat="event in usersShow.user.events">
+          <div class="userShowEvents">
+            <p><a ui-sref="eventsShow({ id: event.id })"><strong>{{ event.name }}</strong></a></p>
+            <a ui-sref="eventsShow({ id: event.id })"><img src="{{ event.image_src }}" alt="{{ event.name }}"></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

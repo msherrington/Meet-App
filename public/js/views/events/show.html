@@ -1,1 +1,55 @@
-<div class="eventShow"><h1>{{ eventsShow.event.name }}</h1><div class="eventShowTop"><img class="eventShowImg" ng-src="{{ eventsShow.event.image_src }}" alt="{{ eventsShow.event.name }}"> <img src="{{ eventsShow.event.user.image_src }}" alt="{{ eventsShow.event.user.username }}'s Photo" class="eventShowUserPic"><div class="eventInfo"><p><strong>Where: </strong>{{ eventsShow.event.location }}</p><p><strong>When: </strong>{{ eventsShow.event.date | date: 'EEEE, d MMMM yyyy' }}</p><p><strong>About: </strong>{{ eventsShow.event.description }}</p><p><strong>Price: </strong>£{{ eventsShow.event.price }}</p><p><span class="ticksLeft">{{ eventsShow.event.tickets_left }}</span> tickets left</p><p>Hosted by: <a ui-sref="usersShow({ id: eventsShow.event.user.id })">{{ eventsShow.event.user.username }}</a></p></div><div class="editBtns"><button ng-if="main.isAuthenticated() && main.currentUser.id === eventsShow.event.user.id" ui-sref="eventsEdit({ id:eventsShow.event.id })">Edit</button> <button ng-if="main.isAuthenticated() && main.currentUser.id === eventsShow.event.user.id" ng-click="eventsShow.open()">Delete</button></div><div><button ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && !eventsShow.attending() && eventsShow.event.tickets_left > 0" ng-click="eventsShow.route()">Attend</button> <button ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && eventsShow.attending()" ng-click="eventsShow.unattend()">Unattend</button></div></div><div class="eventShowBottom"><div class="attendees"><h2>Attendees</h2><p class="attendees" ng-repeat="user in eventsShow.event.users"><a ui-sref="usersShow({ id: user.id })"><img src="{{ user.image_src }}" alt=""> {{ user.username }}</a></p></div><div class="comments"><h2>Comments</h2><ul><li ng-repeat="comment in eventsShow.event.comments"><strong></strong>{{ comment.body }} - <a ui-sref="usersShow({ id: comment.user.id })">{{ comment.user.username }}</a><button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li></ul><div ng-if="main.isAuthenticated()"><h2>Add Comment</h2><form ng-submit="eventsShow.addComment()"><input type="text" name="body" ng-model="eventsShow.comment.body" placeholder="New Comment.."><br><button>Post</button></form></div></div></div></div>
+<div class="eventShow">
+  <h1>{{ eventsShow.event.name }}</h1>
+  <div class="eventShowTop">
+
+    <img class="eventShowImg" ng-src="{{ eventsShow.event.image_src }}" alt="{{ eventsShow.event.name }}">
+
+    <img src="{{ eventsShow.event.user.image_src }}" alt="{{ eventsShow.event.user.username }}'s Photo" class="eventShowUserPic">
+
+
+    <div class="eventInfo">
+      <p><strong>Where: </strong>{{ eventsShow.event.location }}</p>
+      <p><strong>When: </strong>{{ eventsShow.event.date | date: 'EEEE, d MMMM yyyy' }}</p>
+      <p><strong>About: </strong>{{ eventsShow.event.description }}</p>
+      <p><strong>Price: </strong>£{{ eventsShow.event.price }}</p>
+      <p><span class="ticksLeft">{{ eventsShow.event.tickets_left }}</span> tickets left</p>
+      <p>Hosted by: <a ui-sref="usersShow({ id: eventsShow.event.user.id })">{{ eventsShow.event.user.username }}</a>
+      </p>
+    </div>
+
+    <div class="editBtns">
+      <button ng-if="main.isAuthenticated() && main.currentUser.id === eventsShow.event.user.id" ui-sref="eventsEdit({ id:eventsShow.event.id })">Edit </button>
+      <button ng-if="main.isAuthenticated() && main.currentUser.id === eventsShow.event.user.id" ng-click="eventsShow.open()">Delete</button>
+    </div>
+
+    <!-- These attend/unattend buttons only show if user is logged in and not event host and -->
+    <div>
+      <!-- not attending the event already -->
+      <button  ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && !eventsShow.attending() && eventsShow.event.tickets_left > 0" ng-click="eventsShow.route()">Attend</button>
+      <!-- already attending the event -->
+      <button  ng-show="main.isAuthenticated() && main.currentUser.id !== eventsShow.event.user.id && eventsShow.attending()" ng-click="eventsShow.unattend()">Unattend</button>
+    </div>
+  </div>
+
+  <div class="eventShowBottom">
+    <div class="attendees">
+      <h2>Attendees</h2>
+      <p class="attendees" ng-repeat="user in eventsShow.event.users"><a ui-sref="usersShow({ id: user.id })"><img src="{{ user.image_src }}" alt=""> {{ user.username }}</a></p>
+    </div>
+
+    <div class="comments">
+      <h2>Comments</h2>
+      <ul>
+        <li ng-repeat="comment in eventsShow.event.comments"><strong></strong>{{ comment.body }} - <a ui-sref="usersShow({ id: comment.user.id })">{{ comment.user.username }}</a><button ng-click="eventsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
+      </ul>
+
+      <div ng-if="main.isAuthenticated()">
+        <h2>Add Comment</h2>
+        <form ng-submit="eventsShow.addComment()">
+          <input type="text" name="body" ng-model="eventsShow.comment.body" placeholder="New Comment.."><br>
+          <button>Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
